@@ -1,0 +1,112 @@
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.inforcewidth
+{
+    max-width: 95% !important;
+    margin-left: 2%;
+}
+
+.sidenotification
+{
+    border-left: medium dashed rgb(227, 24, 55);
+}
+.logo
+{
+    max-height: 2.1em;
+}
+.navbar-inverse {
+    background-color: #0393A6;
+    border-color: #FA6F5D;
+}
+.navbar-brand 
+{
+padding-top: 0;
+}
+
+
+.navbar-default .navbar-nav > li > a
+{
+    color: #000;
+}
+
+.navbar-default .navbar-nav > li > a:hover
+{
+    color: #A7CF38;
+}
+.navbar-default {
+    background-color: #0393A6;
+    border-color: #12E1FC;
+}
+.navbar-default .navbar-nav > li > .active
+{
+        color: #E31836;
+
+}
+p{
+    color: white;
+    font-family: sans-serif;
+    color: #000;
+}
+p:hover,p:focus{
+    color: #FA6F5D;
+    font:bold;
+/*    text-decoration: underline;*/
+   
+}
+
+.nav > ul > li:hover
+{
+    color:#FA6F5D;
+}
+
+.form-control:focus {
+    border-color: #FA6F5D;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+}
+.nav {
+    padding: 5px;
+    margin-bottom: 0px;
+    list-style: outside none none;
+}
+.navbar-header {
+    float: left;
+    padding: 5px;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #101010;
+    padding: 5px;
+}
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857;
+    color: #000;
+    white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #A7CF38;
+    text-decoration: none;
+    background-color: #F5F5F5;
+}
+
+
+.input-sm, .form-group-sm .form-control {
+    height: 30px !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    border-radius: 3px !important;
+}
+
+
+
+
+

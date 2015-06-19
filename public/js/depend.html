@@ -1,0 +1,37 @@
+<div ng-app="myApp">
+  
+  <div ng-controller="StaticCtrl">
+      <h1>Static - Oriented</h1>
+      <p>This approach may be better when you have the entire dataset</p>
+    <div>
+        Country: 
+        <select id="country" ng-model="cities" ng-options="country for (country, cities) in countries">
+          <option value=''>Select</option>
+        </select>
+    </div>
+    <div>
+        City: <select id="city" ng-disabled="!cities" ng-model="suburbs" ng-options="city for (city, suburbs) in cities"><option value=''>Select</option></select>
+    </div>
+    <div>
+        Suburb: <select id="suburb" ng-disabled="!suburbs" ng-model="suburb" ng-options="suburb for suburb in suburbs"><option value=''>Select</option></select>        
+    </div>
+  </div>
+  </div>
+<script>
+var app = angular.module("MyApp", [
+
+function StaticCtrl($scope) {
+    $scope.countries = {
+        'usa': {
+            'San Francisco': ['SOMA', 'Richmond', 'Sunset'],
+            'Los Angeles': ['Burbank', 'Hollywood']
+        },
+        'canada': {
+            'People dont live here': ['igloo', 'cave']
+        }
+    };
+}
+
+
+]);
+</script>
