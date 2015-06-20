@@ -12,7 +12,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
               
   
-                <button type="submit"  class="btn" name="submit" value="submit">Submit</button>
+                <button type="submit"  class="btn btn-success" name="submit" value="submit">Submit</button>
  
             </form>
         </div>

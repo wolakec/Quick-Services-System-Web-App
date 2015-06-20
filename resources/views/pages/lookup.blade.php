@@ -12,7 +12,7 @@
                 </div>
         
                 <div class="form-group col-md-4">
-                    <button type="submit" class="btn"name="submit" value="submit" >Submit</button>
+                    <button type="submit" class="btn btn-success"name="submit" value="submit" >Submit</button>
                 </div>
             </form>
             <br><br><br><br>
