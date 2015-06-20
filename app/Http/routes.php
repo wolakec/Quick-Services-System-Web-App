@@ -1,6 +1,8 @@
 <?php
 use App\Client;
 use App\Location;
+use App\Make;
+use App\VehicleModel;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -17,6 +19,19 @@ Route::post('/services/types/add', 'ServiceTypesController@store');
 Route::get('/services/types/{id})', 'ServiceTypesController@view');
 Route::get('/services/types/{id}/edit', 'ServiceTypesController@edit');
 Route::post('/services/types/{id}/edit', 'ServiceTypesController@update');
+
+Route::get('/makes','MakeController@index');
+Route::post('/makes/add', 'MakeController@store');
+Route::get('/makes/{id})', 'MakeController@view');
+Route::get('/makes/{id}/edit', 'MakeController@edit');
+Route::post('/makes/{id}/edit', 'MakeController@update');
+
+Route::get('/models','ModelController@index');
+Route::get('/models/add', 'ModelController@add');
+Route::post('/models/add', 'ModelController@store');
+Route::get('/models/{id})', 'ModelController@view');
+Route::get('/models/{id}/edit', 'ModelController@edit');
+Route::post('/models/{id}/edit', 'ModelController@update');
 
 Route::get('/employees','EmployeeController@index');
 Route::get('/employees/add', 'EmployeeController@add');
@@ -74,6 +89,16 @@ Route::group(['prefix' => '/api'], function(){
              */
             Route::post('/login','AppEmployeeController@login');
             Route::post('/{id}/changepass','AppEmployeeController@changePass');
+            /*
+             * Fetching vehicle lookup data
+             */
+            
+            Route::get('/makes',function(){
+                return Make::all();
+            });
+            Route::get('/models',function(){
+                return VehicleModel::all();
+            });
         });
     });
 });

@@ -14,7 +14,16 @@
                 <li><a href="{{ url('/locations') }}"> Locations</a></li>
 
                 <li><a href="{{ url('/services/types') }}">Service Types</a></li>
-
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Vehicles<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url('/makes') }}">List of Makes</a></li>
+                        <li><a href="{{ url('/models') }}">List of Models</a></li>
+                        <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Employees<b class="caret"></b></a>
@@ -31,13 +40,15 @@
                         <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
                     </ul>
                 </li>
-                <li> <a href="{{ url('/codes') }}" > QR Codes </a></li>
-
-
-
-
-
-
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Qr Codes <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url('/codes') }}" >View Qr Codes</a></li>
+                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                    </ul>
+                </li>
             </ul>
             <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
                 <div class="form-group">
