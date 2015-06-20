@@ -142,3 +142,22 @@ p:hover,p:focus{
     background-color: black;
     border-color: #398439;
 }
+.pad-bottom {
+     padding-bottom:50px;
+}
+
+.outer-section {
+     border:1px solid #dedede;
+     background-color: #fff;
+}
+.pad-top {
+    padding-top:30px;
+}
+.pad-bottom {
+     padding-bottom:50px;
+}
+
+.outer-section {
+     border:1px solid #dedede;
+     background-color: #fff;
+}

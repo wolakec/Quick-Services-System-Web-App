@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h4 style="text-align:center;">Add Employee</h4><br/>
+            <h4 style="text-align:center;"> Add Employee</h4><br/>
             <form class="form-horizontal" name="addEmployee" method="post" action="{{ url('/employees/add') }}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="employee_id" placeholder="Employee ID">
@@ -39,7 +39,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-success"value="submit" name="submit">Submit</button>
+                    <button type="submit" class="btn btn-success"value="submit" name="submit">Submit</button>
                 </div>
             </form>  
         </div>
