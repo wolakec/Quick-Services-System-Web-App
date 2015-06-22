@@ -19,8 +19,12 @@ class Service extends Model {
         
         public function type()
         {
-            return $this->belongsTo('App\ServiceType');
+            return $this->belongsTo('App\ServiceType','service_type_id');
         }
-
+        
+        public function employee()
+        {
+            return $this->belongsTo('App\Employee');
+        }
 
 }

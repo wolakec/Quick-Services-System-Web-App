@@ -49,5 +49,12 @@ class AppEmployeeController extends Controller {
             
         return response()->json(['status' => 'true']);
     }
+    
+    public function viewServiceTypes($id)
+    {
+        $employee = Employee::find($id);
+        
+        return $employee->station->serviceTypes;
+    }
    
 }
