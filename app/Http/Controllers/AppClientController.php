@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\ServiceType;
+use App\Position;
 use Hash; 
 
 class AppClientController extends Controller {
@@ -63,5 +65,38 @@ class AppClientController extends Controller {
         $client->save();
             
         return response()->json(['status' => 'true']);
+    }
+    
+    public function viewServiceTypes($id)
+    {
+        return ServiceType::all();
+    }
+    
+    public function viewServices($id)
+    {
+        $client = Client::find($id);
+        
+        if(!$client){
+            return response()->json(['status' => 'false']);
+        }
+        
+        $vehicles = $client->vehicles;
+        foreach($vehicles as $index => $vehicle){
+            //$vehicle->load('services');
+           // $services = $vehicle->services;
+            $temp = $vehicle->services->keyBy('service_type_id');
+            unset($vehicle['services']);
+            $vehicle->services = $temp;
+        }
+        //$vehicles->pull('services');
+        return $vehicles;
+    }
+    
+    public function viewStationPositions()
+    {
+        $positions = Position::all();
+        $positions->load('station');
+        
+        return $positions;
     }
 }

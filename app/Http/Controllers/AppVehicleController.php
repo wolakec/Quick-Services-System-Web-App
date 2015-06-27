@@ -25,6 +25,29 @@ class AppVehicleController extends Controller {
             return response()->json(['status' => 'false']);
         }
         
+        if(!$client->vehicles){
+            return response()->json(['status' => 'false']);
+        }
+        
+        $vehicles = $client->vehicles;
+        
+        $vehicles->load('model.make');
+        
+        return $vehicles;
+    }
+    public function store(Request $request,$id)
+    {
+        $employee = Employee::find($id);
+        if(!$employee){
+            return response()->json(['status' => 'false']);
+        }
+        
+        $client = Client::find($request->input('client_id'));
+        
+        if(!$client){
+            return response()->json(['status' => 'false']);
+        }
+        
         $code = QrCode::where('body','=',$request->input('qr_code'))->first();
         
         if(!$code){

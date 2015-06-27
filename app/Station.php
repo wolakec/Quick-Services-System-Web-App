@@ -21,4 +21,9 @@ class Station extends Model {
     {
         return $this->belongsToMany('App\ServiceType','station_services');
     }
+    
+    public function position()
+    {
+        return $this->hasOne('App\Position');
+    }
 }

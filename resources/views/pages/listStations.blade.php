@@ -25,7 +25,8 @@
                     </td>
                     <td>
                         <a href="{{ url('/stations/'.$station->id.'/employees') }}">Employees</a> - 
-                        <a href="{{ url('/stations/'.$station->id.'/services/types') }}">Service Types</a>
+                        <a href="{{ url('/stations/'.$station->id.'/services/types') }}">Service Types</a> - 
+                        <a href="{{ url('/stations/'.$station->id.'/map') }}">Location</a>
                     </td>
                     </tr>
                     @endforeach
