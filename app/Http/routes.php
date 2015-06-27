@@ -59,6 +59,9 @@ Route::post('/stations/{id}/edit', 'StationController@update');
 Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
 Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
 
+Route::get('/stations/{id}/map', 'MapController@view');
+Route::post('/stations/{id}/position', 'MapController@store');
+        
 /*
  * General Route for Mobile API
  */
@@ -83,7 +86,12 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/locations',function(){
                 return Location::all();
             });
+           
             
+            Route::get('/{id}/vehicles','AppVehicleController@view');
+            Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
+            Route::get('/{id}/services','AppClientController@viewServices');
+            Route::get('/stations/positions','AppClientController@viewStationPositions');
             
         });
         
