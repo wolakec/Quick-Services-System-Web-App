@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="{{ url('/') }}" class="navbar-brand"><p style="padding: 13px;">Quick Services</p>
+            <a href="{{ url('/') }}" class="navbar-brand"><img class="logo" src="{{ asset('Images/qsLogoWeb.png') }}"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -49,6 +49,7 @@
                         <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
                     </ul>
                 </li>
+                  <li><a href="{{url('/map')}}">Map</a></li>
             </ul>
             <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
                 <div class="form-group">

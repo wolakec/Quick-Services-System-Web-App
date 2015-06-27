@@ -15,3 +15,4 @@
 <script src="{{ asset('js/clientForm.js') }}"></script>
 <script src="{{ asset('js/dataTables.bootstrap.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{asset('http://maps.google.com/maps/api/js?sensor=false')}}"></script>

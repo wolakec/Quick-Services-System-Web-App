@@ -26,6 +26,9 @@ Route::get('/makes/{id})', 'MakeController@view');
 Route::get('/makes/{id}/edit', 'MakeController@edit');
 Route::post('/makes/{id}/edit', 'MakeController@update');
 
+
+Route::get('/map','mapController@index');
+
 Route::get('/models','ModelController@index');
 Route::get('/models/add', 'ModelController@add');
 Route::post('/models/add', 'ModelController@store');
