@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     @forelse($serviceTypes as $serviceType)
-                    {{ $serviceType->name }}<input type="checkbox" value="{{ $serviceType->id }}" name="service_type_id[]"/>
+                    <input type="checkbox" value="{{ $serviceType->id }}" name="service_type_id[]"/><label>&nbsp;{{ $serviceType->name }}</label> 
                     @empty
                     No service types in database
                     @endforelse
