@@ -49,7 +49,18 @@
                         <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
                     </ul>
                 </li>
-                  <li><a href="{{url('/map')}}">Map</a></li>
+
+                  
+
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Services <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url('/services') }}" >View Services</a></li>
+                    </ul>
+                </li>
+
             </ul>
             <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
                 <div class="form-group">

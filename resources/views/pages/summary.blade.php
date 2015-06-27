@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('content')   
+<<<<<<< HEAD
 <div class="container outer-section">
     <div id="print-area">
         <div class="row pad-top font-big">
@@ -56,4 +57,5 @@
         </div>
         </div>
     </div>
+
 @stop

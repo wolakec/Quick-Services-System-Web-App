@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model {
 
 	protected $table = "vehicles";
-        protected $fillable = ['type', 'model', 'fuel', 'client_id', 'qr_code_id'];
+        protected $fillable = ['model_id', 'fuel', 'client_id', 'qr_code_id','year'];
         
         public function client()
         {
@@ -20,5 +20,10 @@ class Vehicle extends Model {
         public function qrCode()
         {
             return $this->belongsTo('App\QrCode');
+        }
+        
+        public function model()
+        {
+            return $this->belongsTo('App\VehicleModel');
         }
 }

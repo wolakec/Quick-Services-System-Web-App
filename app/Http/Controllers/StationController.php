@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Location;
 use App\Station;
 use App\Employee;
+use App\ServiceType;
 
 class StationController extends Controller {
     
@@ -20,14 +21,18 @@ class StationController extends Controller {
     public function add()
     {
         $locations = Location::all();
+        $serviceTypes = ServiceType::all();
         
-        return view('pages.addStation',['locations' => $locations]);
+        return view('pages.addStation',['locations' => $locations, 'serviceTypes' => $serviceTypes]);
     }
     
     public function store(Request $request)
     {
        $station = Station::create($request->all());
+       $station->serviceTypes()->attach($request->input('service_type_id'));
+       $station->save();
        
+       return redirect('stations');
     }
     
     public function viewEmployees($id)
@@ -39,4 +44,10 @@ class StationController extends Controller {
         return view('pages.listEmployees',['employees' => $employees]);
     }
    
+    public function viewServiceTypes($id)
+    {
+        $station = Station::find($id);
+        
+        return view('pages.listServiceTypes',['serviceTypes' => $station->serviceTypes, 'station' => $station]);
+    }
 }

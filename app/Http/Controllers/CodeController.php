@@ -21,20 +21,28 @@ class CodeController extends Controller {
         return view('pages.addQr');
     }
     
+    public function test($id){
+        return Qr::size(300)->generate($id);
+    }
+    
     public function store(Request $request)
     {
         $prefix = $request->input('prefix');
         $quota = (int) $request->input('quota');
         
         $latest = QrCode::orderBy('created_at','desc')->first();
+        if(!$latest){
+            $begin = 1;
+        }else{
+            $begin = $latest->id;
+        }
         
-        
-        for($i = $latest->id + 1; $i <= $quota + $latest->id; $i++){
+        for($i = $begin + 1; $i <= $quota + $begin; $i++){
             $qrString = "$prefix-$i";
             
             $filename = $qrString.".png";
             $random = str_random(5);
-            Storage::put('qrCodes/'.$random.$filename,Qr::format('png')->size(200)->generate($qrString));
+            Storage::put('qrCodes/'.$random.$filename,Qr::format('png')->size(200)->generate($random.$qrString));
             $code = new QrCode;
             $code->body = $random.$qrString;
             $code->save();

@@ -14,6 +14,8 @@ Route::get('/locations/{id})', 'LocationController@view');
 Route::get('/locations/{id}/edit', 'LocationController@edit');
 Route::post('/locations/{id}/edit', 'LocationController@update');
 
+Route::get('/services','ServiceController@index');
+
 Route::get('/services/types','ServiceTypesController@index');
 Route::post('/services/types/add', 'ServiceTypesController@store');
 Route::get('/services/types/{id})', 'ServiceTypesController@view');
@@ -47,6 +49,7 @@ Route::get('/codes','CodeController@index');
 Route::get('/codes/add', 'CodeController@add');
 Route::post('/codes/add', 'CodeController@store');
 Route::get('/codes/{id})', 'CodeController@view');
+Route::get('/codes/test/{id}', 'CodeController@test');
 Route::get('/codes/{id}/edit', 'CodeController@edit');
 Route::post('/codes/{id}/edit', 'CodeController@update');
 
@@ -57,6 +60,7 @@ Route::get('/stations/{id})', 'StationController@view');
 Route::get('/stations/{id}/edit', 'StationController@edit');
 Route::post('/stations/{id}/edit', 'StationController@update');
 Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
+Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
 
 /*
  * General Route for Mobile API
@@ -83,7 +87,7 @@ Route::group(['prefix' => '/api'], function(){
                 return Location::all();
             });
             
-            Route::post('/{id}/vehicles/add','VehicleController@store');
+            
         });
         
         Route::group(['prefix' => '/employee'], function(){
@@ -102,6 +106,11 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/models',function(){
                 return VehicleModel::all();
             });
+            Route::get('/{id}/services/types','AppEmployeeController@viewServiceTypes');
+            Route::post('/{id}/services/add','AppServicesController@store');
+            
+            Route::post('/{id}/vehicles/add','AppVehicleController@store');
+            
         });
     });
 });

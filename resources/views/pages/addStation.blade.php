@@ -27,6 +27,12 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    @forelse($serviceTypes as $serviceType)
+                    <input type="checkbox" value="{{ $serviceType->id }}" name="service_type_id[]"/><label>&nbsp;{{ $serviceType->name }}</label> 
+                    @empty
+                    No service types in database
+                    @endforelse
+                </div>
                 <button type="submit" value="submit" name="submit"class="btn btn-success"> Submit</button>
                 </div>
             </form>
