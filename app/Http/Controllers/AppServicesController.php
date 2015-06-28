@@ -33,6 +33,8 @@ class AppServicesController extends Controller {
             return response()->json(['status' => 'false']);
         }
         
+        $client = $vehicle->client;
+        
         $services = json_decode($input['services']);
        
         foreach($services as $service){
@@ -43,6 +45,16 @@ class AppServicesController extends Controller {
             $newService->employee_id = $id;
             
             $newService->save();
+            
+            $value = $newService->type->value->points;
+            if(!$client->points){
+                $client->points = $value;
+            }else{
+                $client->points = $client->points + $value;
+            }
+            
+            $client->save();
+            
         }
         
          return response()->json(['status' => 'true']);

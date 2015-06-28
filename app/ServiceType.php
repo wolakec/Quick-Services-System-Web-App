@@ -11,5 +11,10 @@ class ServiceType extends Model {
     {
         return $this->hasMany('App\Services');
     }
+    
+    public function value()
+    {
+        return $this->hasOne('App\ServiceTypeValue');
+    }
 
 }

@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/locations') }}"> Locations</a></li>
 
-                <li><a href="{{ url('/services/types') }}">Service Types</a></li>
+                
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
@@ -55,6 +55,18 @@
                         Services <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/services') }}" >View Services</a></li>
+                        <li><a href="{{ url('/services/values') }}">View Service Values</a></li>
+                        <li><a href="{{ url('/services/values/add') }}">Set Service Values</a></li>
+                        <li><a href="{{ url('/services/types') }}">Service Types</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Rewards <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url('/rewards') }}" >View Rewards</a></li>
+                        <li><a href="{{ url('/rewards/add') }}" >Add Rewards</a></li>
                     </ul>
                 </li>
             </ul>
