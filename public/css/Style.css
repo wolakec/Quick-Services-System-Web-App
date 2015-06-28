@@ -1,12 +1,78 @@
-.logo
-{
+.logo{
     padding-top:  0px; 
     height: 50px;
 }
 .navbar-brand {
-padding-top: 0;
+    padding-top: 0;
 }
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 16px;
+}
+.navbar-default {
+    background-color: #35404F;
+    border-top: 4px solid #E45F56;
+    border-left:  2px solid #E45F56;
+    border-bottom: 1px solid #29ABA4;
+}
+.navbar-default .navbar-nav > li > a{
+    color: whitesmoke;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color: #29ABA4;  
+}
+.dropdown-menu {
+    background-color: #29ABA4;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: whitesmoke;
+    background-color: #29ABA4;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #29ABA4;
+    text-decoration: none;
+    background-color: #35404F;
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 1px solid #E45F56; 
+}
+.dropdown-menu >li >a {
+    color: whitesmoke;
+}
+.btn-success {
+    color: whitesmoke;
+    background-color: #29ABA4;
+    border-color:#29ABA4 ;
+}
+.btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success {
+    color: #E45F56;
+    background-color: #35404F;
+    border-color:#35404F ;
+    font-size: 16px;
+}
+.form-control:focus {
+    border-color: whitesmoke;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #29ABA4;
+}
+.table > thead > tr > th {
+    border-bottom: 2px solid #29ABA4;
+}
+#main, #main>.row {
+    height:100%;
+}
+#left {
+    height:100%;
+    overflow-y:scroll;
+}
+#map-canvas {
+    width:33.3333%;
+    height:calc(100% - 0);
+    position:absolute;
+    right:0;
+    top:50px;
+    bottom:0;
+}
+h4{
+    color: #29ABA4;
 }
