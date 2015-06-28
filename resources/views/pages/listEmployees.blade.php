@@ -16,20 +16,20 @@
                 <tbody>
                     @foreach($employees as $employee)
                     <tr>
-                    <td>{{ $employee->name }}</td>
-                    <td>{{ $employee->employee_id }}</td>
-                    <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->phone_1 }}</td>
-                    <td>
-                        @if($employee->location)
+                        <td>{{ $employee->name }}</td>
+                        <td>{{ $employee->employee_id }}</td>
+                        <td>{{ $employee->email }}</td>
+                        <td>{{ $employee->phone_1 }}</td>
+                        <td>
+                            @if($employee->location)
                             {{ $employee->location->name }}
-                       @endif
-                    </td>
-                    <td>
-                       @if($employee->station)
+                            @endif
+                        </td>
+                        <td>
+                            @if($employee->station)
                             {{ $employee->station->name }}
-                       @endif
-                    </td>
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

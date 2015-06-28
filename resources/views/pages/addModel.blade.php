@@ -10,19 +10,18 @@
                 <div class="form-group">
                     <label>Make</label>
                     <select name="make_id"class="form-control">
-                    @forelse($makes as $make)
-                    <option value="{{ $make->id }}">{{ $make->name }}</option>
-                    @empty
-                    <option>No Makes in database</option>
-                    @endforelse
-                </select>
+                        @forelse($makes as $make)
+                        <option value="{{ $make->id }}">{{ $make->name }}</option>
+                        @empty
+                        <option>No Makes in database</option>
+                        @endforelse
+                    </select>
                 </div>
                 <div class="form-group">
-                   <input type="text" class="form-control"name="name" placeholder="Name">
-                </div>
-                
+                    <input type="text" class="form-control"name="name" placeholder="Name">
+                </div>               
                 <div class="form-group">
-                <button type="submit" class="btn btn-success"value="submit" name="submit">Submit</button>
+                    <button type="submit" class="btn btn-success"value="submit" name="submit">Submit</button>
                 </div>
             </form>  
         </div>
