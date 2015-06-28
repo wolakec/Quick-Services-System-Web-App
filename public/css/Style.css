@@ -76,3 +76,13 @@ body {
 h4{
     color: #29ABA4;
 }
+.outer-section {
+     border:1px solid #dedede;
+     background-color: #fff;
+}
+.pad-top {
+    padding-top:30px;
+}
+.pad-bottom {
+     padding-bottom:50px;
+}

@@ -6,7 +6,7 @@
     <div id="print-area">
         <div class="row pad-top font-big">
             <div class="col-lg-4 col-md-4 col-sm-4">
-                <img src="{{ asset('Images/logo.png') }}" width="200" height="75" alt="Petromin Logo" />
+                <img src="{{ asset('Images/qsLogoWeb.png') }}" width="200" height="75" alt="Petromin Logo" />
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <strong>Support : </strong>info@petromin.com
