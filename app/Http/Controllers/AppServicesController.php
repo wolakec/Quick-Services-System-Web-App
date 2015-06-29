@@ -9,17 +9,18 @@ use App\Vehicle;
 use App\QrCode;
 use App\Service;
 
+
 class AppServicesController extends Controller {
     
     public function store(Request $request,$id)
     {
         $input = $request->all();
-        
+
         $employee = Employee::find($id);
         if(!$employee){
             return response()->json(['status' => 'false']);
         }
-        
+         
         $employee->load('station');
         
         $code = QrCode::where('body','=',$input['qr_code'])->first();
@@ -27,7 +28,7 @@ class AppServicesController extends Controller {
         if(!$code){
             return response()->json(['status' => 'false']);
         }
-        
+            
         $vehicle = Vehicle::where('qr_code_id','=',$code->id)->first();
         if(!$vehicle){
             return response()->json(['status' => 'false']);

@@ -102,7 +102,8 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
             Route::get('/{id}/services','AppClientController@viewServices');
             Route::get('/stations/positions','AppClientController@viewStationPositions');
-            
+            Route::get('/rewards','AppRewardsController@viewRewards');
+            Route::get('{id}/points','AppPointsController@viewPoints');
         });
         
         Route::group(['prefix' => '/employee'], function(){
