@@ -32,10 +32,9 @@
         <hr/>
         <div class="row ">
             <div class="col-lg-6 col-md-6 col-sm-6">              
-                <h4>Personal Information</h4>
-                <strong>Name :</strong>    <br/>
-                <strong>Tel :</strong>    <br/>
-                <strong>Address:</strong>    <br/>
+                <h4>Personal Information:</h4>
+                <strong>Name :</strong>  {{$employee->name}}  <br/>
+                <strong>Tel :</strong>{{$employee->phone_1}}    <br/>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <h4>Login Details:</h4>

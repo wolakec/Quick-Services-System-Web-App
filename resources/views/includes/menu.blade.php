@@ -12,9 +12,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/locations') }}"> Locations</a></li>
-
-                <li><a href="{{ url('/services/types') }}">Service Types</a></li>
-                
+                <li><a href="{{ url('/services/types') }}">Service Types</a></li>                
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Vehicles<b class="caret"></b></a>
@@ -39,17 +37,15 @@
                         <li><a href="{{ url('/stations') }}">List of Stations</a></li>
                         <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
                     </ul>
-                </li>
-                
+                </li>                
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Qr Codes <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/codes') }}" >View Qr Codes</a></li>
+                        <!--                        <li><a href="{{ url('/codes') }}" >View Qr Codes</a></li>-->
                         <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
                     </ul>
-                </li>
-                
+                </li>                
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Services <b class="caret"></b></a>
@@ -58,7 +54,7 @@
                     </ul>
                 </li>
             </ul>
-            <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
+            <form role="search" class="navbar-form navbar-right" style="margin-right: 0px;">
                 <div class="form-group">
                     <input type="text" placeholder="Search Here" class="form-control">
                 </div>
@@ -66,16 +62,3 @@
         </div>
     </div>
 </nav>
-
-
-
-
-
-
-
-<!--<a href="{{ url('/employees') }}">Employees</a> - 
-<a href="{{ url('/employees/add') }}">Add Employee</a> - 
-<a href="{{ url('/stations') }}">Stations</a> -
-<a href="{{ url('/stations/add') }}">Add Station</a> -
-<a href="{{ url('/codes') }}">Qr Codes</a>
-</br></br>-->

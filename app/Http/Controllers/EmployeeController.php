@@ -33,7 +33,7 @@ class EmployeeController extends Controller {
         $employee->password = Hash::make($generated);
         $employee->save();
         
-        return view('pages.summary', ['email' => $employee->email, 'password' => $generated]);
+        return view('pages.summary', ['email' => $employee->email, 'password' => $generated,'employee'=>$employee]);
     }
    
 }

@@ -18,6 +18,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" name="phone_1" placeholder="Telephone">
                 </div>
+                
                 <div class="form-group">
                     <label>Location:</label>
                     <select name="location_id" class="form-control">
