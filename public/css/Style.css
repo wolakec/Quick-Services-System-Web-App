@@ -1,145 +1,88 @@
-
+.logo{
+    padding-top:  0px; 
+    height: 50px;
+}
+.navbar-brand {
+    padding-top: 0;
+}
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 16px;
 }
-
-.inforcewidth
-{
-    max-width: 95% !important;
-    margin-left: 2%;
-}
-
-.sidenotification
-{
-    border-left: medium dashed rgb(227, 24, 55);
-}
-.logo
-{
-    max-height: 2.1em;
-    margin-top: 5px;
-    transition: all .5s;
-}
-
-.logo:hover
-{
-    -ms-transform: rotate(-10deg) translate(25px,0px);; /* IE 9 */
-    -webkit-transform: rotate(-10deg) translate(25px,0px);; /* Chrome, Safari, Opera */
-    transform: rotate(-10deg) translate(25px,0px);;
- 
-}
-.navbar-inverse {
-    background-color: #0393A6;
-    border-color: #FA6F5D;
-}
-.navbar-brand 
-{
-padding-top: 0;
-}
-
-
-.navbar-default .navbar-nav > li > a
-{
-    color: #FFDD00;
-}
-
-.navbar-default .navbar-nav > li > a:hover
-{
-    color: #FFFFFF;
-}
 .navbar-default {
-    background-color: #0393A6;
-    border-color: white;
+    background-color: #35404F;
+    border-top: 4px solid #E45F56;
+    border-left:  2px solid #E45F56;
+    border-bottom: 1px solid #29ABA4;
 }
-.navbar-default .navbar-nav > li > .active
-{
-        color: #FFFFFF;
-
+.navbar-default .navbar-nav > li > a{
+    color: whitesmoke;
 }
-p{
-    color: white;
-    font-family: sans-serif;
-    color: #000;
+.navbar-default .navbar-nav > li > a:hover{
+    color: #29ABA4;  
 }
-p:hover,p:focus{
-    color: #FA6F5D;
-    font:bold;
-/*    text-decoration: underline;*/
-   
-}
-
-.nav > ul > li:hover
-{
-    color:#FA6F5D;
-}
-
-.form-control:focus {
-    border-color: #12E1FC;
-    outline: 0px none;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
-}
-.nav {
-    padding: 5px;
-    margin-bottom: 0px;
-    list-style: outside none none;
-}
-.navbar-header {
-    float: left;
-    padding: 5px;
-}
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #101010;
-    padding: 5px;
-}
-.dropdown-menu > li > a {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.42857;
-    color: #fff;
-    white-space: nowrap;
-}
-
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    color: #FFDD00;
-    text-decoration: none;
-    background-color:#0393A6;
-}
-
-
-.input-sm, .form-group-sm .form-control {
-    height: 30px !important;
-    padding: 5px 10px !important;
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    border-radius: 3px !important;
-}
-
-
-
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0px;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0px;
-    margin: 2px 0px 0px;
-    font-size: 14px;
-    text-align: left;
-    list-style: outside none none;
-    background-color: #0393A6;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
+    background-color: #29ABA4;
 }
-
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color: #fff;
-    background-color: #0393A6;
+    color: whitesmoke;
+    background-color: #29ABA4;
 }
-
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #29ABA4;
+    text-decoration: none;
+    background-color: #35404F;
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 1px solid #E45F56; 
+}
+.dropdown-menu >li >a {
+    color: whitesmoke;
+}
+.btn-success {
+    color: whitesmoke;
+    background-color: #29ABA4;
+    border-color:#29ABA4 ;
+}
+.btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success {
+    color: #E45F56;
+    background-color: #35404F;
+    border-color:#35404F ;
+    font-size: 16px;
+}
+.form-control:focus {
+    border-color: whitesmoke;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #29ABA4;
+}
+.table > thead > tr > th {
+    border-bottom: 2px solid #29ABA4;
+}
+#main, #main>.row {
+    height:100%;
+}
+#left {
+    height:100%;
+    overflow-y:scroll;
+}
+#map-canvas {
+    width:33.3333%;
+    height:calc(100% - 0);
+    position:absolute;
+    right:0;
+    top:50px;
+    bottom:0;
+}
+h4{
+    color: #29ABA4;
+}
+.outer-section {
+     border:1px solid #dedede;
+     background-color: #fff;
+}
+.pad-top {
+    padding-top:30px;
+}
+.pad-bottom {
+     padding-bottom:50px;
+}

@@ -34,9 +34,9 @@
                     @endforelse
                 </div>
                 <button type="submit" value="submit" name="submit"class="btn btn-success"> Submit</button>
-                </div>
-            </form>
         </div>
+        </form>
     </div>
+</div>
 </div>
 @stop

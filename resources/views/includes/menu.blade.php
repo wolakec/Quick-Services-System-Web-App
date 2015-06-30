@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="{{ url('/') }}" class="navbar-brand"><img class="logo" src="{{ asset('Images/logo.png') }}"></a>
+            <a href="{{ url('/') }}" class="navbar-brand"><img class="logo" src="{{ asset('Images/qsLogoWeb.png') }}"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
