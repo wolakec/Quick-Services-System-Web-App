@@ -1,7 +1,20 @@
-.logo{
-    padding-top:  0px; 
-    height: 50px;
+.logo
+{
+    max-height: 2.1em;
+    margin-top: 18px;
+    transition: all .5s;
+     -ms-transform: rotate(-10deg) translate(25px,0px);; /* IE 9 */
+    -webkit-transform: rotate(-10deg) translate(25px,0px);; /* Chrome, Safari, Opera */
+    transform: rotate(-10deg) translate(25px,0px);;
 }
+
+.logo:hover
+{
+    -ms-transform: rotate(10deg) translate(-25px,0px);; /* IE 9 */
+    -webkit-transform: rotate(10deg) translate(-25px,0px);; /* Chrome, Safari, Opera */
+    transform: rotate(10deg) translate(-25px,0px);;
+}
+
 .navbar-brand {
     padding-top: 0px;
 }
