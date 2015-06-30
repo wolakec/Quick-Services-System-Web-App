@@ -11,6 +11,7 @@
                 <th>Client</th>
                 <th>Vehicle Model</th>
                 <th>Station</th>
+                <th>When</th>
                 <tbody>
                     @foreach($services as $service)
                     <tr>
@@ -19,6 +20,9 @@
                     <td>{{ $service->vehicle->model->name }}</td>
                     <td>
                        {{ $service->station->name }}
+                    </td>
+                    <td>
+                        {{ $service->created_at->diffForHumans() }}
                     </td>
                     </tr>
                     @endforeach

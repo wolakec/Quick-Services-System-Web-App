@@ -22,14 +22,21 @@ Route::get('/services/types/{id})', 'ServiceTypesController@view');
 Route::get('/services/types/{id}/edit', 'ServiceTypesController@edit');
 Route::post('/services/types/{id}/edit', 'ServiceTypesController@update');
 
+Route::get('/services/values','ServiceTypeValuesController@index');
+Route::get('/services/values/add', 'ServiceTypeValuesController@add');
+Route::post('/services/values/add', 'ServiceTypeValuesController@store');
+
+Route::get('/rewards','RewardController@index');
+Route::get('/rewards/add', 'RewardController@add');
+Route::post('/rewards/add', 'RewardController@store');
+Route::get('/rewards/{id}/edit', 'RewardController@edit');
+Route::post('/rewards/{id}/edit', 'RewardController@update');
+
 Route::get('/makes','MakeController@index');
 Route::post('/makes/add', 'MakeController@store');
 Route::get('/makes/{id})', 'MakeController@view');
 Route::get('/makes/{id}/edit', 'MakeController@edit');
 Route::post('/makes/{id}/edit', 'MakeController@update');
-
-
-Route::get('/map','mapController@index');
 
 Route::get('/models','ModelController@index');
 Route::get('/models/add', 'ModelController@add');
@@ -95,7 +102,8 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
             Route::get('/{id}/services','AppClientController@viewServices');
             Route::get('/stations/positions','AppClientController@viewStationPositions');
-            
+            Route::get('/rewards','AppRewardsController@viewRewards');
+            Route::get('{id}/points','AppPointsController@viewPoints');
         });
         
         Route::group(['prefix' => '/employee'], function(){

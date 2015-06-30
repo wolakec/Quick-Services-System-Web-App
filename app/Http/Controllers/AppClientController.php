@@ -82,13 +82,12 @@ class AppClientController extends Controller {
         
         $vehicles = $client->vehicles;
         foreach($vehicles as $index => $vehicle){
-            //$vehicle->load('services');
-           // $services = $vehicle->services;
             $temp = $vehicle->services->keyBy('service_type_id');
-            unset($vehicle['services']);
+            unset($vehicle['services'],$vehicle['fuel'],$vehicle['client_id'],$vehicle['created_at'],$vehicle['updated_at']
+                    ,$vehicle['qr_code_id'],$vehicle['model_id'],$vehicle['year']);
             $vehicle->services = $temp;
         }
-        //$vehicles->pull('services');
+       
         return $vehicles;
     }
     
