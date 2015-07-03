@@ -26,6 +26,10 @@ Route::get('/services/values','ServiceTypeValuesController@index');
 Route::get('/services/values/add', 'ServiceTypeValuesController@add');
 Route::post('/services/values/add', 'ServiceTypeValuesController@store');
 
+Route::get('/services/preferences','DefaultReminderPreferencesController@index');
+Route::get('/services/preferences/add', 'DefaultReminderPreferencesController@add');
+Route::post('/services/preferences/add', 'DefaultReminderPreferencesController@store');
+
 Route::get('/rewards','RewardController@index');
 Route::get('/rewards/add', 'RewardController@add');
 Route::post('/rewards/add', 'RewardController@store');
@@ -71,6 +75,8 @@ Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes'
 
 Route::get('/stations/{id}/map', 'MapController@view');
 Route::post('/stations/{id}/position', 'MapController@store');
+
+Route::get('/reminders/scan','GenerateReminderController@scan');
         
 /*
  * General Route for Mobile API
@@ -104,6 +110,11 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/stations/positions','AppClientController@viewStationPositions');
             Route::get('/rewards','AppRewardsController@viewRewards');
             Route::get('{id}/points','AppPointsController@viewPoints');
+            
+            Route::post('{id}/preferences/reminders','AppReminderPreferencesController@store');
+            
+            Route::get('{id}/notifications','AppNotificationController@viewNotifications');
+            
         });
         
         Route::group(['prefix' => '/employee'], function(){

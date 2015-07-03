@@ -57,6 +57,8 @@
                         <li><a href="{{ url('/services') }}" >View Services</a></li>
                         <li><a href="{{ url('/services/values') }}">View Service Values</a></li>
                         <li><a href="{{ url('/services/values/add') }}">Set Service Values</a></li>
+                        <li><a href="{{ url('/services/preferences') }}">View Service Preferences</a></li>
+                        <li><a href="{{ url('/services/preferences/add') }}">Set Preferences</a></li>
                         <li><a href="{{ url('/services/types') }}">Service Types</a></li>
                     </ul>
                 </li>

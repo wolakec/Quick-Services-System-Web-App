@@ -22,6 +22,11 @@ class Client extends Model {
         {
             return $this->hasManyThrough('App\Service','App\Vehicle');
         }
+        
+        public function notifications()
+        {
+            return $this->hasMany('App\Notification');
+        }
 
 
 }
