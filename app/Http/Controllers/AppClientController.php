@@ -17,13 +17,13 @@ class AppClientController extends Controller {
         $client = Client::where('email', '=', $email)->first();
         
         if($client){
-            return response()->json(['status' => 'false']);
+            return response()->json(['status' => 'false', 'message' => 'This email has been used']);
         }
         $client = Client::create($request->all());
         $client->password = Hash::make($request->input('password'));
         $client->save();
         
-        return response()->json(['status' => 'true']);
+        return response()->json(['status' => 'true', 'message' => 'Account created']);
     }
     
     public function login(Request $request) 
@@ -37,12 +37,12 @@ class AppClientController extends Controller {
 
         if($client){
             if(hash::check($password,$client->password)){
-                return response()->json(['status' => 'true', 'id' => $client->id]);       
+                return response()->json(['status' => 'true', 'id' => $client->id, 'message' => 'Login Successful']);       
             }else{
-                return response()->json(['status' => 'false', 'id' => null]);
+                return response()->json(['status' => 'false', 'id' => null,'message' => 'Incorrect password']);
             }
         }else{
-            return response()->json(['status' => 'false', 'id' => null]);
+            return response()->json(['status' => 'false', 'id' => null, 'message' => 'This email does not exist']);
         }
     }
     
@@ -57,7 +57,7 @@ class AppClientController extends Controller {
         $oldPassword = $request->input('oldpassword');
         
         if(!hash::check($oldPassword,$client->password)){
-            return response()->json(['status' => 'false']);
+            return response()->json(['status' => 'false', 'message' => 'You entered your old password incorrectly']);
         }
         
         $password = hash::make($request->input('newpassword'));
