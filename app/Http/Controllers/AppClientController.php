@@ -9,6 +9,8 @@ use App\ServiceType;
 use App\Position;
 use Hash; 
 
+use DB;
+
 class AppClientController extends Controller {
     
     public function store(Request $request)
@@ -81,13 +83,16 @@ class AppClientController extends Controller {
         }
         
         $vehicles = $client->vehicles;
+        
         foreach($vehicles as $index => $vehicle){
-            $temp = $vehicle->services->keyBy('service_type_id');
-            unset($vehicle['services'],$vehicle['fuel'],$vehicle['client_id'],$vehicle['created_at'],$vehicle['updated_at']
-                    ,$vehicle['qr_code_id'],$vehicle['model_id'],$vehicle['year']);
-            $vehicle->services = $temp;
+            
+            $unique = $vehicle->latestServices->unique('service_type_id');
+            unset($vehicle['services'],$vehicle['latestServices'],$vehicle['fuel'],$vehicle['client_id'],$vehicle['created_at'],$vehicle['updated_at'],
+                    $vehicle['qr_code_id'],$vehicle['model_id'],$vehicle['year']);
+            
+            $vehicle->services = $unique;
         }
-       
+        
         return $vehicles;
     }
     
@@ -95,7 +100,24 @@ class AppClientController extends Controller {
     {
         $positions = Position::all();
         $positions->load('station');
-        
+      
         return $positions;
+    }
+    
+    public function test($id)
+    {
+        $client = Client::find($id);
+        
+        if(!$client){
+            return response()->json(['status' => 'false']);
+        }
+        
+        $vehicles = $client->vehicles;
+        
+        foreach($vehicles as $vehicle){
+            return $vehicle->services;
+        }
+        
+        //return $client::with('vehicles')->get();
     }
 }

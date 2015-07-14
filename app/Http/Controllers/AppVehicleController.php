@@ -9,6 +9,7 @@ use App\Client;
 use App\Employee;
 use App\Vehicle;
 use App\QrCode;
+use App\Notification;
 
 class AppVehicleController extends Controller {
     
@@ -59,6 +60,18 @@ class AppVehicleController extends Controller {
         $vehicle->qrCode()->associate($code);
         $vehicle->save();
         
+        $title = "New vehicle added";
+        $message = "". $vehicle->model->name." has been added to your garage.";
+
+        $notification = new Notification;
+        $notification->title = $title;
+        $notification->message = $message;
+        $notification->client_id = $client->id;
+        $notification->vehicle_id = $vehicle->id;
+        $notification->status = "pending";
+        $notification->type = "newVehicle";
+        $notification->save();
+            
         return response()->json(['status' => 'true']);
     }
 

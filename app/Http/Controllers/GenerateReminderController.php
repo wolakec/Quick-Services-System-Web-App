@@ -16,7 +16,9 @@ class GenerateReminderController extends Controller {
     public function scan()
     {
        $date = date('Y-m-d');
-       $date = "2015-08-29";
+       $date = "2015-09-04";
+       
+       Log::info("scan was called");
        
        $reminders = Reminder::where('trigger_date','=',$date)->where('triggered','=',false)->get();
        $reminders->load('serviceType','vehicle.model');

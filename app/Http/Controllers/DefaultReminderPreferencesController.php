@@ -19,7 +19,8 @@ class DefaultReminderPreferencesController extends Controller {
     
     public function add()
     {
-        $types = ServiceType::all();
+        $preferences = DefaultReminderPreference::all('service_type_id');
+        $types = ServiceType::whereNotIn('id',$preferences)->get();
         
         return view('pages.addDefaultReminderPreference', ['serviceTypes' => $types]);
     }

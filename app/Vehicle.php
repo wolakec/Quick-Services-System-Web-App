@@ -16,6 +16,12 @@ class Vehicle extends Model {
         {
             return $this->hasMany('App\Service');
         }
+            
+        public function latestServices()
+        {
+            return $this->hasMany('App\Service')->orderBy('created_at','dsc');
+        }
+        
         
         public function qrCode()
         {

@@ -38,6 +38,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/stations') }}">List of Stations</a></li>
                         <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
+                        <li><a href="{{ url('/stations/map') }}">View Map</a></li>
                     </ul>
                 </li>
                 
@@ -71,6 +72,14 @@
                         <li><a href="{{ url('/rewards/add') }}" >Add Rewards</a></li>
                     </ul>
                 </li>
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Notifications <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url('/notifications/add') }}" >Create Broadcast</a></li>
+                    </ul>
+                </li>
             </ul>
             <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
                 <div class="form-group">
@@ -80,16 +89,3 @@
         </div>
     </div>
 </nav>
-
-
-
-
-
-
-
-<!--<a href="{{ url('/employees') }}">Employees</a> - 
-<a href="{{ url('/employees/add') }}">Add Employee</a> - 
-<a href="{{ url('/stations') }}">Stations</a> -
-<a href="{{ url('/stations/add') }}">Add Station</a> -
-<a href="{{ url('/codes') }}">Qr Codes</a>
-</br></br>-->

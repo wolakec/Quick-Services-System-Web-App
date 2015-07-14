@@ -28,7 +28,7 @@ class EmployeeController extends Controller {
     
     public function store(Request $request)
     {
-        $generated = str_random(14);
+        $generated = strtoupper(str_random(8));
         $employee = Employee::create($request->all());
         $employee->password = Hash::make($generated);
         $employee->save();

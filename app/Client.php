@@ -27,6 +27,11 @@ class Client extends Model {
         {
             return $this->hasMany('App\Notification');
         }
+        
+        public function reminderPreferences()
+        {
+            return $this->hasMany('App\ClientReminderPreference');
+        }
 
 
 }

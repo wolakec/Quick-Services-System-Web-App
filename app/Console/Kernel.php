@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Log;
+use App\Http\Controllers\GenerateReminderController;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,10 +26,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
-        $schedule->call(function(){
-            Log::info('test');
-        })->everyMinute();
+        $schedule->call('\App\Http\Controllers\GenerateReminderController@scan')->everyMinute();
     }
 }
