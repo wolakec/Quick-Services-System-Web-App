@@ -3,86 +3,120 @@ use App\Client;
 use App\Location;
 use App\Make;
 use App\VehicleModel;
+use App\Package;
+use App\Product;
 
-Route::get('/', function () {
-    return view('pages.home');
+Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/','DashboardController@index');
+    
+    Route::get('/stock/{id}','StockController@view');
+    Route::get('/stock/{id}/update','StockController@edit');
+    Route::post('/stock/{id}/update','StockController@update');
+    Route::get('/stock/{id}/listStock','StockController@listStock');
+    
+    Route::get('/locations',['middleware' => 'role:station_employee', 'uses' => 'LocationController@index']);
+    Route::post('/locations/add', 'LocationController@store');
+    Route::get('/locations/{id})', 'LocationController@view');
+    Route::get('/locations/{id}/edit', 'LocationController@edit');
+    Route::post('/locations/{id}/edit', 'LocationController@update');
+
+    Route::get('/services','ServiceController@index');
+
+    Route::get('/services/types','ServiceTypesController@index');
+    Route::post('/services/types/add', 'ServiceTypesController@store');
+    Route::get('/services/types/{id})', 'ServiceTypesController@view');
+    Route::get('/services/types/{id}/edit', 'ServiceTypesController@edit');
+    Route::post('/services/types/{id}/edit', 'ServiceTypesController@update');
+
+    Route::get('/services/values','ServiceTypeValuesController@index');
+    Route::get('/services/values/add', 'ServiceTypeValuesController@add');
+    Route::post('/services/values/add', 'ServiceTypeValuesController@store');
+
+    Route::get('/services/preferences','DefaultReminderPreferencesController@index');
+    Route::get('/services/preferences/add', 'DefaultReminderPreferencesController@add');
+    Route::post('/services/preferences/add', 'DefaultReminderPreferencesController@store');
+
+    Route::get('/rewards','RewardController@index');
+    Route::get('/rewards/add', 'RewardController@add');
+    Route::post('/rewards/add', 'RewardController@store');
+    Route::get('/rewards/{id}/edit', 'RewardController@edit');
+    Route::post('/rewards/{id}/edit', 'RewardController@update');
+
+    Route::get('/makes','MakeController@index');
+    Route::post('/makes/add', 'MakeController@store');
+    Route::get('/makes/{id})', 'MakeController@view');
+    Route::get('/makes/{id}/edit', 'MakeController@edit');
+    Route::post('/makes/{id}/edit', 'MakeController@update');
+
+    Route::get('/models','ModelController@index');
+    Route::get('/models/add', 'ModelController@add');
+    Route::post('/models/add', 'ModelController@store');
+    Route::get('/models/{id})', 'ModelController@view');
+    Route::get('/models/{id}/edit', 'ModelController@edit');
+    Route::post('/models/{id}/edit', 'ModelController@update');
+
+    Route::get('/employees','EmployeeController@index');
+    Route::get('/employees/add', 'EmployeeController@add');
+    Route::post('/employees/add', 'EmployeeController@store');
+    Route::get('/employees/{id})', 'EmployeeController@view');
+    Route::get('/employees/{id}/edit', 'EmployeeController@edit');
+    Route::post('/employees/{id}/edit', 'EmployeeController@update');
+
+    Route::get('/codes','CodeController@index');
+    Route::get('/codes/add', 'CodeController@add');
+    Route::post('/codes/add', 'CodeController@store');
+    Route::get('/codes/{id})', 'CodeController@view');
+    Route::get('/codes/test/{id}', 'CodeController@test');
+    Route::get('/codes/{id}/edit', 'CodeController@edit');
+    Route::post('/codes/{id}/edit', 'CodeController@update');
+
+    Route::get('/stations','StationController@index');
+    Route::get('/stations/add', 'StationController@add');
+    Route::post('/stations/add', 'StationController@store');
+    Route::get('/stations/{id})', 'StationController@view');
+    Route::get('/stations/{id}/edit', 'StationController@edit');
+    Route::post('/stations/{id}/edit', 'StationController@update');
+    Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
+    Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
+
+    Route::get('/stations/map', 'MapController@index');
+    Route::post('/stations/map/save', 'MapController@store');
+    Route::get('/stations/map/noPosition', 'MapController@noPosition');
+    Route::get('/stations/{id}/map', 'MapController@view');
+
+    Route::get('/product/add','ProductController@create');
+    Route::post('/product/add','ProductController@store');
+    Route::get('/product','ProductController@index');
+    Route::get('/product/listAllJson',function(){
+        return Product::all();
+    });
+    Route::get('/product/edit/{id}','ProductController@edit');
+    Route::get('/product/{id}/packages','ProductController@listPackages');
+
+    Route::get('/unit', 'UnitController@index');
+    Route::post('/unit/add', 'UnitController@store');
+    Route::get('unit/{id})', 'UnitController@view');
+    Route::get('/unit/{id}/edit', 'UnitController@edit');
+    Route::post('/unit/{id}/edit', 'UnitController@update');
+
+    Route::get('/categories', 'CategoryController@index');
+    Route::post('/categories/add', 'CategoryController@store');
+    Route::get('categories/{id})', 'CategoryController@view');
+    Route::get('/categories/{id}/edit', 'CategoryController@edit');
+    Route::post('/categories/{id}/edit', 'CategoryController@update');
+
+    Route::get('/reminders/scan','GenerateReminderController@scan');
+
+    Route::get('/notifications/add', 'BroadcastController@add');
+    Route::post('/notifications/add', 'BroadcastController@store');
+
 });
 
-Route::get('/locations','LocationController@index');
-Route::post('/locations/add', 'LocationController@store');
-Route::get('/locations/{id})', 'LocationController@view');
-Route::get('/locations/{id}/edit', 'LocationController@edit');
-Route::post('/locations/{id}/edit', 'LocationController@update');
-
-Route::get('/services','ServiceController@index');
-
-Route::get('/services/types','ServiceTypesController@index');
-Route::post('/services/types/add', 'ServiceTypesController@store');
-Route::get('/services/types/{id})', 'ServiceTypesController@view');
-Route::get('/services/types/{id}/edit', 'ServiceTypesController@edit');
-Route::post('/services/types/{id}/edit', 'ServiceTypesController@update');
-
-Route::get('/services/values','ServiceTypeValuesController@index');
-Route::get('/services/values/add', 'ServiceTypeValuesController@add');
-Route::post('/services/values/add', 'ServiceTypeValuesController@store');
-
-Route::get('/services/preferences','DefaultReminderPreferencesController@index');
-Route::get('/services/preferences/add', 'DefaultReminderPreferencesController@add');
-Route::post('/services/preferences/add', 'DefaultReminderPreferencesController@store');
-
-Route::get('/rewards','RewardController@index');
-Route::get('/rewards/add', 'RewardController@add');
-Route::post('/rewards/add', 'RewardController@store');
-Route::get('/rewards/{id}/edit', 'RewardController@edit');
-Route::post('/rewards/{id}/edit', 'RewardController@update');
-
-Route::get('/makes','MakeController@index');
-Route::post('/makes/add', 'MakeController@store');
-Route::get('/makes/{id})', 'MakeController@view');
-Route::get('/makes/{id}/edit', 'MakeController@edit');
-Route::post('/makes/{id}/edit', 'MakeController@update');
-
-Route::get('/models','ModelController@index');
-Route::get('/models/add', 'ModelController@add');
-Route::post('/models/add', 'ModelController@store');
-Route::get('/models/{id})', 'ModelController@view');
-Route::get('/models/{id}/edit', 'ModelController@edit');
-Route::post('/models/{id}/edit', 'ModelController@update');
-
-Route::get('/employees','EmployeeController@index');
-Route::get('/employees/add', 'EmployeeController@add');
-Route::post('/employees/add', 'EmployeeController@store');
-Route::get('/employees/{id})', 'EmployeeController@view');
-Route::get('/employees/{id}/edit', 'EmployeeController@edit');
-Route::post('/employees/{id}/edit', 'EmployeeController@update');
-
-Route::get('/codes','CodeController@index');
-Route::get('/codes/add', 'CodeController@add');
-Route::post('/codes/add', 'CodeController@store');
-Route::get('/codes/{id})', 'CodeController@view');
-Route::get('/codes/test/{id}', 'CodeController@test');
-Route::get('/codes/{id}/edit', 'CodeController@edit');
-Route::post('/codes/{id}/edit', 'CodeController@update');
-
-Route::get('/stations','StationController@index');
-Route::get('/stations/add', 'StationController@add');
-Route::post('/stations/add', 'StationController@store');
-Route::get('/stations/{id})', 'StationController@view');
-Route::get('/stations/{id}/edit', 'StationController@edit');
-Route::post('/stations/{id}/edit', 'StationController@update');
-Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
-Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
-
-Route::get('/stations/map', 'MapController@index');
-Route::post('/stations/map/save', 'MapController@store');
-Route::get('/stations/map/noPosition', 'MapController@noPosition');
-Route::get('/stations/{id}/map', 'MapController@view');
-
-
-Route::get('/reminders/scan','GenerateReminderController@scan');
-        
-Route::get('/notifications/add', 'BroadcastController@add');
-Route::post('/notifications/add', 'BroadcastController@store');
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
 
 /*
  * General Route for Mobile API

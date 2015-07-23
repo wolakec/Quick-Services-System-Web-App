@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Location;
 use App\Station;
 use App\Employee;
+use App\User;
+use App\Role;
+
 use Hash;
 
 class EmployeeController extends Controller {
@@ -29,11 +32,19 @@ class EmployeeController extends Controller {
     public function store(Request $request)
     {
         $generated = strtoupper(str_random(8));
+        
+        $role = Role::where('name','=','station_employee')->first();
+        $user = User::create($request->all());
+        $user->password = Hash::make($generated);
+        $user->roles()->attach($role);
+        $user->save();
+        
         $employee = Employee::create($request->all());
-        $employee->password = Hash::make($generated);
+        $employee->user()->associate($user);
         $employee->save();
         
-        return view('pages.summary', ['email' => $employee->email, 'password' => $generated,'employee'=>$employee]);
+        
+        return view('pages.summary', ['email' => $user->email, 'password' => $generated,'employee' => $employee]);
     }
    
 }

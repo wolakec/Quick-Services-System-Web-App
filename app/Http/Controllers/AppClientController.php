@@ -10,6 +10,7 @@ use App\Position;
 use Hash; 
 
 use DB;
+use Log;
 
 class AppClientController extends Controller {
     
@@ -31,6 +32,7 @@ class AppClientController extends Controller {
     public function login(Request $request) 
     {
         $input = $request->all();
+        
         $email = $input['email'];
         $password = $input['password'];
         $data = [];

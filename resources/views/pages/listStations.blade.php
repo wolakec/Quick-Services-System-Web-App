@@ -26,7 +26,7 @@
                     <td>
                         <a href="{{ url('/stations/'.$station->id.'/employees') }}">Employees</a> - 
                         <a href="{{ url('/stations/'.$station->id.'/services/types') }}">Service Types</a> - 
-                        <a href="{{ url('/stations/'.$station->id.'/map') }}">Location</a>
+                        <a href="{{ url('/stock/'.$station->id) }}">View Stock</a>
                     </td>
                     </tr>
                     @endforeach

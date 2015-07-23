@@ -3,7 +3,6 @@
     <head>
         @include('includes.head')
     </head>
-        @include('includes.menu')
     <body>
         @yield('content')
     </body>

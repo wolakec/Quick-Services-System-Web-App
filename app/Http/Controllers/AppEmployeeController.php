@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Employee;
 use Hash; 
+use Auth;
 
 class AppEmployeeController extends Controller {
     
@@ -16,17 +17,15 @@ class AppEmployeeController extends Controller {
         $password = $input['password'];
         $data = [];
         
-        $employee = Employee::where('email', '=', $email)->first();
-
-        if($employee){
-            if(hash::check($password,$employee->password)){
+        
+            if(Auth::attempt(['email' => $email, 'password' => $password])){
+                $user = Auth::user();
+                $employee = $user->employee;
                 return response()->json(['status' => 'true', 'id' => $employee->id]);       
             }else{
                 return response()->json(['status' => 'false', 'id' => null]);
             }
-        }else{
-            return response()->json(['status' => 'false', 'id' => null]);
-        }
+        
     }
     
     public function changePass(Request $request, $id)

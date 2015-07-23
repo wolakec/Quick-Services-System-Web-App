@@ -11,17 +11,19 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/locations') }}"> Locations</a></li>
+                
 
                 
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Vehicles<b class="caret"></b></a>
+                        Settings<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/makes') }}">List of Makes</a></li>
                         <li><a href="{{ url('/models') }}">List of Models</a></li>
                         <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                        <li><a href="{{ url('/locations') }}"> Locations</a></li>
+                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -44,15 +46,6 @@
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Qr Codes <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url('/codes') }}" >View Qr Codes</a></li>
-                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
-                    </ul>
-                </li>
-                
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Services <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/services') }}" >View Services</a></li>
@@ -70,6 +63,17 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/rewards') }}" >View Rewards</a></li>
                         <li><a href="{{ url('/rewards/add') }}" >Add Rewards</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Manage Products <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/product">List of products</a></li>
+                        <li><a href="/product/add">Add new product</a></li>
+                        <li><a href="/unit">Manage Units</a></li> 
+                        <li><a href="/categories">Manage Categories</a></li> 
                     </ul>
                 </li>
                 
