@@ -1,11 +1,11 @@
 .logo
 {
     max-height: 2.1em;
-    margin-top: 18px;
+    margin-top: 8px;
     transition: all .5s;
-     -ms-transform: rotate(-10deg) translate(0px,0px);; /* IE 9 */
-    -webkit-transform: rotate(-10deg) translate(0px,0px);; /* Chrome, Safari, Opera */
-    transform: rotate(-10deg) translate(25px,0px);;
+     //-ms-transform: rotate(-10deg) translate(0px,0px);; /* IE 9 */
+    //-webkit-transform: rotate(-10deg) translate(0px,0px);; /* Chrome, Safari, Opera */
+    //transform: rotate(-10deg) translate(25px,0px);;
 }
 
 .logo:hover
@@ -19,7 +19,7 @@
     padding-top: 0px;
 }
 .navbar{
-    margin-bottom: 0px;
+ //   margin-bottom: 0px;
 }
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -28,7 +28,7 @@ body {
 .navbar-default {
     background-color: #35404F;
     border-top: 4px solid #E45F56;
-    border-left:  2px solid #E45F56;
+    //border-left:  2px solid #E45F56;
     border-bottom: 1px solid #29ABA4;
 }
 .navbar-default .navbar-nav > li > a{
@@ -47,10 +47,10 @@ body {
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #29ABA4;
     text-decoration: none;
-    background-color: #35404F;
-    font-size: 16px;
-    font-weight: bold;
-    border-left: 1px solid #E45F56; 
+    //background-color: #35404F;
+    //font-size: 16px;
+    //font-weight: bold;
+    border-left: 5px solid #E45F56; 
 }
 .dropdown-menu >li >a {
     color: whitesmoke;
