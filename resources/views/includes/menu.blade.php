@@ -29,9 +29,23 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Employees<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu multi-level">
                         <li><a href="{{ url('/employees') }}">List of Employees</a></li>
                         <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">More options</a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Second level</a></li>
+                                <li><a href="#">Second level</a></li>
+                                <li><a href="#">Second level</a></li>
+                                <li class="dropdown-submenu"><a href="#">more shit</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Second level</a></li>
+                                        <li><a href="#">Second level</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">
