@@ -10,6 +10,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
     
+    Route::get('/transactions','TransactionController@index');
+    Route::get('/transactions/add', 'TransactionController@add');
+    Route::post('/transactions/add', 'TransactionController@store');
+    
     Route::get('/stock/{id}','StockController@view');
     Route::get('/stock/{id}/update','StockController@edit');
     Route::post('/stock/{id}/update','StockController@update');
@@ -88,6 +92,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/product/add','ProductController@create');
     Route::post('/product/add','ProductController@store');
     Route::get('/product','ProductController@index');
+    Route::get('/product/packages','ProductController@listAllPackages');
     Route::get('/product/listAllJson',function(){
         return Product::all();
     });

@@ -79,6 +79,15 @@
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Manage Transactions <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/transactions">List of Transactions</a></li>
+                        <li><a href="/transactions/add">New Transaction</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Notifications <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/notifications/add') }}" >Create Broadcast</a></li>

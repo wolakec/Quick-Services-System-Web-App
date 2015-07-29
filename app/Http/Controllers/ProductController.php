@@ -74,5 +74,10 @@ class ProductController extends Controller {
             
             return $packages;
         }
+        
+        public function listAllPackages()
+        {
+            return Package::with('unit','product','product.category')->get();
+        }
 
 }
