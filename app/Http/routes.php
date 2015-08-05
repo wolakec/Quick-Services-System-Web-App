@@ -5,7 +5,7 @@ use App\Make;
 use App\VehicleModel;
 use App\Package;
 use App\Product;
-
+Route::get('/invoice','AppServicesController@invoice');
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
@@ -177,8 +177,11 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/{id}/services/types','AppEmployeeController@viewServiceTypes');
             Route::post('/{id}/services/add','AppServicesController@store');
             
+
             Route::post('/{id}/vehicles/add','AppVehicleController@store');
             
         });
+                    
+
     });
 });
