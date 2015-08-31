@@ -22,7 +22,7 @@
                     <label>Longitude</label><input class="form-control" type="number"  ng-model="long"/></br>
                     <label>Latitude</label><input class="form-control" type="number" ng-model="lat"/>
                 </div>
-                <button type="button" ng-click="savePositions()" ng-show="showsave == true">Save</button>
+                <button class="btn btn-success" type="button" ng-click="savePositions()" ng-show="showsave == true">Save</button>
                 @{{ message }}
             </div>
             
