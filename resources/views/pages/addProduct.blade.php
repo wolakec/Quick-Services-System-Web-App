@@ -60,10 +60,10 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="price" name="packages[@{{ $index }}][cost]" placeholder="Cost">
+                               <input type="text" class="form-control" id="price" name="packages[@{{ $index }}][cost]" placeholder="Cost">
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="price" name="packages[@{{ $index }}][base_price]" placeholder="Price">
+                               <input type="text" class="form-control" id="price" name="packages[@{{ $index }}][base_price]" placeholder="Price">
                             </td>
                             
                         </tr>

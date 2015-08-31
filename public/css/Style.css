@@ -64,7 +64,6 @@ body {
     color: #E45F56;
     background-color: #35404F;
     border-color:#35404F ;
-    font-size: 16px;
 }
 .form-control:focus {
     border-color: whitesmoke;
@@ -102,7 +101,17 @@ h4{
 .pad-bottom {
      padding-bottom:50px;
 }
-
+.checkLable {
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.blockSpan{
+    display: inline-block;
+}
+.line-form-hack td {
+    padding-right: 10px;
+    padding-top: 10px;
+}
 //////////////////////////////code for multi drop down
 
 
@@ -157,3 +166,6 @@ h4{
 }
 
 /////////////////////////////////////
+
+
+

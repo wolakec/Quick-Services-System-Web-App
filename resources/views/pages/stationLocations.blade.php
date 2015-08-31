@@ -16,12 +16,13 @@
                         </select>
             </div>
             <div class="form-group">                      
-                <button type="button" ng-click="addStation(long,lat); showsave = true; removeOption(currentStation)" ng-show="currentStation != ''"> Create marker</button>
+                <button type="button" class="btn btn-default" ng-click="addStation(long,lat); showsave = true; removeOption(currentStation)" ng-show="currentStation != ''"> Create Marker</button>
+                </br></br>
                 <div class="form-group" ng-show="currentStation != ''">
-                    <label>Longitude</label><input type="number"  ng-model="long"/></br>
-                    <label>Latitude</label><input type="number" ng-model="lat"/>
+                    <label>Longitude</label><input class="form-control" type="number"  ng-model="long"/></br>
+                    <label>Latitude</label><input class="form-control" type="number" ng-model="lat"/>
                 </div>
-                <button type="button" ng-click="savePositions()" ng-show="showsave == true">Save</button>
+                <button class="btn btn-success" type="button" ng-click="savePositions()" ng-show="showsave == true">Save</button>
                 @{{ message }}
             </div>
             
