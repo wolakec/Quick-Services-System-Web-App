@@ -20,6 +20,9 @@ class AppServicesController extends Controller {
     public function invoice() {
        return view('pages.services_invoice');
     }
+    public function contact() {
+       return view('pages.contactForm');
+    }
     
     public function store(Request $request,$id)
     {
