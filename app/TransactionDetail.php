@@ -14,7 +14,7 @@ class TransactionDetail extends Model {
         
         public function package()
         {
-            return $this->hasOne('App\Package');
+            return $this->belongsTo('App\Package');
         }
         
 }

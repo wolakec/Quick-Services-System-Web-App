@@ -3,7 +3,8 @@
 @section('content')     
         <div class="container" ng-app="MyApp" ng-controller="TransactionFormController">
             <div class="row">
-            <form class="form-horizontal" method='post' action='{{ url('/transactions/add') }}'>    
+            <form class="form-horizontal" method='post' action='{{ url('/transactions/add') }}'> 
+                <input type="hidden" name="client_id"/>
                 <h4> Add New Transaction </h4><br>
             <div class="col-md-12">
                 <div class="form-group">
@@ -31,7 +32,7 @@
                                     @{{ package.selectedPackage.base_price }}
                                 </td>
                                  <td>
-                                     <input type="hidden" name="packages[@{{ $index }}][id]" value="@{{ package.selectedPackage.id }}"/>
+                                     <input type="hidden" name="packages[@{{ $index }}][package_id]" value="@{{ package.selectedPackage.id }}"/>
                                     <input type="text" class="form-control" id="quantity" name="packages[@{{ $index }}][quantity]" ng-model="package.quantity" ng-change="calculatePrice(package); calculateTotal()" ng-init="package.quantity = 1">
                                 </td>
                                  <td>
