@@ -27,7 +27,13 @@ class TransactionController extends Controller {
 
 	public function store(Request $request)
 	{
-           
+            $input = $request->all();
+            
+            $packages = $input['packages'];
+            
+            foreach($packages as $package){
+                return $package;
+            }
 	}
      
 

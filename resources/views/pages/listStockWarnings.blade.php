@@ -1,11 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
-<h3 style="text-align: center;">{{ $station->name }} Station Stock</h3><br>
+<h3 style="text-align: center;">{{ $station->name }} Station Stock Warnings</h3><br>
         <div class="container" ng-app="MyApp" ng-controller="MyCtrl">
             <div class="row">
                 <div class="col-md-12">
-                    <form name="stockForm" method="post" action="{{ url('/stock/'.$station->id.'/update') }}"/>
+                    <form name="stockForm" method="post" action="{{ url('/stock/'.$station->id.'/warnings/update') }}"/>
                         <table class="table table-bordered" id="StockTable">
                             <thead>
                                 <tr>
@@ -15,15 +15,14 @@
                                     <th>Name</th>
                                     <th>Package</th>
                                     <th>Specification</th>
-                                    <th>Current Stock</th>
-                                    <th>Incoming Stock</th>
-                                    <th>Updated Quantity</th>
+                                    <th>Current Warning</th>
+                                    <th>New Warning</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 
                                 <tr ng-repeat="package in packages"
-                                    ng-style="(holder[package.id].newQuantity * 1) + (holder[package.id].current * 1) <= package.warning_level && {'background-color': 'PaleGoldenRod'}"
+                                    ng-style="package.quantity <= package.warning_level && {'background-color': 'PaleGoldenRod'}"
                                     >
                                     <td>@{{ package.category_name}}</td>
                                     <td>@{{ package.id }}</td>
@@ -31,11 +30,8 @@
                                     <td>@{{ package.name }}</td>
                                     <td>@{{ package.unit_name }}</td>
                                     <td>@{{ package.specification }}</td>
-                                    <td>
-                                        <input type="text" disabled="disabled" ng-model="holder[package.id].current" ng-init="holder[package.id].current = (package.quantity ? package.quantity : 0 )"/>
-                                    </td>
-                                    <td><input type="text" ng-model="holder[package.id].newQuantity" name="package[@{{package.id}}][quantity]" ng-init="holder[package.id].newQuantity = 0"/></td>
-                                    <td>@{{ (holder[package.id].newQuantity * 1) + (holder[package.id].current * 1) }}</td>
+                                    <td>@{{ package.warning_level }}</td>
+                                    <td><input type="text" name="package[@{{package.id}}][warning_level]" ng-model="package.warning_level" value="@{{ package.warning_level }}"/></td>
                                 </tr>
                             
                             </tbody>
