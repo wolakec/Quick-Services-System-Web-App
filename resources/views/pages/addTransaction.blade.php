@@ -18,7 +18,7 @@
                         
                             <tbody>
                             <tr ng-repeat="package in packages">
-                                <td>
+                                <td class="per20">
                                     <select                                      
                                         ng-model="package.selectedPackage" 
                                         ng-options="value.product.name + ' ' + value.unit.name for value in products track by value.id"
@@ -28,10 +28,10 @@
                                     >
                                     </select>
                                 </td>
-                                <td ng-init="package.selectedPackage.base_price = 0; package.price=0;">
+                                <td class="per20" ng-init="package.selectedPackage.base_price = 0; package.price=0;">
                                     @{{ package.selectedPackage.base_price }}
                                 </td>
-                                 <td>
+                                 <td class="per20">
                                      <input type="hidden" name="packages[@{{ $index }}][package_id]" value="@{{ package.selectedPackage.id }}"/>
                                     <input type="text" class="form-control" id="quantity" name="packages[@{{ $index }}][quantity]" ng-model="package.quantity" ng-change="calculatePrice(package); calculateTotal()" ng-init="package.quantity = 1">
                                 </td>
@@ -43,7 +43,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>
+                                <td class="per20">
                                     @{{ "£"+totalPrice }}
                                 </td>
                             </tr>

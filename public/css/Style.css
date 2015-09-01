@@ -144,6 +144,35 @@ h4{
 .no-border-btn{
     border: none;
 }
+
+.per70{
+    width:70%;
+}
+.per60{
+    width:60%;
+}
+.per50{
+    width:50%;
+}
+.per40{
+    width:40%;
+}
+.per20{
+    width:20%;
+}
+
+.dashboard-container {
+    padding: 0 10px 0 10px;
+}
+.chart {
+    width: 100%;
+}
+#myChart2 {
+    padding-left: 50px; 
+}
+.charts {
+    margin-top: 20%;
+}
 //////////////////////////////code for multi drop down
 
 
@@ -198,4 +227,3 @@ h4{
 }
 
 /////////////////////////////////////
-
