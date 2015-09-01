@@ -18,7 +18,7 @@ use Log;
 class AppServicesController extends Controller {
     
     public function invoice() {
-       return view('pages.services_invoice');
+       return view('pages.viewInvoice');
     }
     public function contact() {
        return view('pages.contactForm');

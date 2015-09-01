@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <h4 style="text-align: center;"> List of Stations</h4><br>
             <table class="table table-bordered" id="StationsTable">
                 <thead>

@@ -48,7 +48,8 @@ class TransactionController extends Controller {
             
             foreach($packages as $package){
                 $detail = TransactionDetail::create($package);
-                $detail->price = $detail->package->base_price * $detail->quantity;
+                $detail->price = $detail->package->base_price;
+                $detail->total_price = $detail->package->base_price * $detail->quantity;
                 $detail->transaction_id = $transaction->id;
                 $detail->save();
                 

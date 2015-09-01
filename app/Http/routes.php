@@ -87,6 +87,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/stations/{id}/edit', 'StationController@update');
     Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
     Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
+    Route::get('/stations/{id}/invoices/daily', 'StationInvoiceController@viewDaily');
 
     Route::get('/stations/map', 'MapController@index');
     Route::post('/stations/map/save', 'MapController@store');
