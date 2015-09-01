@@ -12,6 +12,16 @@ class Station extends Model {
         return $this->hasMany('App\Employee');
     }
     
+    public function transactionDetails()
+    {
+        return $this->hasManyThrough('App\TransactionDetail','App\Transaction','station_id','transaction_id');
+    }
+    
+    public function transactions()
+    {
+        return $this->hasMany('App\Transaction');
+    }
+    
     public function location()
     {
         return $this->belongsTo('App\Location');

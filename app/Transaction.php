@@ -15,16 +15,16 @@ class Transaction extends Model {
         
         public function client()
         {
-            return $this->hasOne('App\Client');
+            return $this->belongsTo('App\Client');
         }
         
         public function employee()
         {
-            return $this->hasOne('App\Employee');
+            return $this->belongsTo('App\Employee');
         }
         
         public function station()
         {
-            return $this->hasOne('App\Station');
+            return $this->belongsTo('App\Station');
         }
 }

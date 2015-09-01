@@ -21,6 +21,7 @@
                                     <th>Name</th>
                                     <th>Package</th>
                                     <th>Specification</th>
+                                    <th>Warning Level</th>
                                     <th>Current Stock</th>
                                 </tr>
                             </thead>
@@ -35,6 +36,9 @@
                                     <td>@{{ package.name }}</td>
                                     <td>@{{ package.unit_name }}</td>
                                     <td>@{{ package.specification }}</td>
+                                    <td ng-init="holder[package.id].warning_level = (package.warning_level ? package.warning_level : 0 )">
+                                        @{{ holder[package.id].warning_level }}
+                                    </td>
                                     <td ng-init="holder[package.id].current = (package.quantity ? package.quantity : 0 )">
                                         @{{ holder[package.id].current }}
                                     </td>
