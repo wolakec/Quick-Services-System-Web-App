@@ -51,6 +51,7 @@ body {
     //font-size: 16px;
     //font-weight: bold;
     border-left: 5px solid #E45F56; 
+    padding-left: 15px;
 }
 .dropdown-menu >li >a {
     color: whitesmoke;
@@ -112,6 +113,37 @@ h4{
     padding-right: 10px;
     padding-top: 10px;
 }
+
+.loginBG {
+    background-image: url("../images/car.jpg");
+    background-position: center center;
+    background-size: cover;
+}
+.loginPanle {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.loginPanle > .panel {
+    color:#fff;
+    background: transparent;
+    border: none;
+}
+.loginPanle  .panel-heading {
+    color:#fff;
+    background: transparent;
+    border: none;
+}
+
+.dropdownFix {
+    background-color: #fff;
+}
+.dropdownFix > li > a {
+    color: #000;
+}
+.no-border-btn{
+    border: none;
+}
 //////////////////////////////code for multi drop down
 
 
@@ -166,6 +198,4 @@ h4{
 }
 
 /////////////////////////////////////
-
-
 

@@ -1,11 +1,13 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="container-fluid">
+<div class="loginBG container-fluid ">
 	<div class="row">
-            <div class="col-md-6 col-md-offset-3" style="margin-top: 100px;">
+            <div class="col-md-6 col-md-offset-3 loginPanle" style="">
 			<div class="panel panel-default">
-                            <div class="panel-heading" ><h4 style="text-align: center;">Quick Services System</h4></div>
+                            <div class="panel-heading text-center" ><h4 style="text-align: center;">Quick Services System</h4>
+                                <span class=""><img class=" " style="max-height: 70px; margin-bottom: 50px;" src="{{ asset('Images/qsLogoWeb.png') }}"></span>
+                            </div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -58,4 +60,7 @@
 		</div>
 	</div>
 </div>
+<script>
+
+</script>
 @endsection
