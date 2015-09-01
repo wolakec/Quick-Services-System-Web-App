@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Station;
 use App\Stock;
+use App\Transaction;
+use App\TransactionDetail;
 use DB;
 
 class StockController extends Controller {
@@ -20,14 +22,14 @@ class StockController extends Controller {
     
     public function edit($id)
     {
-        $station = Station::find($id);
+        $station = Station::findOrFail($id);
                 
         return view('pages.listStock',['station' => $station]);
     }
     
     public function listStock($id)
     {
-        $station = Station::find($id);
+        $station = Station::findOrFail($id);
         
         $packages = DB::table('packages')
                 ->join('products','packages.product_id','=','products.id')
@@ -46,7 +48,23 @@ class StockController extends Controller {
    
     public function update(Request $request,$id)
     {
+        $station = Station::findOrFail($id);
         $input = $request->all();
+        
+        $user = $request->user();
+            
+        if(!$user->employee){
+            return redirect('/');
+        }
+        
+        if($user->employee->station_id != $id){
+            abort(403);
+        }
+
+        $transaction = new Transaction;
+        $transaction->employee_id = $user->employee->id;
+        $transaction->station_id = $user->employee->station_id;
+        $transaction->save();
         
         //return $input;
         
@@ -61,7 +79,24 @@ class StockController extends Controller {
             }else{
                 $stock->quantity = $stock->quantity + $package['quantity'];
             }
+            
             $stock->save();
+            
+            
+            
+            if($package['quantity'] > 0){
+                $stock->load('package');
+            
+                $detail = new TransactionDetail;
+                $detail->price = $stock->package->cost;
+                $detail->total_price = $stock->package->cost * $package['quantity'];
+                $detail->transaction_id = $transaction->id;
+                $detail->package_id = $stock->package_id;
+                $detail->quantity = $package['quantity'];
+                $detail->type = "stock";
+
+                $detail->save();
+            }
         }
         
         return redirect('stock/'.$id);
@@ -69,13 +104,14 @@ class StockController extends Controller {
     
     public function editWarnings($id)
     {
-        $station = Station::find($id);
+        $station = Station::findOrFail($id);
                 
         return view('pages.listStockWarnings',['station' => $station]);
     }
     
     public function updateWarnings(Request $request,$id)
     {
+        $station = Station::findOrFail($id);
         $input = $request->all();
         
         //return $input;

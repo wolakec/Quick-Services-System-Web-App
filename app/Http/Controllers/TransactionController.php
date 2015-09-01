@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
 use Illuminate\Http\Request;
 
 use App\Unit;
@@ -51,6 +52,7 @@ class TransactionController extends Controller {
                 $detail->price = $detail->package->base_price;
                 $detail->total_price = $detail->package->base_price * $detail->quantity;
                 $detail->transaction_id = $transaction->id;
+                $detail->type = "sale";
                 $detail->save();
                 
                 
