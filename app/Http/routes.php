@@ -121,6 +121,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/notifications/add', 'BroadcastController@add');
     Route::post('/notifications/add', 'BroadcastController@store');
+    
+    Route::get('/alerts', 'AdminAlertController@index');
+    Route::get('/alerts/pending', 'AdminAlertController@listPending');
+    Route::get('/alerts/{id}', 'AdminAlertController@view');
 
 });
 

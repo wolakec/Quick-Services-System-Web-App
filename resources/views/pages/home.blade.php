@@ -36,10 +36,10 @@
         <div class="col-md-3">
         <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>3</h3>
-                  <p>Notifications</p>
+                  <h3>{{ $alerts }}</h3>
+                  <p>Alerts</p>
                 </div>
-                <a href="#" class="small-box-footer">View notifications <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{ url('/alerts/pending') }}" class="small-box-footer">Pending Alerts <i class="fa fa-arrow-circle-right"></i></a>
               </div>
     </div>
 </div>

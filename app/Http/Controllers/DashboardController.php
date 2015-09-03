@@ -8,6 +8,7 @@ use Lava;
 
 use App\TransactionDetail;
 use App\Client;
+use App\Alert;
 
 class DashboardController extends Controller {
     
@@ -24,8 +25,9 @@ class DashboardController extends Controller {
                 ->where('transaction_details.type','=','sale')
                 ->sum('total_price');
         
+        $alerts = Alert::where('status','=','pending')->count();
         
-        return view('pages.home',['noSales' => $noSales, 'salesVal' => $salesVal, 'newClients' => $newClients]);
+        return view('pages.home',['noSales' => $noSales, 'salesVal' => $salesVal, 'newClients' => $newClients, 'alerts' => $alerts]);
     }
    
 }
