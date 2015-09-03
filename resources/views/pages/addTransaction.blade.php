@@ -39,7 +39,7 @@
                                     @{{ "£"+package.price }}
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="success">
                                 <td></td>
                                 <td></td>
                                 <td></td>

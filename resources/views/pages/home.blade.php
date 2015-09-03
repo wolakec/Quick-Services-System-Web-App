@@ -39,7 +39,7 @@
                   <h3>3</h3>
                   <p>Notifications</p>
                 </div>
-                <a href="#" class="small-box-footer">see notification <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">View notifications <i class="fa fa-arrow-circle-right"></i></a>
               </div>
     </div>
 </div>
