@@ -6,8 +6,8 @@
     <div class="col-md-3">
         <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>53</h3>
-                  <p>sales of the day</p>
+                  <h3>{{ $noSales }}</h3>
+                  <p>Sales of the day</p>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -16,8 +16,8 @@
         <div class="col-md-3">
         <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>5</h3>
-                  <p>Registration of day </p>
+                  <h3>{{ $newClients }}</h3>
+                  <p>Registrations today </p>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -26,8 +26,8 @@
         <div class="col-md-3">
         <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">SDG</sup></h3>
-                  <p>sales Profit</p>
+                  <h3>{{ $salesVal }}<sup style="font-size: 20px">SDG</sup></h3>
+                  <p>Sales Value</p>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -36,10 +36,10 @@
         <div class="col-md-3">
         <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>3</h3>
-                  <p>notifications</p>
+                  <h3>{{ $alerts }}</h3>
+                  <p>Alerts</p>
                 </div>
-                <a href="#" class="small-box-footer">see notification <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{ url('/alerts/pending') }}" class="small-box-footer">Pending Alerts <i class="fa fa-arrow-circle-right"></i></a>
               </div>
     </div>
 </div>

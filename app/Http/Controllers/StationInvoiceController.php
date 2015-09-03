@@ -15,7 +15,9 @@ class StationInvoiceController extends Controller {
     {
         $station = Station::findOrFail($id);
         
-        $details = $station->transactionDetails()->where('transaction_details.created_at', '>=', new \DateTime('today'))->get();
+        $details = $station->transactionDetails()->where('transaction_details.created_at', '>=', new \DateTime('today'))
+                ->where('transaction_details.type','=','sale')
+                ->get();
         $details->load('transaction','package.product','package.unit','transaction.station','transaction.employee');
         
         $grandTotal = 0;
@@ -26,4 +28,20 @@ class StationInvoiceController extends Controller {
         return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $station]);
     }
 
+    public function viewDailyIn($id)
+    {
+        $station = Station::findOrFail($id);
+        
+        $details = $station->transactionDetails()->where('transaction_details.created_at', '>=', new \DateTime('today'))
+                ->where('transaction_details.type','=','stock')
+                ->get();
+        $details->load('transaction','package.product','package.unit','transaction.station','transaction.employee');
+        
+        $grandTotal = 0;
+        foreach($details as $detail){
+            $grandTotal += $detail->total_price;
+        }
+
+        return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $station]);
+    }
 }
