@@ -89,6 +89,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
     Route::get('/stations/{id}/invoices/daily', 'StationInvoiceController@viewDaily');
     Route::get('/stations/{id}/invoices/dailyIn', 'StationInvoiceController@viewDailyIn');
+    
+    Route::get('/stations/alerts', 'EmployeeAlertController@index');
+    Route::get('/stations/alerts/pending', 'EmployeeAlertController@listPending');
+    
+    Route::get('/stations/alerts/add', 'EmployeeAlertController@create');
+    Route::post('/stations/alerts/add', 'EmployeeAlertController@store');
+    Route::get('/stations/alerts/{id}', 'EmployeeAlertController@view');
 
     Route::get('/stations/map', 'MapController@index');
     Route::post('/stations/map/save', 'MapController@store');
