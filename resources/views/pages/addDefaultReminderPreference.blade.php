@@ -19,6 +19,7 @@
                 </div>
                 <div class="form-group">
                    <input type="number" class="form-control" name="period" placeholder="Number of days until reminder">
+               <div class="text-danger">{{ $errors->first('period') }}</div>
                 </div>
                 
                 <div class="form-group">

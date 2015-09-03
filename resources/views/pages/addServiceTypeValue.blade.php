@@ -19,6 +19,8 @@
                 </div>
                 <div class="form-group">
                    <input type="number" class="form-control" name="points" placeholder="Points">
+           <div class="text-danger">{{ $errors->first('points') }}</div>
+
                 </div>
                 
                 <div class="form-group">

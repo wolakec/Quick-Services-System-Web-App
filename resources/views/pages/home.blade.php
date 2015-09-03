@@ -46,10 +46,14 @@
    <div class="dashboard-container  charts">
       
             <div class="col-lg-6">
+                <h3 class="text-center">sales of the week</h3>
+                <hr>
                 <canvas id="myChart2" class="chart" ></canvas>
             </div>
        
                 <div class="col-lg-6">
+                    <h3 class="text-center">Stations by sales</h3>
+                    <hr>
                  <canvas id="myChart"></canvas>
              </div>
        

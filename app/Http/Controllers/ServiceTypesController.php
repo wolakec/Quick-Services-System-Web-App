@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\serviceRequest;
 use Illuminate\Http\Request;
 use App\ServiceType;
 
@@ -18,7 +18,7 @@ class ServiceTypesController extends Controller {
             return $view;
 	}
 
-	public function store(Request $request)
+	public function store(serviceRequest $request)
 	{
             $name = $request->input('name');
 

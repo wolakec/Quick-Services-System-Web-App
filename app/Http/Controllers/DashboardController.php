@@ -15,5 +15,10 @@ class DashboardController extends Controller {
         
         return view('pages.home');
     }
-   
+   public function second()
+    {
+        $table = Lava::DataTable();
+        
+        return view('pages.secondDashboard');
+    }
 }

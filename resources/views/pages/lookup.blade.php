@@ -7,6 +7,7 @@
             <form class="form-horizontal" method="post" action="{{ url($path).'/add'}} ">
                 <div class="form-group">
                     <input type="text" class="form-control" id="Name" name="name" placeholder="Name">
+                    <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </div>

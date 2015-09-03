@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\serviceRequest;
 use Illuminate\Http\Request;
 use App\ServiceType;
 use App\DefaultReminderPreference;
@@ -25,7 +25,7 @@ class DefaultReminderPreferencesController extends Controller {
         return view('pages.addDefaultReminderPreference', ['serviceTypes' => $types]);
     }
     
-    public function store(Request $request)
+    public function store(serviceRequest $request)
     {
         $preference = DefaultReminderPreference::create($request->all());
         $preference->save();

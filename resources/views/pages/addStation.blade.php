@@ -9,12 +9,15 @@
             <form name="addStation" class="form-horizontal" method="post" action="{{ url('/stations/add') }}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" placeholder="Name">
+                <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="address" placeholder="Address">
+                    <div class="text-danger">{{ $errors->first('address') }}</div>
                 </div>
                 <div class="form-group">
                     <input type="text"  class="form-control" name="phone_1" placeholder="Telephone">
+                    <div class="text-danger">{{ $errors->first('phone_1') }}</div>
                 </div>
                 <div class="form-group">
                     <label>Location</label>
@@ -32,6 +35,8 @@
                     @empty
                     No service types in database
                     @endforelse
+<div class="text-danger">{{ $errors->first('service_type_id[]') }}</div>
+                
                 </div>
                 <button type="submit" value="submit" name="submit"class="btn btn-success"> Submit</button>
         </div>

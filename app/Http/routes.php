@@ -10,7 +10,8 @@ Route::get('/contactForm','AppServicesController@contact');
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
-    
+    Route::get('/emp','DashboardController@second');
+
     Route::get('/transactions','TransactionController@index');
     Route::get('/transactions/add', 'TransactionController@add');
     Route::post('/transactions/add', 'TransactionController@store');

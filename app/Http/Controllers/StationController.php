@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\stationRequest;
 use Illuminate\Http\Request;
 use App\Location;
 use App\Station;
@@ -26,7 +26,7 @@ class StationController extends Controller {
         return view('pages.addStation',['locations' => $locations, 'serviceTypes' => $serviceTypes]);
     }
     
-    public function store(Request $request)
+    public function store(stationRequest $request)
     {
        $station = Station::create($request->all());
        $station->serviceTypes()->attach($request->input('service_type_id'));

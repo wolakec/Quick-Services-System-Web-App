@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\employeeRequest;
 use Illuminate\Http\Request;
 use App\Location;
 use App\Station;
@@ -29,10 +29,10 @@ class EmployeeController extends Controller {
         return view('pages.addEmployee',['locations' => $locations, 'stations' => $stations]);
     }
     
-    public function store(Request $request)
+    public function store(employeeRequest $request)
     {
-        $generated = strtoupper(str_random(8));
         
+        $generated = strtoupper(str_random(8));
         $role = Role::where('name','=','station_employee')->first();
         $user = User::create($request->all());
         $user->password = Hash::make($generated);
@@ -43,7 +43,7 @@ class EmployeeController extends Controller {
         $employee->user()->associate($user);
         $employee->save();
         
-        
+     
         return view('pages.summary', ['email' => $user->email, 'password' => $generated,'employee' => $employee]);
     }
    

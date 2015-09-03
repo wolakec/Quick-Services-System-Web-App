@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\serviceRequest;
 use Illuminate\Http\Request;
 use App\ServiceType;
 use App\ServiceTypeValue;
@@ -24,7 +24,7 @@ class ServiceTypeValuesController extends Controller {
         return view('pages.addServiceTypeValue', ['serviceTypes' => $types]);
     }
     
-    public function store(Request $request)
+    public function store(serviceRequest $request)
     {
         $value = ServiceTypeValue::create($request->all());
         $value->save();
