@@ -19,6 +19,7 @@
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control"name="name" placeholder="Name">
+                    <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>               
                 <div class="form-group">
                     <button type="submit" class="btn btn-success"value="submit" name="submit">Submit</button>

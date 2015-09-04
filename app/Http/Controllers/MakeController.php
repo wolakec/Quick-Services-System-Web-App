@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\makeRequest;
 use Illuminate\Http\Request;
 use App\Make;
 
@@ -18,7 +18,7 @@ class MakeController extends Controller {
             return $view;
 	}
 
-	public function store(Request $request)
+	public function store(makeRequest $request)
 	{
             $name = $request->input('name');
 

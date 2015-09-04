@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\modelRequest;
 use Illuminate\Http\Request;
 use App\Make;
 use App\VehicleModel;
@@ -24,7 +24,7 @@ class ModelController extends Controller {
         return view('pages.addModel',['makes' => $makes]);
     }
     
-    public function store(Request $request)
+    public function store(modelRequest $request)
     {
         $model = VehicleModel::create($request->all());
         $model->save();

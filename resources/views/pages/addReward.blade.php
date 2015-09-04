@@ -9,13 +9,16 @@
             <form class="form-horizontal" name="addReward" method="post" action="{{ url('/rewards/add') }}">
                 <div class="form-group">
                     <input type="text" name="title" class="form-control" placeholder="Title">
+                    <div class="text-danger">{{ $errors->first('title') }}</div>
                 </div>
                 <div class="form-group">
                     <input type="text" name="cost" class="form-control" placeholder="Cost">
+                    <div class="text-danger">{{ $errors->first('cost') }}</div>
                 </div>
                 <div class="form-group">
                     <label>Description:</label>
                  <textarea name="description" class="form-control"></textarea>
+                 <div class="text-danger">{{ $errors->first('description') }}</div>
                 </div>
                 
                 <div class="form-group">

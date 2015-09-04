@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\unitRequest;
 use Illuminate\Http\Request;
 use App\Unit;
 
@@ -18,10 +18,10 @@ class UnitController extends Controller {
             return $view;
 	}
 
-	public function store(Request $request)
+	public function store(unitRequest $request)
 	{
+            
             $name = $request->input('name');
-
             $unit = new Unit;
             $unit->name = $name;
           

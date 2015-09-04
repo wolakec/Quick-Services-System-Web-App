@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\codeRequest;
 use Illuminate\Http\Request;
 use App\QrCode;
 
@@ -25,7 +25,7 @@ class CodeController extends Controller {
         return Qr::size(300)->generate($id);
     }
     
-    public function store(Request $request)
+    public function store(codeRequest $request)
     {
         $prefix = $request->input('prefix');
         $quota = (int) $request->input('quota');
