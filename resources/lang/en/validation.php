@@ -88,8 +88,15 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        
+        'service_type_id[]' => [
+            'required_with_all' => 'You should select at least one.',
+        ],
+        
+        'phone_1' => [
+            'numeric' => 'The phone must be a number.',
+            'digits' => 'The phone must be :digits digits.',
+            'regex' => 'The phone must start with 09 or 01.',
         ],
     ],
 

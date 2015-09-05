@@ -25,7 +25,7 @@ class modelRequest extends Request
     {
         return [
             //
-            'name' => 'required'
+            'name' => 'required|string|alpha_num'
         ];
     }
 }

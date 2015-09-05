@@ -25,7 +25,7 @@ class codeRequest extends Request
     {
         return [
             //
-            'prefix' => 'required',
+            'prefix' => 'required|string|alpha_num',
         ];
     }
 }

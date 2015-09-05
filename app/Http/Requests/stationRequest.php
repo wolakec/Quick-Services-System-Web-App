@@ -23,13 +23,13 @@ class stationRequest extends Request
      */
     public function rules()
     {
+        //dd(Request::all());
         return [
             //
             'address' => 'required',
-            'name' => 'required',
-            'phone_1' => 'required|unique:employees,email',
+            'name' => 'required|alpha',
+            'phone_1' => 'required|numeric|digits:10|regex:/^0[91]\\d{8}$/',
             'service_type_id[]' => 'min:1',
-
         ];
     }
 }
