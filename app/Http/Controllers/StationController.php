@@ -35,6 +35,28 @@ class StationController extends Controller {
        return redirect('stations');
     }
     
+    public function edit($id)
+    {
+        $station = Station::findOrFail($id);
+        $station->load('ServiceTypes');
+        
+        ///dd($station>serviceTypes);//
+        
+        $locations = Location::all();
+        $serviceTypes = ServiceType::all();
+        
+        return view('pages.editStation',['locations' => $locations, 'serviceTypes' => $serviceTypes,'station' => $station]);
+    }
+    
+    public function update(stationRequest $request, $id)
+    {
+        $station = Station::findOrFail($id);
+        $station->update($request->all());
+        $station->serviceTypes()->sync($request->input('service_type_id'));
+        
+        return redirect('stations');
+    }
+    
     public function viewEmployees($id)
     {
         $station = Station::find($id);

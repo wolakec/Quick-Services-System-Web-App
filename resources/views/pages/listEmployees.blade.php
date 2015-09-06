@@ -13,12 +13,13 @@
                 <th>Telephone</th>
                 <th>Location</th>
                 <th>Station</th>
+                <th>Action</th>
                 <tbody>
                     @foreach($employees as $employee)
                     <tr>
                         <td>{{ $employee->name }}</td>
                         <td>{{ $employee->employee_id }}</td>
-                        <td>{{ $employee->email }}</td>
+                        <td>{{ $employee->user->email }}</td>
                         <td>{{ $employee->phone_1 }}</td>
                         <td>
                             @if($employee->location)
@@ -29,6 +30,9 @@
                             @if($employee->station)
                             {{ $employee->station->name }}
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{ url('/employees/'.$employee->id.'/edit') }}">Edit</a>
                         </td>
                     </tr>
                     @endforeach

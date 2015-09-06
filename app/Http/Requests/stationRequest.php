@@ -27,7 +27,7 @@ class stationRequest extends Request
         return [
             //
             'address' => 'required',
-            'name' => 'required|alpha',
+            'name' => 'required|string',
             'phone_1' => 'required|numeric|digits:10|regex:/^0[91]\\d{8}$/',
             'service_type_id[]' => 'min:1',
         ];
