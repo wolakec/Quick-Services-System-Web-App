@@ -46,5 +46,25 @@ class EmployeeController extends Controller {
      
         return view('pages.summary', ['email' => $user->email, 'password' => $generated,'employee' => $employee]);
     }
+    
+    public function edit($id)
+    {
+        $employee = Employee::findOrFail($id);
+        
+        $locations = Location::all();
+        $stations = Station::all();
+        
+        return view('pages.editEmployee',['locations' => $locations, 'stations' => $stations, 'employee' => $employee]);
+    }
+    
+    public function update(Request $request, $id)
+    {
+        
+        $employee = Employee::findOrFail($id);
+        
+        $employee->update($request->all());
+     
+        return view('pages.summary', ['email' => $employee->user->email, 'password' => '--------','employee' => $employee]);
+    }
    
 }

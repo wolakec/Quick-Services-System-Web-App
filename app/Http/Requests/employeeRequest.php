@@ -27,8 +27,8 @@ class employeeRequest extends Request
             //
             
             'name' => 'required',
-            'email' => 'required|unique:uers,email',
-            'phone_1' => 'required|unique:employees,email',  
+            'email' => 'required|unique:users,email',
+            'phone_1' => 'required|unique:employees',  
         ];
     }
 }
