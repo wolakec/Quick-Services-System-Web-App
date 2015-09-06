@@ -48,7 +48,7 @@ class StationController extends Controller {
         return view('pages.editStation',['locations' => $locations, 'serviceTypes' => $serviceTypes,'station' => $station]);
     }
     
-    public function update(Request $request, $id)
+    public function update(stationRequest $request, $id)
     {
         $station = Station::findOrFail($id);
         $station->update($request->all());
