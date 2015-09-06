@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\notificationRequest;
 use Illuminate\Http\Request;
 use App\Client;
 use App\Notification;
@@ -16,7 +16,7 @@ class BroadcastController extends Controller {
         return view('pages.addBroadcast');
     }
     
-    public function store(Request $request)
+    public function store(notificationRequest $request)
     {
        $clients = Client::all();
        

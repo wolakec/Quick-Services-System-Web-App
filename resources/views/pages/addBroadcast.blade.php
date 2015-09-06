@@ -9,10 +9,12 @@
             <form class="form-horizontal" name="addBroadcast" method="post" action="{{ url('/notifications/add') }}">
                 <div class="form-group">
                     <input type="text" name="title" class="form-control" placeholder="Title">
+                    <div class="text-danger">{{ $errors->first('title') }}</div>
                 </div>
                 <div class="form-group">
                     <label>Message:</label>
                  <textarea name="message" class="form-control"></textarea>
+                 <div class="text-danger">{{ $errors->first('message') }}</div>
                 </div>
                 
                 <div class="form-group">

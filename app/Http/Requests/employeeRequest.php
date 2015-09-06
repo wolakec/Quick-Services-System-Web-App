@@ -28,7 +28,8 @@ class employeeRequest extends Request
             
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'phone_1' => 'required|unique:employees',  
+            'phone_1' => 'required|numeric|digits:10|regex:/^0[91]\\d{8}$/',  
+            'employee_id' => 'numeric|unique:employees,employee_id',
         ];
     }
 }

@@ -8,6 +8,7 @@
             <form class="form-horizontal" name="qrForm" action="{{ url('/codes/add') }}" method="post">
                 <div class="form-group">
                     <input type="text" name="prefix" class="form-control" placeholder=" Prefix">
+                    <div class="text-danger">{{ $errors->first('prefix') }}</div>
                 </div>
                 <div class="form-group">
                     <label>Quota</label> 

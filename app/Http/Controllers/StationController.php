@@ -27,7 +27,7 @@ class StationController extends Controller {
     }
     
     public function store(stationRequest $request)
-    {
+    {   
        $station = Station::create($request->all());
        $station->serviceTypes()->attach($request->input('service_type_id'));
        $station->save();

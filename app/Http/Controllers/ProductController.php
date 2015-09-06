@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\productRequest;
 use Illuminate\Http\Request;
 
 use App\Unit;
@@ -26,8 +26,10 @@ class ProductController extends Controller {
 		return view('pages.addProduct',['units' => $units, 'categories' => $categories]);
 	}
 
-	public function store(Request $request)
+	public function store(productRequest $request)
 	{
+            //dd($request->all());
+            
             $input = $request->all();
             $product = Product::create($request->all());
             $prices = $input['packages'];

@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\rewardsRequest;
 use Illuminate\Http\Request;
 use App\Reward;
 
@@ -20,7 +20,7 @@ class RewardController extends Controller {
         return view('pages.addReward');
     }
     
-    public function store(Request $request)
+    public function store(rewardsRequest $request)
     {
         $reward = Reward::create($request->all());
         $reward->save();

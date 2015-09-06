@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class stationRequest extends Request
+class modelRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,9 @@ class stationRequest extends Request
      */
     public function rules()
     {
-        //dd(Request::all());
         return [
             //
-            'address' => 'required',
-            'name' => 'required|alpha',
-            'phone_1' => 'required|numeric|digits:10|regex:/^0[91]\\d{8}$/',
-            'service_type_id[]' => 'min:1',
+            'name' => 'required|string|alpha_num'
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\categoryRequest;
 use Illuminate\Http\Request;
 use App\Category;
 
@@ -18,7 +18,7 @@ class CategoryController extends Controller {
             return $view;
 	}
 
-	public function store(Request $request)
+	public function store(categoryRequest $request)
 	{
             $name = $request->input('name');
 
