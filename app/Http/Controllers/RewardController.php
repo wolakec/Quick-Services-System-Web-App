@@ -40,6 +40,6 @@ class RewardController extends Controller {
         $reward = Reward::find($id);
         $reward->update($request->all());
         
-         return redirect('rewards');
+        return redirect('rewards');
     }
 }

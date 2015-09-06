@@ -18,7 +18,7 @@ class ServiceTypesController extends Controller {
             return $view;
 	}
 
-	public function store(serviceRequest $request)
+	public function store(Request $request)
 	{
             $name = $request->input('name');
 
