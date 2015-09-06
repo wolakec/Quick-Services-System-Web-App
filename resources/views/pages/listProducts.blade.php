@@ -26,7 +26,7 @@
                                 <td> {{$product->code}}</td>
                                 <td ><a href="#" data-toggle="modal" data-target="#{{ $product->id }}" >{{$product->name}}</a></td>
                                 <td>{{$product->specification}}</td>
-                                <td><a href="{{ url('/product/edit/'.$product->id) }}">Edit</a></td>
+                                <td><a href="{{ url('/product/'.$product->id.'/edit') }}">Edit</a></td>
                             </tr>
                             
                            

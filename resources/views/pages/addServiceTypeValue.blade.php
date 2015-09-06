@@ -8,7 +8,7 @@
             <h4 style="text-align:center;">Set Service Type Value</h4><br/>
             <form class="form-horizontal" name="addServiceTypeValue" method="post" action="{{ url('/services/values/add') }}">
                 <div class="form-group">
-                    <label>Service Type</label>
+                    <label>Set Service Type Value</label>
                     <select name="service_type_id" class="form-control">
                     @forelse($serviceTypes as $serviceType)
                     <option value="{{ $serviceType->id }}">{{ $serviceType->name }}</option>

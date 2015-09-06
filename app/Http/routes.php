@@ -41,10 +41,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/services/values','ServiceTypeValuesController@index');
     Route::get('/services/values/add', 'ServiceTypeValuesController@add');
     Route::post('/services/values/add', 'ServiceTypeValuesController@store');
-
+    Route::get('/services/values/{id}/edit', 'ServiceTypeValuesController@edit');
+    Route::post('/services/values/{id}/edit', 'ServiceTypeValuesController@update');
+    
     Route::get('/services/preferences','DefaultReminderPreferencesController@index');
     Route::get('/services/preferences/add', 'DefaultReminderPreferencesController@add');
     Route::post('/services/preferences/add', 'DefaultReminderPreferencesController@store');
+    Route::get('/services/preferences/{id}/edit', 'DefaultReminderPreferencesController@edit');
+    Route::post('/services/preferences/{id}/edit', 'DefaultReminderPreferencesController@update');
 
     Route::get('/rewards','RewardController@index');
     Route::get('/rewards/add', 'RewardController@add');
@@ -110,7 +114,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/product/listAllJson',function(){
         return Product::all();
     });
-    Route::get('/product/edit/{id}','ProductController@edit');
+    Route::get('/product/{id}/edit','ProductController@edit');
+    Route::post('/product/{id}/edit','ProductController@update');
     Route::get('/product/{id}/packages','ProductController@listPackages');
 
     Route::get('/unit', 'UnitController@index');

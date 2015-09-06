@@ -53,7 +53,7 @@
                         Stations <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/stations') }}">List of Stations</a></li>
-                        <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
+                        <li><a href="{{ url('/stations/add') }}">Add Station</a></li>
                         <li><a href="{{ url('/stations/map') }}">View Map</a></li>
                     </ul>
                 </li>

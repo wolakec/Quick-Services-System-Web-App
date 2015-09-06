@@ -1,0 +1,119 @@
+@extends('layouts.default')
+
+@section('content')     
+        <div class="container" ng-app="myApp" ng-controller="EditProductFormController">
+            <div class="row">
+            <form class="form-horizontal" method='post' action='{{ url('/product/'.$product->id.'/edit') }}'>    
+                <h4> Add New Product </h4><br>
+            <fieldset class="col-lg-4">
+            <div class="form-group">
+<!--            	<label for="ProductName" class="control-label">Product Name</label>-->            	
+            		<input type="text" class="form-control" id="ProductName" name="name" placeholder="Product Name" value="{{ $product->name }}">
+                        <div class="text-danger">{{ $errors->first('name') }}</div>
+            	</div>
+            <div class="form-group">
+<!--            	<label for="Specification" class="control-label">Specification</label>-->
+            		<input type="text" class="form-control" id="Specification" name="specification" placeholder="Specification" value="{{ $product->specification }}">
+                        <div class="text-danger">{{ $errors->first('specification') }}</div>
+            	</div>
+            <div class="form-group">
+<!--            	<label for="ProductID" class="control-label">Product Code</label>-->          
+            		<input type="text" class="form-control" id="inputEmail3" placeholder="Product Code" name="code" value="{{ $product->code }}">
+                        <div class="text-danger">{{ $errors->first('code') }}</div>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </div>                
+           <div class="form-group">            	    
+            		<input type="text" class="form-control" id="inputEmail3" placeholder="Description" name="description" value="{{ $product->description }}">
+                        <div class="text-danger">{{ $errors->first('description') }}</div>
+            	</div>
+            <div class="form-group">
+<!--            	<label for="application" class="control-label">Application</label>-->
+            
+            		<select name="category_id" class="form-control">
+            			@forelse($categories as $category)
+                                <option 
+                                     @if($category->id == $product->category_id)
+                                        @{{ selected }}
+                                    @endif
+                                    value="{{ $category->id }}">{{ $category->name }}</option>
+                                @empty
+                                <option value="false" class="disabled">You have no categories in the database</option>
+                                @endforelse
+            		</select> 
+            	</div>
+            <div class="form-group">
+<!--            	<label for="inputEmail3" class="control-label"></label>-->
+            	<div>
+            		<button type="submit" class="btn btn-info">Add Product</button>
+            	</div>
+            </div>
+            </fieldset>
+            <fieldset class="col-lg-5 col-lg-offset-2">
+            <div class="form-group">
+            	<table class="line-form-hack">
+                    <tr>
+                        <th>Package</th>
+                        <th>Cost</th>
+                        <th>Price</th>
+                    </tr>
+                    <fieldset>
+                        @foreach($product->packages as $package)
+                        <tr>
+                            <td>
+                                <input type="hidden" name="packages[{{ $package->id }}][id]" value="{{ $package->id }}"/>
+                                <select name="packages[{{ $package->id }}][unit_id]" class="form-control">
+                                        @forelse($units as $unit)
+                                        <option 
+                                            @if($package->unit_id == $unit->id)
+                                                @{{ selected }}
+                                            @endif
+                                            value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                        @empty
+                                        <option value="false" class="disabled">Empty</option>
+                                        @endforelse
+                                </select>
+                            </td>
+                            <td>
+                               <input type="text" class="form-control" id="price" name="packages[{{ $package->id }}][cost]" placeholder="Cost" value="{{ $package->cost }}">
+                               <div class="text-danger">{{ $errors->first('packages[][cost]') }}</div>
+                            </td>
+                            <td>
+                               <input type="text" class="form-control" id="price" name="packages[{{ $package->id }}][base_price]" placeholder="Price" value="{{ $package->base_price }}">
+                               <div class="text-danger">{{ $errors->first('packages[][base_price]') }}</div>
+                            </td>
+                            
+                        </tr>
+                        @endforeach
+                        <tr ng-repeat="package in packages">
+                            <td>
+                                <select name="new_packages[@{{ $index }}][unit_id]" class="form-control">
+                                        @forelse($units as $unit)
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                        @empty
+                                        <option value="false" class="disabled">Empty</option>
+                                        @endforelse
+                                </select>
+                            </td>
+                            <td>
+                               <input type="text" class="form-control" id="price" name="new_packages[@{{ $index }}][cost]" placeholder="Cost">
+                               <div class="text-danger">{{ $errors->first('packages[][cost]') }}</div>
+                            </td>
+                            <td>
+                               <input type="text" class="form-control" id="price" name="new_packages[@{{ $index }}][base_price]" placeholder="Price">
+                               <div class="text-danger">{{ $errors->first('packages[][base_price]') }}</div>
+                            </td>
+                            
+                        </tr>
+                    </fieldset>
+            	</table>
+            </div>
+            <div class="form-group">
+            	<label for="inputEmail3" class="control-label"></label>
+            	<div>
+            		<button type="button" ng-click="addPackage()"class="btn btn-default">New Package</button>
+            	</div>
+            </div>
+            </fieldset>
+            </form>
+            </div>
+@stop

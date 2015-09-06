@@ -33,4 +33,19 @@ class DefaultReminderPreferencesController extends Controller {
         return redirect('services/preferences');
     }
     
+    public function edit($id)
+    {
+        $preference = DefaultReminderPreference::findOrFail($id);
+        
+        return view('pages.editDefaultReminderPreference', ['preference' => $preference]);
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $preference = DefaultReminderPreference::findOrFail($id);
+        $preference->update($request->all());
+        
+        return redirect('services/preferences');
+    }
+    
 }
