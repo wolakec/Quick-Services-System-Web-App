@@ -17,27 +17,21 @@
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Settings<b class="caret"></b></a>
+                        Manage Settings<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/makes') }}">List of Makes</a></li>
-                        <li><a href="{{ url('/models') }}">List of Models</a></li>
-                        <li><a href="{{ url('/models/add') }}">Add Model</a></li>
-                        <li><a href="{{ url('/locations') }}"> Locations</a></li>
-                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Employees<b class="caret"></b></a>
-                    <ul class="dropdown-menu multi-level">
-                        <li><a href="{{ url('/employees') }}">List of Employees</a></li>
-                        <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">More options</a>
+                            <a tabindex="-1" href="#">Stations</a>
                             <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Second level</a></li>
-                                <li><a href="#">Second level</a></li>
-                                <li><a href="#">Second level</a></li>
+                                <li><a href="{{ url('/stations') }}">List of Stations</a></li>
+                        <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
+                        <li><a href="{{ url('/stations/map') }}">View Map</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Employees</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/employees') }}">List of Employees</a></li>
+                                <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
                                 <li class="dropdown-submenu"><a href="#">more shit</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Second level</a></li>
@@ -46,18 +40,18 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Cars</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/makes') }}">List of Makes</a></li>
+                                <li><a href="{{ url('/models') }}">List of Models</a></li>
+                                <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ url('/locations') }}"> Locations</a></li>
+                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Stations <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url('/stations') }}">List of Stations</a></li>
-                        <li><a href="{{ url('/stations/add') }}">Add Station</a></li>
-                        <li><a href="{{ url('/stations/map') }}">View Map</a></li>
-                    </ul>
-                </li>
-                
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Services <b class="caret"></b></a>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class serviceRequest extends Request
+class preferencesRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class serviceRequest extends Request
     {
         return [
             //
-            'name' => 'required',
+             'period' => 'required',
         ];
     }
 }

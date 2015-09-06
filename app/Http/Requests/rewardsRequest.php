@@ -26,7 +26,7 @@ class rewardsRequest extends Request
         return [
             //
             'title' => 'required',
-            'cost'  => 'required',
+            'cost'  => 'required|integer|regex:/^[0-9]/',
             'description' => 'required'
         ];
     }

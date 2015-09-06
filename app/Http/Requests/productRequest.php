@@ -25,13 +25,13 @@ class productRequest extends Request
     {
         return [
             //
-            'name' => 'required',
-            'specification' => 'required',
+            'name' => 'required|string',
+            'specification' => 'required|string',
             'code' => 'required|unique:products,code',
-            'description' => 'required',
+            'description' => 'required|string',
             'category_id' => 'required',
-            'packages[][cost]' => 'required',
-            'packages[][base_price]' => 'required',
+            'packages[][cost]' => 'numeric',
+            'packages[][base_price]' => 'numeric',
             
         ];
     }

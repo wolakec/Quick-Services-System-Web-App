@@ -16,8 +16,10 @@
                     <option>No Service Types in database</option>
                     @endforelse
                 </select>
+                    <div class="text-danger">{{ $errors->first('service_type_id') }}</div>
                 </div>
                 <div class="form-group">
+                    <label>Points</label>
                    <input type="number" class="form-control" name="points" placeholder="Points">
            <div class="text-danger">{{ $errors->first('points') }}</div>
 
