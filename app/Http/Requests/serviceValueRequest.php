@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class serviceRequest extends Request
+class serviceValueRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class serviceRequest extends Request
     {
         return [
             //
-            'name' => 'required',
+            'points' => 'required|integer|regex:/^[0-9]/',
+            'service_type_id' => 'unique:service_type_values,service_type_id',
         ];
     }
 }
