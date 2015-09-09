@@ -31,6 +31,7 @@ class RewardController extends Controller {
     public function edit($id)
     {
         $reward = Reward::find($id);
+        $this->authorize('edit', $reward);
         
         return view('pages.editReward',['reward' => $reward, 'id' => (int) $id]);
     }
@@ -38,6 +39,9 @@ class RewardController extends Controller {
     public function update(Request $request,$id)
     {
         $reward = Reward::find($id);
+        
+        $this->authorize('edit', $reward);
+        
         $reward->update($request->all());
         
         return redirect('rewards');

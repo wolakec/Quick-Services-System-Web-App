@@ -18,15 +18,22 @@ class StationPolicy
     
     public function before($user, $ability)
     {
-        if ($user->isAdmin()) {
-            return true;
-        }
+        return $user->isAdmin();
     }
     
     public function edit(User $user, Station $station)
     {
-        //return $user->isAdmin();
+        if($user->isAdmin()){
+            return true;
+        }
         return $user->employee->station_id === $station->id;
-   
+    }
+    
+    public function viewStock(User $user, Station $station)
+    {
+        if($user->isAdmin()){
+            return true;
+        }
+        return $user->employee->station_id === $station->id;
     }
 }

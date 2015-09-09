@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         'App\Station' => 'App\Policies\StationPolicy',
-
+        'App\Reward' => 'App\Policies\RewardPolicy',
     ];
 
     /**
@@ -28,6 +28,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies($gate);
 
-        //
     }
 }

@@ -17,7 +17,13 @@
                         <td>{{ $reward->title }}</td>
                         <td>{{ $reward->description }}</td>
                         <td><strong>{{ $reward->cost }}</strong> Points</td>
-                        <td><a href="{{ url('/rewards/'.$reward->id.'/edit') }}">Edit</a></td>
+                        <td>
+                            @can('edit',$reward)
+                                <a href="{{ url('/rewards/'.$reward->id.'/edit') }}">Edit</a>
+                            @else
+                                No Action
+                            @endcan
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

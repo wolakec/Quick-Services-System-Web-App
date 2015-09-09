@@ -16,6 +16,7 @@ class StockController extends Controller {
     public function view($id)
     {
         $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
         
         return view('pages.viewStock',['station' => $station]);
     }
@@ -30,6 +31,8 @@ class StockController extends Controller {
     public function listStock($id)
     {
         $station = Station::findOrFail($id);
+        
+        $this->authorize('viewStock',$station);
         
         $packages = DB::table('packages')
                 ->join('products','packages.product_id','=','products.id')
