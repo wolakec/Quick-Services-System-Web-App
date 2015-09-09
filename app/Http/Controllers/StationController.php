@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\stationRequest;
 use Illuminate\Http\Request;
+use Gate;
+
 use App\Location;
 use App\Station;
 use App\Employee;
@@ -38,6 +40,9 @@ class StationController extends Controller {
     public function edit($id)
     {
         $station = Station::findOrFail($id);
+        
+        $this->authorize('edit',$station);
+        
         $station->load('ServiceTypes');
         
         ///dd($station>serviceTypes);//

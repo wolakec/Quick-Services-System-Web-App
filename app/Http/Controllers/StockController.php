@@ -52,7 +52,7 @@ class StockController extends Controller {
         $input = $request->all();
         
         $user = $request->user();
-            
+        
         if(!$user->employee){
             return redirect('/');
         }

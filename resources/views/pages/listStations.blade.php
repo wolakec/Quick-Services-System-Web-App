@@ -32,7 +32,9 @@
                       <ul class="dropdown-menu dropdownFix" role="menu" aria-labelledby="dLabel">
                             <li><a href="{{ url('/stations/'.$station->id.'/employees') }}">Employees</a></li>
                             <li><a href="{{ url('/stations/'.$station->id.'/services/types') }}">Service Types</a></li>
-                            <li><a href="{{ url('/stations/'.$station->id.'/edit') }}">Edit</a></li>
+                            @can('edit',$station)
+                                <li><a href="{{ url('/stations/'.$station->id.'/edit') }}">Edit</a></li>
+                            @endcan
                             <li><a href="{{ url('/stations/'.$station->id.'/invoices/daily') }}">Sales Report</a></li>
                             <li><a href="{{ url('/stations/'.$station->id.'/invoices/dailyIn') }}">Purchase Report</a></li>
                             <li><a href="{{ url('/stock/'.$station->id) }}">View Stock</a></li>

@@ -140,6 +140,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\AuthServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -194,6 +195,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Qr' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Gate' => Illuminate\Support\Facades\Gate::class,
 
     ],
 
