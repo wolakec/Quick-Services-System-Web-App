@@ -58,10 +58,16 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/services') }}" >View Services</a></li>
                         <li><a href="{{ url('/services/values') }}">View Service Values</a></li>
+                        @can('createServiceValue')
                         <li><a href="{{ url('/services/values/add') }}">Set Service Values</a></li>
+                        @endcan
                         <li><a href="{{ url('/services/preferences') }}">View Service Preferences</a></li>
+                        @can('addPreference')
                         <li><a href="{{ url('/services/preferences/add') }}">Set Preferences</a></li>
+                        @endcan
+                        @can('createServiceTypes')
                         <li><a href="{{ url('/services/types') }}">Service Types</a></li>
+                        @endcan
                     </ul>
                 </li>
                 
@@ -79,9 +85,15 @@
                         Manage Products <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/product">List of products</a></li>
+                     @can('createproducts')
                         <li><a href="/product/add">Add new product</a></li>
+                        @endcan
+                        @can('createUnit')
                         <li><a href="/unit">Manage Units</a></li> 
+                        @endcan
+                        @can('createCategory')
                         <li><a href="/categories">Manage Categories</a></li> 
+                        @endcan
                     </ul>
                 </li>
                 

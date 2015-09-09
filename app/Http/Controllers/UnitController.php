@@ -11,6 +11,7 @@ class UnitController extends Controller {
 
 	public function index()
 	{
+            $this->authorize('createUnit');
             $units = Unit::all();
             
             $view = view('pages.lookup', ['param' => $units, 'path' => 'unit']);
@@ -20,7 +21,7 @@ class UnitController extends Controller {
 
 	public function store(unitRequest $request)
 	{
-            
+            $this->authorize('add',[]);
             $name = $request->input('name');
             $unit = new Unit;
             $unit->name = $name;
@@ -37,9 +38,10 @@ class UnitController extends Controller {
 
 	public function edit($id)
 	{
+                
 		$unit = Unit::find($id);
                 $view = view('pages.editLookup', ['param' => $unit, 'path' => 'unit']);
-
+                $this->authorize('edit',$unit);
                 return $view;
 	}
 
