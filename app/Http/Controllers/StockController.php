@@ -52,6 +52,9 @@ class StockController extends Controller {
     public function update(Request $request,$id)
     {
         $station = Station::findOrFail($id);
+        
+        $this->authorize('viewStock',$station);
+        
         $input = $request->all();
         
         $user = $request->user();
@@ -108,6 +111,7 @@ class StockController extends Controller {
     public function editWarnings($id)
     {
         $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
                 
         return view('pages.listStockWarnings',['station' => $station]);
     }
@@ -116,7 +120,7 @@ class StockController extends Controller {
     {
         $station = Station::findOrFail($id);
         $input = $request->all();
-        
+        $this->authorize('viewStock',$station);
         //return $input;
         
         foreach($request->package as $index => $package){

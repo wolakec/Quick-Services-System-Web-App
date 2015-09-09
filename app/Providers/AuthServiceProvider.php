@@ -27,6 +27,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         parent::registerPolicies($gate);
+        
+        $gate->define('createNotifications', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
 
     }
 }

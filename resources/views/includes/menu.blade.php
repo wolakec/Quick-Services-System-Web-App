@@ -94,6 +94,7 @@
                     </ul>
                 </li>
                 
+                @can('createNotifications')
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Notifications <b class="caret"></b></a>
@@ -101,6 +102,7 @@
                         <li><a href="{{ url('/notifications/add') }}" >Create Broadcast</a></li>
                     </ul>
                 </li>
+                @endcan
             </ul>
             <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
                 <div class="form-group">
