@@ -32,7 +32,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('/employees') }}">List of Employees</a></li>
                                 <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
-                                <li class="dropdown-submenu"><a href="#">more shit</a>
+                                <li class="dropdown-submenu"><a href="#">more stuff</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Second level</a></li>
                                         <li><a href="#">Second level</a></li>
@@ -43,13 +43,21 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Cars</a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/makes') }}">List of Makes</a></li>
-                                <li><a href="{{ url('/models') }}">List of Models</a></li>
-                                <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                                @can('viewMakes')
+                                    <li><a href="{{ url('/makes') }}">List of Makes</a></li>
+                                @endcan
+                                @can('viewModels')
+                                    <li><a href="{{ url('/models') }}">List of Models</a></li>
+                                @endcan
+                                @can('addModel')
+                                    <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                                @endcan
                             </ul>
                         </li>
                         <li><a href="{{ url('/locations') }}"> Locations</a></li>
-                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                        @can('addQr')
+                            <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                        @endcan
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -70,7 +78,9 @@
                         Rewards <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/rewards') }}" >View Rewards</a></li>
+                        @can('addReward')
                         <li><a href="{{ url('/rewards/add') }}" >Add Rewards</a></li>
+                        @endcan
                     </ul>
                 </li>
                 

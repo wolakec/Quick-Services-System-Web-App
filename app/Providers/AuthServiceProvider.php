@@ -5,6 +5,10 @@ namespace App\Providers;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\Make;
+use App\VehicleModel;
+use App\User;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         'App\Station' => 'App\Policies\StationPolicy',
         'App\Reward' => 'App\Policies\RewardPolicy',
+        'App\Employee' => 'App\Policies\EmployeePolicy',
     ];
 
     /**
@@ -34,6 +39,34 @@ class AuthServiceProvider extends ServiceProvider
             }else{
                 return false;
             }
+        });
+        
+        $gate->define('viewModels', function(User $user){
+            return true;
+        });
+        
+        $gate->define('viewMakes', function(User $user){
+            return true;
+        });
+        
+        $gate->define('addMake', function(User $user){
+            return true;
+        });
+        
+        $gate->define('addModel', function(User $user){
+            return true;
+        });
+        
+        $gate->define('editModel', function(User $user, VehicleModel $model){
+            return $user->isAdmin();
+        });
+        
+        $gate->define('editMake', function(User $user,Make $make){
+            return $user->isAdmin();
+        });
+        
+        $gate->define('addQr', function(User $user){
+            return $user->isAdmin();
         });
 
     }

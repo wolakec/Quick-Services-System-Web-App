@@ -17,7 +17,7 @@ class StockPolicy
     public function before($user, $ability)
     {
         if ($user->isAdmin()) {
-            return true;
+            //return true;
         }
     }
     

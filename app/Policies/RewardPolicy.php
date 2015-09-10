@@ -23,7 +23,12 @@ class RewardPolicy
         }
     }
     
-    public function add(User $user, Reward $reward)
+    public function view(User $user)
+    {
+        
+    }
+    
+    public function addReward(User $user)
     {
         return $user->isAdmin();
     }

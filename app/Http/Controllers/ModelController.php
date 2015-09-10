@@ -34,7 +34,9 @@ class ModelController extends Controller {
     
     public function edit($id)
     {
-        $model = VehicleModel::find($id);
+        $model = VehicleModel::findOrFail($id);
+        
+        $this->authorize('editModel',$model);
         $model->load('make');
 
         $makes = Make::all();
@@ -47,15 +49,19 @@ class ModelController extends Controller {
     
     public function update($id,Request $request)
     {
-            $name = $request->input('name');
-            $id = (int)$request->input('id');
+        $model = VehicleModel::findOrFail($id);
+        
+        $this->authorize('editModel',$model);
+        
+        $name = $request->input('name');
+        $id = (int)$request->input('id');
 
-            $model = VehicleModel::find($id);
-            $model->name = $name;
-            $model->make_id = $request->input('make_id');
 
-            $model->save();
-            return redirect('models');
+        $model->name = $name;
+        $model->make_id = $request->input('make_id');
+
+        $model->save();
+        return redirect('models');
     }
    
 }
