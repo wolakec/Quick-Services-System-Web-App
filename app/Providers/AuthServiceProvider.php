@@ -21,6 +21,16 @@ class AuthServiceProvider extends ServiceProvider
         'App\Station' => 'App\Policies\StationPolicy',
         'App\Reward' => 'App\Policies\RewardPolicy',
         'App\Employee' => 'App\Policies\EmployeePolicy',
+        'App\Products' => 'App\Policies\ProductsPolicy',
+        'App\Unit' => 'App\Policies\UnitPolicy',
+        'App\Category' => 'App\Policies\CategoryPolicy',
+        'App\Service' => 'App\Policies\ServicePolicy',
+        'App\ServiceType' => 'App\Policies\ServicePolicy',
+        'App\ServiceTypevalue' => 'App\Policies\ServicePolicy',
+        'App\DefaultReminderPreference' => 'App\Policies\PreferencePolicy',
+        
+
+        
     ];
 
     /**
@@ -69,5 +79,49 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin();
         });
 
+        $gate->define('createproducts', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        
+        $gate->define('createUnit', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        
+        $gate->define('createCategory', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $gate->define('createServiceValue', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $gate->define('createServiceTypes', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $gate->define('addPreference', function($user){
+            if($user->isAdmin()){
+                return true;
+            }else{
+                return false;
+            }
+        });
     }
 }

@@ -11,6 +11,7 @@ class ServiceTypesController extends Controller {
 
 	public function index()
 	{
+            $this->authorize('createServiceTypes');
             $types = ServiceType::all();
             
             $view = view('pages.lookup', ['param' => $types, 'path' => 'services/types']);
@@ -24,7 +25,6 @@ class ServiceTypesController extends Controller {
 
             $type = new ServiceType;
             $type->name = $name;
-          
             $type->save();
 
             return redirect('services/types');
@@ -39,6 +39,7 @@ class ServiceTypesController extends Controller {
 	{
 		$type = ServiceType::find($id);
                 $view = view('pages.editLookup', ['param' => $type, 'path' => 'services/types']);
+                $this->authorize('edit',$type);
 
                 return $view;
 	}
@@ -50,7 +51,10 @@ class ServiceTypesController extends Controller {
 
             $type = ServiceType::find($id);
             $type->name = $name;
+            
+            $this->authorize('edit',$type);
 
+            
             $type->save();
             return redirect('services/types');
 	}

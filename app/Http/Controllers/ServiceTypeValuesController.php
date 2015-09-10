@@ -6,6 +6,7 @@ use App\Http\Requests\serviceValueRequest;
 use Illuminate\Http\Request;
 use App\ServiceType;
 use App\ServiceTypeValue;
+use App\Service;
 
 class ServiceTypeValuesController extends Controller {
     
@@ -19,6 +20,7 @@ class ServiceTypeValuesController extends Controller {
     
     public function add()
     {
+        $this->authorize('createServiceValue');
         $values = ServiceTypeValue::all('service_type_id');
        
         $types = ServiceType::whereNotIn('id',$values)->get();
@@ -36,8 +38,9 @@ class ServiceTypeValuesController extends Controller {
     
     public function edit($id)
     {
-        $value = ServiceTypeValue::findOrFail($id);
         
+        $value = ServiceTypeValue::findOrFail($id);
+        $this->authorize('edit',$value);
         return view('pages.editServiceTypeValue', ['value' => $value]);
     }
     
@@ -45,7 +48,7 @@ class ServiceTypeValuesController extends Controller {
     {
         $value = ServiceTypeValue::findOrFail($id);
         $value->update($request->all());
-        
+        $this->authorize('edit',$value);
         return redirect('services/values');
     }
     

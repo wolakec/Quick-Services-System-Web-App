@@ -21,6 +21,8 @@ class ProductController extends Controller {
 
 	public function create()
 	{
+                $this->authorize('createproducts');
+                
                 $units = Unit::all();
                 $categories = Category::all();
 		return view('pages.addProduct',['units' => $units, 'categories' => $categories]);
@@ -50,6 +52,8 @@ class ProductController extends Controller {
             $product->load('packages');
             $units = Unit::all();
             $categories = Category::all();
+            
+            $this->authorize('edit',$product);
             
             return view('pages.editProduct',['product' => $product,'id' => $id,'units' => $units, 'categories' => $categories]);
 	}

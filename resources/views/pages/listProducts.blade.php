@@ -26,7 +26,9 @@
                                 <td> {{$product->code}}</td>
                                 <td ><a href="#" data-toggle="modal" data-target="#{{ $product->id }}" >{{$product->name}}</a></td>
                                 <td>{{$product->specification}}</td>
+                                @can('edit',$products)
                                 <td><a href="{{ url('/product/'.$product->id.'/edit') }}">Edit</a></td>
+                                @endcan
                             </tr>
                             
                            
