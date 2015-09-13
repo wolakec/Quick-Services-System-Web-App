@@ -17,11 +17,13 @@ class RewardController extends Controller {
     
     public function add()
     {
+        $this->authorize('addReward', []);
         return view('pages.addReward');
     }
     
     public function store(rewardsRequest $request)
     {
+        $this->authorize('addReward', []);
         $reward = Reward::create($request->all());
         $reward->save();
         
@@ -30,7 +32,7 @@ class RewardController extends Controller {
     
     public function edit($id)
     {
-        $reward = Reward::find($id);
+        $reward = Reward::findOrFail($id);
         $this->authorize('edit', $reward);
         
         return view('pages.editReward',['reward' => $reward, 'id' => (int) $id]);

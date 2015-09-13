@@ -22,17 +22,26 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Stations</a>
                             <ul class="dropdown-menu">
+                                @can('listStations')
                                 <li><a href="{{ url('/stations') }}">List of Stations</a></li>
-                        <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
-                        <li><a href="{{ url('/stations/map') }}">View Map</a></li>
+                                @endcan
+                                @can('addStation')
+                                    <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
+                                @endcan
+                                <li><a href="{{ url('/stations/map') }}">View Map</a></li>
                             </ul>
                         </li>
+                         @can('listEmployees')
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Employees</a>
                             <ul class="dropdown-menu">
+                                @can('listEmployees')
                                 <li><a href="{{ url('/employees') }}">List of Employees</a></li>
+                                @endcan
+                                @can('addEmployee')
                                 <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
-                                <li class="dropdown-submenu"><a href="#">more shit</a>
+                                @endcan
+                                <li class="dropdown-submenu"><a href="#">more stuff</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Second level</a></li>
                                         <li><a href="#">Second level</a></li>
@@ -40,16 +49,25 @@
                                 </li>
                             </ul>
                         </li>
+                        @endcan
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Cars</a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/makes') }}">List of Makes</a></li>
-                                <li><a href="{{ url('/models') }}">List of Models</a></li>
-                                <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                                @can('viewMakes')
+                                    <li><a href="{{ url('/makes') }}">List of Makes</a></li>
+                                @endcan
+                                @can('viewModels')
+                                    <li><a href="{{ url('/models') }}">List of Models</a></li>
+                                @endcan
+                                @can('addModel')
+                                    <li><a href="{{ url('/models/add') }}">Add Model</a></li>
+                                @endcan
                             </ul>
                         </li>
                         <li><a href="{{ url('/locations') }}"> Locations</a></li>
-                        <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                        @can('addQr')
+                            <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                        @endcan
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -76,7 +94,9 @@
                         Rewards <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/rewards') }}" >View Rewards</a></li>
+                        @can('addReward')
                         <li><a href="{{ url('/rewards/add') }}" >Add Rewards</a></li>
+                        @endcan
                     </ul>
                 </li>
                 
@@ -84,15 +104,15 @@
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Manage Products <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/product">List of products</a></li>
+                        <li><a href="{{ url('/product') }}">List of products</a></li>
                      @can('createproducts')
-                        <li><a href="/product/add">Add new product</a></li>
+                        <li><a href="{{ url('/product/add') }}">Add new product</a></li>
                         @endcan
                         @can('createUnit')
-                        <li><a href="/unit">Manage Units</a></li> 
+                        <li><a href="{{ url('/unit') }}">Manage Units</a></li> 
                         @endcan
                         @can('createCategory')
-                        <li><a href="/categories">Manage Categories</a></li> 
+                        <li><a href="{{ url('/categories') }}">Manage Categories</a></li> 
                         @endcan
                     </ul>
                 </li>

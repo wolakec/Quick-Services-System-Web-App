@@ -3,9 +3,9 @@
 namespace App\Policies;
 
 use App\User;
-use App\DefaultReminderPreference;
+use App\Location;
 
-class PreferencePolicy
+class LocationPolicy
 {
     /**
      * Create a new policy instance.
@@ -18,20 +18,24 @@ class PreferencePolicy
     }
     
     public function add(User $user){
-        return $user->isAdmin();
+        if($user->isAdmin()){
+            return true;
+        }
     }
     
-    public function store(User $user){
-        return $user->isAdmin();
-    }
-    
-    public function edit(User $user, DefaultReminderPreference $preference)
+    public function store(User $user)
     {
         return $user->isAdmin();
     }
     
-    public function update(User $user, DefaultReminderPreference $preference)
+    public function edit(User $user, Location $location)
     {
         return $user->isAdmin();
     }
+    
+    public function update(User $user, Location $location)
+    {
+        return $user->isAdmin();
+    }
+        
 }

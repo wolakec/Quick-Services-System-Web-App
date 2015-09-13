@@ -20,6 +20,8 @@ class MakeController extends Controller {
 
 	public function store(makeRequest $request)
 	{
+            $this->authorize('addMake',[]);
+            
             $name = $request->input('name');
 
             $make = new Make;
@@ -37,18 +39,25 @@ class MakeController extends Controller {
 
 	public function edit($id)
 	{
-		$make = Make::find($id);
-                $view = view('pages.editLookup', ['param' => $make, 'path' => 'makes']);
+            $make = Make::findOrFail($id);
+            
+            $this->authorize('editMake',$make);
+            
+            
+            $view = view('pages.editLookup', ['param' => $make, 'path' => 'makes']);
 
-                return $view;
+            return $view;
 	}
 
 	public function update($id,Request $request)
 	{
+            $make = Make::findOrFail($id);
+            $this->authorize('editMake',$make);
+             
             $name = $request->input('name');
             $id = (int)$request->input('id');
 
-            $make = Make::find($id);
+            
             $make->name = $name;
 
             $make->save();

@@ -19,6 +19,7 @@
                            @endif
                         </td>
                         <td>{{ $value->points }}</td>
+                        
                         <td><a href="{{ url('/services/values/'.$value->id.'/edit') }}">Edit</a></td>
                     </tr>
                     @endforeach

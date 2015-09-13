@@ -5,6 +5,10 @@ namespace App\Providers;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\Make;
+use App\VehicleModel;
+use App\User;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -16,14 +20,15 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         'App\Station' => 'App\Policies\StationPolicy',
         'App\Reward' => 'App\Policies\RewardPolicy',
-        'App\Products' => 'App\Policies\ProductsPolicy',
+        'App\Employee' => 'App\Policies\EmployeePolicy',
+        'App\Product' => 'App\Policies\ProductsPolicy',
         'App\Unit' => 'App\Policies\UnitPolicy',
         'App\Category' => 'App\Policies\CategoryPolicy',
         'App\Service' => 'App\Policies\ServicePolicy',
         'App\ServiceType' => 'App\Policies\ServiceTypePolicy',
         'App\ServiceTypevalue' => 'App\Policies\ServiceTypevaluePolicy',
         'App\DefaultReminderPreference' => 'App\Policies\PreferencePolicy',
-        
+        'App\Location' => 'App\Policies\LocationPolicy',
 
         
     ];
@@ -44,6 +49,41 @@ class AuthServiceProvider extends ServiceProvider
             }else{
                 return false;
             }
+        });
+        
+        $gate->before(function ($user, $ability) {
+            if ($user->isAdmin()) {
+                return true;
+            }
+        });
+
+        
+        $gate->define('viewModels', function(User $user){
+            return true;
+        });
+        
+        $gate->define('viewMakes', function(User $user){
+            return true;
+        });
+        
+        $gate->define('addMake', function(User $user){
+            return true;
+        });
+        
+        $gate->define('addModel', function(User $user){
+            return true;
+        });
+        
+        $gate->define('editModel', function(User $user, VehicleModel $model){
+            return $user->isAdmin();
+        });
+        
+        $gate->define('editMake', function(User $user,Make $make){
+            return $user->isAdmin();
+        });
+        
+        $gate->define('addQr', function(User $user){
+            return $user->isAdmin();
         });
 
         $gate->define('createproducts', function($user){
@@ -75,6 +115,18 @@ class AuthServiceProvider extends ServiceProvider
             }else{
                 return false;
             }
+        });
+        $gate->define('listStations', function($user){
+            return $user->isAdmin();
+        });
+        $gate->define('addStation', function($user){
+            return $user->isAdmin();
+        });
+        $gate->define('listEmployees', function($user){
+            return $user->isAdmin();
+        });
+        $gate->define('addEmployee', function($user){
+            return $user->isAdmin();
         });
         $gate->define('createServiceTypes', function($user){
             if($user->isAdmin()){

@@ -19,15 +19,19 @@ class DefaultReminderPreferencesController extends Controller {
     
     public function add()
     {
+        $this->authorize(new DefaultReminderPreference);
+        
         $preferences = DefaultReminderPreference::all('service_type_id');
         $types = ServiceType::whereNotIn('id',$preferences)->get();
         
-        $this->authorize('addPreference');
+        
         return view('pages.addDefaultReminderPreference', ['serviceTypes' => $types]);
     }
     
     public function store(preferencesRequest $request)
     {
+        $this->authorize(new DefaultReminderPreference);
+        
         $preference = DefaultReminderPreference::create($request->all());
         $preference->save();
         
@@ -37,6 +41,7 @@ class DefaultReminderPreferencesController extends Controller {
     public function edit($id)
     {
         $preference = DefaultReminderPreference::findOrFail($id);
+        $this->authorize($preference);
         
         return view('pages.editDefaultReminderPreference', ['preference' => $preference]);
     }
@@ -44,6 +49,8 @@ class DefaultReminderPreferencesController extends Controller {
     public function update(Request $request, $id)
     {
         $preference = DefaultReminderPreference::findOrFail($id);
+        
+        $this->authorize($preference);
         $preference->update($request->all());
         
         return redirect('services/preferences');
