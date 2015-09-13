@@ -136,11 +136,17 @@
                 </li>
                 @endcan
             </ul>
-            <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
-                <div class="form-group">
-                    <input type="text" placeholder="Search Here" class="form-control">
-                </div>
-            </form>
+            
+                    <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                        Account <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/changepassword">Change Password</a></li>
+                        <li><a href="/auth/logout">Logout</a></li>
+                    </ul>
+                </li>
+                    </ul>
         </div>
     </div>
 </nav>

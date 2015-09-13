@@ -7,6 +7,7 @@ use App\Package;
 use App\Product;
 Route::get('/invoice','AppServicesController@invoice');
 Route::get('/contactForm','AppServicesController@contact');
+Route::get('/changepassword','ChangePassword@index');
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
