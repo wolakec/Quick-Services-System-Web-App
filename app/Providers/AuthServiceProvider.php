@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\ServiceType' => 'App\Policies\ServiceTypePolicy',
         'App\ServiceTypevalue' => 'App\Policies\ServiceTypevaluePolicy',
         'App\DefaultReminderPreference' => 'App\Policies\PreferencePolicy',
-        
+        'App\Location' => 'App\Policies\LocationPolicy',
 
         
     ];
@@ -50,6 +50,13 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }
         });
+        
+        $gate->before(function ($user, $ability) {
+            if ($user->isAdmin()) {
+                return true;
+            }
+        });
+
         
         $gate->define('viewModels', function(User $user){
             return true;

@@ -17,6 +17,16 @@ class EmployeePolicy
         
     }
     
+    public function index(User $user)
+    {
+       return $user->isAdmin();
+    }
+    
+    public function add(User $user)
+    {
+       return $user->isAdmin();
+    }
+    
     public function view(User $user,Employee $employee)
     {
        return $user->isAdmin();

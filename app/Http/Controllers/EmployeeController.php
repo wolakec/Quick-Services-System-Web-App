@@ -16,7 +16,7 @@ class EmployeeController extends Controller {
     
     public function index()
     {
-        $this->authorize('listEmployees');
+        $this->authorize(new Employee);
         $employees = Employee::all();
         
         return view('pages.listEmployees',['employees' => $employees]);

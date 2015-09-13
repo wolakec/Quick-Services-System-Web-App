@@ -20,6 +20,7 @@ class LocationController extends Controller {
 
 	public function store(Request $request)
 	{
+            $this->authorize(new Location);
             $name = $request->input('name');
 
             $location = new Location;
@@ -37,7 +38,8 @@ class LocationController extends Controller {
 
 	public function edit($id)
 	{
-		$location = Location::find($id);
+		$location = Location::findOrFail($id);
+                $this->authorize($location);
                 $view = view('pages.editLookup', ['param' => $location, 'path' => 'locations']);
 
                 return $view;
@@ -48,7 +50,8 @@ class LocationController extends Controller {
             $name = $request->input('name');
             $id = (int)$request->input('id');
 
-            $location = Location::find($id);
+            $location = Location::findOrFail($id);
+            $this->authorize($location);
             $location->name = $name;
 
             $location->save();

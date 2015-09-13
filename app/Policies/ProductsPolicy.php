@@ -21,6 +21,7 @@ class ProductsPolicy
             return true;
         }
     }
+    
     public function edit(User $user,Product $product){
         
         if($user->isAdmin()){
