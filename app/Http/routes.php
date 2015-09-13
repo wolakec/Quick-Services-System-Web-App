@@ -145,6 +145,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => '/statistics'], function(){
          Route::get('/makes','MakeStatisticsController@index');
          Route::get('/models','ModelStatisticsController@index');
+         Route::get('/services','ServiceStatisticsController@index');
     });
 
 });
