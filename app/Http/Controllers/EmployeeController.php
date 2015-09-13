@@ -24,7 +24,7 @@ class EmployeeController extends Controller {
     
     public function add()
     {
-        $this->authorize('addEmployees',[]);
+        $this->authorize('addEmployee');
         $locations = Location::all();
         $stations = Station::all();
         
@@ -33,7 +33,7 @@ class EmployeeController extends Controller {
     
     public function store(employeeRequest $request)
     {
-        $this->authorize('addEmployees',[]);
+        $this->authorize('addEmployee');
         $generated = strtoupper(str_random(8));
         $role = Role::where('name','=','station_employee')->first();
         $user = User::create($request->all());
@@ -52,6 +52,7 @@ class EmployeeController extends Controller {
     public function edit($id)
     {
         $employee = Employee::findOrFail($id);
+        $this->authorize($employee);
         
         $locations = Location::all();
         $stations = Station::all();
@@ -63,6 +64,7 @@ class EmployeeController extends Controller {
     {
         
         $employee = Employee::findOrFail($id);
+        $this->authorize($employee);
         
         $employee->update($request->all());
      

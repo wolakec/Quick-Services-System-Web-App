@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stock/{id}/warnings/update','StockController@editWarnings');
     Route::post('/stock/{id}/warnings/update','StockController@updateWarnings');
     
-    Route::get('/locations',['middleware' => 'role:station_employee', 'uses' => 'LocationController@index']);
+    Route::get('/locations','LocationController@index');
     Route::post('/locations/add', 'LocationController@store');
     Route::get('/locations/{id})', 'LocationController@view');
     Route::get('/locations/{id}/edit', 'LocationController@edit');

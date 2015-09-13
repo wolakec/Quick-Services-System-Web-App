@@ -20,7 +20,7 @@
                         </td>
                         <td>{{ $model->name }}</td>
                         <td>
-                            @can('editModel')
+                            @can('editModel',$model)
                             <a href="{{ url('/models/'.$model->id.'/edit') }}">Edit</a>
                             @endcan
                         </td>
