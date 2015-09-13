@@ -5,10 +5,11 @@ use App\Make;
 use App\VehicleModel;
 use App\Package;
 use App\Product;
-Route::get('/invoice','AppServicesController@invoice');
+
 Route::get('/contactForm','AppServicesController@contact');
 Route::get('/changepassword','ChangePassword@index');
 Route::get('/emphome','EmployeeHomePageController@index');
+
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
@@ -140,6 +141,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/alerts', 'AdminAlertController@index');
     Route::get('/alerts/pending', 'AdminAlertController@listPending');
     Route::get('/alerts/{id}', 'AdminAlertController@view');
+    
+    Route::group(['prefix' => '/statistics'], function(){
+         Route::get('/makes','MakeStatisticsController@index');
+         Route::get('/models','ModelStatisticsController@index');
+    });
 
 });
 
