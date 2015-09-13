@@ -21,7 +21,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Station' => 'App\Policies\StationPolicy',
         'App\Reward' => 'App\Policies\RewardPolicy',
         'App\Employee' => 'App\Policies\EmployeePolicy',
-        'App\Products' => 'App\Policies\ProductsPolicy',
+        'App\Product' => 'App\Policies\ProductsPolicy',
         'App\Unit' => 'App\Policies\UnitPolicy',
         'App\Category' => 'App\Policies\CategoryPolicy',
         'App\Service' => 'App\Policies\ServicePolicy',

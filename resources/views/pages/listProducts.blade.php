@@ -28,7 +28,7 @@
                                 <td>{{$product->specification}}</td>
                                 
                                 <td>
-                                    @can('edit',$products)
+                                    @can('edit',$product)
                                     <a href="{{ url('/product/'.$product->id.'/edit') }}">Edit</a>
                                     @else
                                     No Action

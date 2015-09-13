@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Policies;
+use App\Product;
+use App\User;
 
 class ProductsPolicy
 {
@@ -19,7 +21,7 @@ class ProductsPolicy
             return true;
         }
     }
-    public function edit(User $user){
+    public function edit(User $user,Product $product){
         
         if($user->isAdmin()){
             return true;
