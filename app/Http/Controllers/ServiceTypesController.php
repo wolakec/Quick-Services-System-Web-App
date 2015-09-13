@@ -52,7 +52,7 @@ class ServiceTypesController extends Controller {
             $name = $request->input('name');
             $id = (int)$request->input('id');
 
-            $type = ServiceType::find($id);
+            $type = ServiceType::findOrFail($id);
             $type->name = $name;
             
             $this->authorize('edit',$type);

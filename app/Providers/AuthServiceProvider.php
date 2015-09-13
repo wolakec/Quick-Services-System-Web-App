@@ -25,8 +25,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Unit' => 'App\Policies\UnitPolicy',
         'App\Category' => 'App\Policies\CategoryPolicy',
         'App\Service' => 'App\Policies\ServicePolicy',
-        'App\ServiceType' => 'App\Policies\ServicePolicy',
-        'App\ServiceTypevalue' => 'App\Policies\ServicePolicy',
+        'App\ServiceType' => 'App\Policies\ServiceTypePolicy',
+        'App\ServiceTypevalue' => 'App\Policies\ServiceTypevaluePolicy',
         'App\DefaultReminderPreference' => 'App\Policies\PreferencePolicy',
         
 
