@@ -16,6 +16,7 @@ class EmployeeController extends Controller {
     
     public function index()
     {
+        $this->authorize('listEmployees');
         $employees = Employee::all();
         
         return view('pages.listEmployees',['employees' => $employees]);
@@ -23,6 +24,7 @@ class EmployeeController extends Controller {
     
     public function add()
     {
+        $this->authorize('addEmployees',[]);
         $locations = Location::all();
         $stations = Station::all();
         
@@ -31,7 +33,7 @@ class EmployeeController extends Controller {
     
     public function store(employeeRequest $request)
     {
-        
+        $this->authorize('addEmployees',[]);
         $generated = strtoupper(str_random(8));
         $role = Role::where('name','=','station_employee')->first();
         $user = User::create($request->all());

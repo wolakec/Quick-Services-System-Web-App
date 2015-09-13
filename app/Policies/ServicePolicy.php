@@ -21,7 +21,7 @@ class ServicePolicy
         }
     }
     
-    public function edit(User $user){
+    public function edit(User $user, $service){
         
         if($user->isAdmin()){
             return true;

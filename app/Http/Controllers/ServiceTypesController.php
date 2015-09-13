@@ -37,9 +37,12 @@ class ServiceTypesController extends Controller {
 
 	public function edit($id)
 	{
-		$type = ServiceType::find($id);
-                $view = view('pages.editLookup', ['param' => $type, 'path' => 'services/types']);
+		$type = ServiceType::findOrFail($id);
                 $this->authorize('edit',$type);
+                
+                
+                $view = view('pages.editLookup', ['param' => $type, 'path' => 'services/types']);
+                
 
                 return $view;
 	}

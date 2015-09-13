@@ -109,6 +109,18 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }
         });
+        $gate->define('listStations', function($user){
+            return $user->isAdmin();
+        });
+        $gate->define('addStation', function($user){
+            return $user->isAdmin();
+        });
+        $gate->define('listEmployees', function($user){
+            return $user->isAdmin();
+        });
+        $gate->define('addEmployee', function($user){
+            return $user->isAdmin();
+        });
         $gate->define('createServiceTypes', function($user){
             if($user->isAdmin()){
                 return true;

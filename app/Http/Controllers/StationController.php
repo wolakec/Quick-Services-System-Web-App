@@ -15,6 +15,7 @@ class StationController extends Controller {
     
     public function index()
     {
+        $this->authorize('listStations');
         $stations = Station::all();
         
         return view('pages.listStations',['stations' => $stations]);
@@ -22,6 +23,7 @@ class StationController extends Controller {
     
     public function add()
     {
+        $this->authorize('addStation');
         $locations = Location::all();
         $serviceTypes = ServiceType::all();
         
@@ -30,6 +32,7 @@ class StationController extends Controller {
     
     public function store(stationRequest $request)
     {   
+       $this->authorize('storeStation', []);
        $station = Station::create($request->all());
        $station->serviceTypes()->attach($request->input('service_type_id'));
        $station->save();
