@@ -18,9 +18,9 @@
         <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3>111</h3>
-                  <p>Registrations today </p>
+                  <p>car Models</p>
                 </div>
-                <a href="#" class="small-box-footer font25">More info &nbsp;<i class="glyphicon glyphicon-plus"></i></a>
+                <a href="#" class="small-box-footer font25">Add New Car Model &nbsp;<i class="glyphicon glyphicon-plus"></i></a>
               </div>
     </div>
         
@@ -28,9 +28,9 @@
         <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3>111<sup style="font-size: 20px">SDG</sup></h3>
-                  <p>Sales Value</p>
+                  <p>Products</p>
                 </div>
-                <a href="#" class="small-box-footer font25">More info <i class="glyphicon glyphicon-plus"></i></a>
+                <a href="#" class="small-box-footer font25">See the stock <i class="glyphicon glyphicon-plus"></i></a>
               </div>
     </div>
         
