@@ -122,6 +122,7 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('addStation', function($user){
             return $user->isAdmin();
         });
+        
         $gate->define('listEmployees', function($user){
             return $user->isAdmin();
         });

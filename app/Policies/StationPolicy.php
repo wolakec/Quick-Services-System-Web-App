@@ -18,7 +18,9 @@ class StationPolicy
     
     public function before($user, $ability)
     {
-        return $user->isAdmin();
+        if($user->isAdmin()){
+            return true;
+        }
     }
     
     public function addStation(User $user)
@@ -43,9 +45,16 @@ class StationPolicy
     
     public function viewStock(User $user, Station $station)
     {
-        if($user->isAdmin()){
-            return true;
-        }
+        return $user->employee->station_id === $station->id;
+    }
+    
+    public function editStock(User $user, Station $station)
+    {
+        return $user->employee->station_id === $station->id;
+    }
+    
+    public function updateStock(User $user, Station $station)
+    {
         return $user->employee->station_id === $station->id;
     }
     
