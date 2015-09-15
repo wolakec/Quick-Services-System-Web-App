@@ -131,6 +131,7 @@
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Notifications <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{{ url('/notifications') }}" >Broadcast History</a></li>
                         <li><a href="{{ url('/notifications/add') }}" >Create Broadcast</a></li>
                     </ul>
                 </li>

@@ -137,6 +137,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/notifications/add', 'BroadcastController@add');
     Route::post('/notifications/add', 'BroadcastController@store');
+    Route::get('/notifications', 'BroadcastHistoryController@index');
     
     Route::get('/alerts', 'AdminAlertController@index');
     Route::get('/alerts/pending', 'AdminAlertController@listPending');
@@ -147,6 +148,9 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/models','ModelStatisticsController@index');
          Route::get('/services','ServiceStatisticsController@index');
          Route::get('/products','ProductStatisticsController@index');
+         Route::get('/sales','SalesStatisticsController@index');
+         Route::get('/sales/purchases','SalesStatisticsController@withPurchases');
+          Route::get('/purchases','PurchaseStatisticsController@index');
          
          Route::get('/stations/services','StationsStatisticsController@services');
          Route::get('/stations/sales','StationsStatisticsController@sales');
