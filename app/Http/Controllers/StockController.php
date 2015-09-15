@@ -24,6 +24,7 @@ class StockController extends Controller {
     public function edit($id)
     {
         $station = Station::findOrFail($id);
+        $this->authorize('editStock',$station);
                 
         return view('pages.listStock',['station' => $station]);
     }
@@ -53,7 +54,7 @@ class StockController extends Controller {
     {
         $station = Station::findOrFail($id);
         
-        $this->authorize('viewStock',$station);
+        $this->authorize('updateStock',$station);
         
         $input = $request->all();
         

@@ -146,6 +146,10 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/makes','MakeStatisticsController@index');
          Route::get('/models','ModelStatisticsController@index');
          Route::get('/services','ServiceStatisticsController@index');
+         Route::get('/products','ProductStatisticsController@index');
+         
+         Route::get('/stations/services','StationsStatisticsController@services');
+         Route::get('/stations/sales','StationsStatisticsController@sales');
     });
 
 });
