@@ -179,6 +179,13 @@ h4{
 .font25{
     font-size: 25px;
 }
+.chart-con-div{
+    min-height: 500px;
+}
+#chart-div {
+    width: 100% !important;
+    //height: 100% !important;
+}
 //////////////////////////////code for multi drop down
 
 
