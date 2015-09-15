@@ -30,7 +30,7 @@ class ServiceStatisticsController extends Controller {
         
         $chart = Lava::PieChart('Services');
         $chart->datatable($servicesTable);
-               
+      
         return view('pages.viewServiceStatistics',['chart' => $chart]);
     }
     
