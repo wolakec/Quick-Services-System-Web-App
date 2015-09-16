@@ -10,7 +10,7 @@
                   <h3>111</h3>
                   <p>Transactions of the day</p>
                 </div>
-            <a href="#" class="small-box-footer font25">New Transaction &nbsp;<i class="glyphicon glyphicon-plus"></i></a>
+            <a href="{{ url('/transactions/add') }}" class="small-box-footer font25">New Transaction &nbsp;<i class="glyphicon glyphicon-plus"></i></a>
               </div>
     </div>
         
@@ -27,10 +27,10 @@
         <div class="col-md-3">
         <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>111<sup style="font-size: 20px">SDG</sup></h3>
+                  <h3>{{ $salesVal }}<sup style="font-size: 20px">SDG</sup></h3>
                   <p>Products</p>
                 </div>
-                <a href="#" class="small-box-footer font25">See the stock <i class="glyphicon glyphicon-plus"></i></a>
+                <a href="{{ url('/stock/'.$station->id) }}" class="small-box-footer font25">See the stock <i class="glyphicon glyphicon-plus"></i></a>
               </div>
     </div>
         

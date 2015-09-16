@@ -84,7 +84,25 @@ class TransactionController extends Controller {
                     $alert->save();
                 }
             }
+            
+            return redirect('/transactions/'.$transaction->id.'/invoice');
 	}
+        
+        public function view($id)
+        {
+            $transaction = Transaction::findOrFail($id);
+            
+            
+            $details = $transaction->details;
+            $details->load('transaction','package.product','package.unit','transaction.station','transaction.employee');
+        
+            $grandTotal = 0;
+            foreach($details as $detail){
+                $grandTotal += $detail->total_price;
+            }
+            
+            return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $transaction->station]);
+        }
      
 
 }

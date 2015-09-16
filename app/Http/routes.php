@@ -6,18 +6,16 @@ use App\VehicleModel;
 use App\Package;
 use App\Product;
 
-Route::get('/contactForm','AppServicesController@contact');
-Route::get('/changepassword','ChangePassword@index');
-Route::get('/emphome','EmployeeHomePageController@index');
+
 
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
-    Route::get('/emp','DashboardController@second');
 
     Route::get('/transactions','TransactionController@index');
     Route::get('/transactions/add', 'TransactionController@add');
     Route::post('/transactions/add', 'TransactionController@store');
+    Route::get('/transactions/{id}/invoice', 'TransactionController@view');
     
     Route::get('/stock/{id}','StockController@view');
     Route::get('/stock/{id}/update','StockController@edit');
@@ -34,7 +32,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/locations/{id}/edit', 'LocationController@update');
 
     Route::get('/services','ServiceController@index');
-
     Route::get('/services/types','ServiceTypesController@index');
     Route::post('/services/types/add', 'ServiceTypesController@store');
     Route::get('/services/types/{id})', 'ServiceTypesController@view');
@@ -155,6 +152,10 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/stations/services','StationsStatisticsController@services');
          Route::get('/stations/sales','StationsStatisticsController@sales');
     });
+
+    Route::get('/contactForm','AppServicesController@contact');
+    Route::get('/changepassword','ChangePasswordController@index');
+    Route::post('/changepassword/update','ChangePasswordController@update');
 
 });
 
