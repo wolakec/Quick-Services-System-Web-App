@@ -14,12 +14,25 @@ use App\Package;
 use App\Transaction;
 use App\TransactionDetail;
 use App\Stock;
+use Auth;
 
 class TransactionController extends Controller {
 
 	public function index()
 	{
-           
+                $user = Auth::user();
+                
+                if($user->isAdmin()){
+                    $transactions = Transaction::all();
+                }
+                
+                if($user->isEmployee()){
+                    $transactions = Transaction::where('station_id','=',$user->employee->station->id)->get();
+                }
+                
+                $transactions->load('employee','station');
+                
+                return view('pages.listTransactions',['transactions' => $transactions]);
 	}
 
 	public function add()
