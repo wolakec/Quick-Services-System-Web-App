@@ -63,11 +63,41 @@
                                     <li><a href="{{ url('/models/add') }}">Add Model</a></li>
                                 @endcan
                             </ul>
+                            @can('SeeCharts')
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#" >Charts And statistics</a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-submenu"><a tabindex="-1" href="#">Cars</a>
+                                      <ul class="dropdown-menu">
+                                         <li><a href="{{ url('statistics/makes') }}">Makes</a></li>
+                                         <li><a href="{{ url('statistics/makes') }}">Models</a></li>
+                                      </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a tabindex="-1" href="#">Sales</a>
+                                    <ul class="dropdown-menu">
+                                         <li><a href="{{ url('statistics/sales') }}">Sales</a></li>
+                                         <li><a href="{{ url('statistics/sales/purchases') }}">Sales with Purchases</a></li>
+                                      </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a tabindex="-1" href="#">Stations</a>
+                                    <ul class="dropdown-menu">
+                                         <li><a href="{{ url('statistics/stations/services') }}">Service</a></li>
+                                         <li><a href="{{ url('statistics/stations/sales') }}">Sales</a></li>
+                                    </ul>
+                                    </li>
+                                    <li><a href="{{ url('statistics/products') }}">Products</a></li>
+                                    
+                                    <li><a href="{{ url('statistics/purchases') }}">Purchases</a></li>
+                                    <li><a href="{{ url('statistics/services') }}">Services</a></li>
+                                </ul>
+                            </li>
+                        @endcan
                         </li>
                         <li><a href="{{ url('/locations') }}"> Locations</a></li>
                         @can('addQr')
                             <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
                         @endcan
+                        
                     </ul>
                 </li>
                 <li class="dropdown">
