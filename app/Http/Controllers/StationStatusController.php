@@ -1,0 +1,37 @@
+<?php namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+
+use App\Station;
+use App\StationStatus;
+use DB;
+
+class StationStatusController extends Controller {
+    
+    public function index($id)
+    {
+        $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
+
+        if(!$station->status){
+            $status = new StationStatus;
+            $status->has_petrol = true;
+            $status->has_diesel = true;
+            $status->is_open = true;
+            $status->message = "";
+            
+            $status->save();
+            $station->status_id->$status->id;
+        }
+        
+        $status = $station->status;
+        dd($status);
+        
+        return view('pages.viewStationStatus',['station' => $station]);
+    }
+
+}
+

@@ -9,15 +9,17 @@
                 <thead>
                 <th>Employee</th>
                 <th>Station</th>
-                <th>Total</th>
                 <th>Date</th>
+                <th>Total</th>
+                <th>Action</th>
                 <tbody>
                     @foreach($transactions as $transaction)
                     <tr>
                         <td>{{ $transaction->employee->name }}</td>
                         <td>{{ $transaction->station->name }}</td>
-                        <td>-</td>
                         <td>{{ $transaction->created_at }}</td>
+                        <td>-</td> 
+                        <td><a href="{{ url('/transactions/'.$transaction->id.'/invoice') }}">View</a></td>
                     </tr>
                     @endforeach
                 </tbody>

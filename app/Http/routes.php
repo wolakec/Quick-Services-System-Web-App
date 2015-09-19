@@ -87,13 +87,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stations','StationController@index');
     Route::get('/stations/add', 'StationController@add');
     Route::post('/stations/add', 'StationController@store');
-    Route::get('/stations/{id})', 'StationController@view');
+    Route::get('/stations/{id}', 'StationController@view');
     Route::get('/stations/{id}/edit', 'StationController@edit');
     Route::post('/stations/{id}/edit', 'StationController@update');
     Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
     Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
     Route::get('/stations/{id}/invoices/daily', 'StationInvoiceController@viewDaily');
     Route::get('/stations/{id}/invoices/dailyIn', 'StationInvoiceController@viewDailyIn');
+    Route::get('/stations/{id}/status', 'StationStatusController@index');
     
     Route::get('/stations/alerts', 'EmployeeAlertController@index');
     Route::get('/stations/alerts/pending', 'EmployeeAlertController@listPending');

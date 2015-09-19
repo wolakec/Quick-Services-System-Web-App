@@ -40,24 +40,23 @@ class DashboardController extends Controller {
             
             $station = $user->employee->station;
             
-//            $noSales = TransactionDetail::where('transaction_details.created_at', '>=', new \DateTime('today'))
-//                    ->where('transaction_details.type','=','sale')
-//                    ->count();
-//
-//            $newClients = Client::where('created_at', '>=', new \DateTime('today'))
-//                    ->count();
-
             $salesVal = DB::table('transactions')
                 ->where('station_id','=',$station->id)
                 ->join('transaction_details','transaction_details.transaction_id','=','transactions.id')
                 ->where('transaction_details.type','=','sale')
                 ->where('transaction_details.created_at', '>=', new \DateTime('today'))
-                ->select(DB::RAW('sum(transaction_details.total_price) as total'))
-                ->get();
+                ->sum('transaction_details.total_price');
+            
+            $noSales = DB::table('transactions')
+                ->where('station_id','=',$station->id)
+                ->join('transaction_details','transaction_details.transaction_id','=','transactions.id')
+                ->where('transaction_details.type','=','sale')
+                ->where('transaction_details.created_at', '>=', new \DateTime('today'))
+                ->count();
             
             $alerts = Alert::where('status','=','pending')->count();
             
-            return view('pages.employeehomepage',['station' => $station, 'salesVal' => $salesVal[0]->total]);
+            return view('pages.employeehomepage',['station' => $station, 'salesVal' => $salesVal, 'noSales' => $noSales]);
         }
     }
    public function second()
