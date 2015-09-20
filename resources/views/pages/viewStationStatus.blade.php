@@ -17,36 +17,34 @@
                     <tr>
                         <td>{{ $status->message }}</td>
                         <td>
-                            @if($status->open)
-                            
+                            @if($status->is_open)
+                                Open
                             @else
-                            
+                                closed
                             @endif
                         </td>
                         <td>
-                            @if($alert->employee)
-                            {{ $alert->employee->name }}
+                           @if($status->has_diesel)
+                                Available
+                            @else
+                                Unavailable
                             @endif
+                        </td>
+                        <td>
+                           @if($status->has_petrol)
+                                Available
+                            @else
+                                Unavailable
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ url('/stations/'.$station->id.'/status/edit') }}">Update</a>
                         </td>
                     </tr>
                 </tbody>
                 </thead
             </table>
             
-            <table class="table table-bordered" id="EmployeesTable">
-                <thead>
-                <th>Message</th>
-                <th>Type</th>
-                <tbody>
-                    <tr>
-                        <td>{{ $status->message }}</td>
-                        <td>
-                            {{ $status->type }}
-                        </td>
-                    </tr>
-                </tbody>
-                </thead>
-            </table>
         </div>
     </div>
 </div>

@@ -24,14 +24,35 @@ class StationStatusController extends Controller {
             $status->message = "";
             
             $status->save();
-            $station->status_id->$status->id;
+            
+            $station->station_status_id = $status->id;
+            $station->save();
         }
         
         $status = $station->status;
-        dd($status);
         
-        return view('pages.viewStationStatus',['station' => $station]);
+        return view('pages.viewStationStatus',['station' => $station,'status' => $status]);
+    }
+    
+    public function edit($id)
+    {
+        $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
+        
+        $status = $station->status;
+        
+        return view('pages.editStationStatus',['station' => $station,'status' => $status]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
+
+        $status = $station->status;
+        $status->update($request->all());
+
+        return redirect('/stations/'.$id.'/status/');
+    }
 }
 

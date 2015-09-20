@@ -10,6 +10,7 @@ use App\Location;
 use App\Station;
 use App\Employee;
 use App\ServiceType;
+use App\StationStatus;
 
 class StationController extends Controller {
     
@@ -35,6 +36,18 @@ class StationController extends Controller {
        $this->authorize('storeStation', []);
        $station = Station::create($request->all());
        $station->serviceTypes()->attach($request->input('service_type_id'));
+       
+       $status = new StationStatus;
+            $status->has_petrol = true;
+            $status->has_diesel = true;
+            $status->is_open = true;
+            $status->message = "";
+            
+            $status->save();
+            
+            $station->station_status_id = $status->id;
+            $station->save();
+            
        $station->save();
        
        return redirect('stations');

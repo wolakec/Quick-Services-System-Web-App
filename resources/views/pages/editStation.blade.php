@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h4 style="text-align:center;">Add Station</h4><br/>
+            <h4 style="text-align:center;">Edit Station</h4><br/>
             <form name="addStation" class="form-horizontal" method="post" action="{{ url('/stations/'.$station->id.'/edit') }}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" placeholder="Name" value="{{ $station->name }}">

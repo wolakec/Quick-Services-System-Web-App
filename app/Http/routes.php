@@ -95,6 +95,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stations/{id}/invoices/daily', 'StationInvoiceController@viewDaily');
     Route::get('/stations/{id}/invoices/dailyIn', 'StationInvoiceController@viewDailyIn');
     Route::get('/stations/{id}/status', 'StationStatusController@index');
+    Route::get('/stations/{id}/status/edit', 'StationStatusController@edit');
+    Route::post('/stations/{id}/status/edit', 'StationStatusController@update');
     
     Route::get('/stations/alerts', 'EmployeeAlertController@index');
     Route::get('/stations/alerts/pending', 'EmployeeAlertController@listPending');

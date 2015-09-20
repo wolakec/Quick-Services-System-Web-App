@@ -29,7 +29,7 @@ class Station extends Model {
     
     public function status()
     {
-        return $this->belongsTo('App\StationStatus');
+        return $this->belongsTo('App\StationStatus','station_status_id');
     }
     
     public function serviceTypes()
