@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div id="print"  class="row">
+        <div   class="col-md-8 col-md-offset-2">
             <h4 style="text-align: center;">Services invoice</h4><br>
             <table class="table table-bordered table-hover" id="StationsTable">
                 <thead>
@@ -64,8 +64,10 @@
                 <p><strong>Time:</strong> 1:20 PM</p>
                 </div>
             </table>
-            <button class="btn btn-info">Print</button><small>&nbsp; Click to print invoice </small>
+            
         </div>
     </div>
+    <button class="btn btn-info" onclick='printDiv("print")'>Print</button><small>&nbsp; Click to print invoice </small>
 </div>
+
 @stop

@@ -14,4 +14,12 @@
 <script src="{{ asset('js/ui-bootstrap-0.13.0.min.js') }}"></script>
 <script src="{{ asset('js/clientForm.js') }}"></script>
 <script src="{{ asset('js/Chart.min.js') }}"></script>
-
+<script>
+       function printDiv(ele) {
+            var printContents = document.getElementById(ele).innerHTML;    
+            var originalContents = document.body.innerHTML;      
+            document.body.innerHTML = printContents;     
+            window.print();     
+            document.body.innerHTML = originalContents;
+   }
+</script>
