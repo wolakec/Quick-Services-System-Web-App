@@ -15,7 +15,7 @@
 
                 
                 
-                <li class="dropdown">
+                <li class="dropdown" style="margin-left: 90px;">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Settings<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -109,10 +109,17 @@
                 </li>
             </ul>
             <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
-                <div class="form-group">
+<!--                <div class="form-group">
                     <input type="text" placeholder="Search Here" class="form-control">
-                </div>
+                </div>-->
             </form>
         </div>
     </div>
+</nav>
+<nav role="navigation" class="navbar navbar-default">
+    <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
+     <div class="form-group">
+                    <input type="text" placeholder="Search Here" class="form-control">
+                </div>
+            </form>
 </nav>

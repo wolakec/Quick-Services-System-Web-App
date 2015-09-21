@@ -14,4 +14,5 @@
 <script src="{{ asset('js/ui-bootstrap-0.13.0.min.js') }}"></script>
 <script src="{{ asset('js/clientForm.js') }}"></script>
 <script src="{{ asset('js/Chart.min.js') }}"></script>
-
+  
+    <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
