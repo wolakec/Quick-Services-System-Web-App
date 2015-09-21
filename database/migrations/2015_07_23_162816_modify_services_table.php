@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyServicesTableTwo extends Migration
+class ModifyServicesTable extends Migration
 {
     /**
      * Run the migrations.

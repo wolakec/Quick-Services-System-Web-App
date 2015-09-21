@@ -109,6 +109,7 @@
                         @can('createServiceValue')
                         <li><a href="{{ url('/services/values/add') }}">Set Service Values</a></li>
                         @endcan
+                        <li><a href="{{ url('/services/categories') }}">List Service Categories</a></li>
                         <li><a href="{{ url('/services/preferences') }}">View Service Preferences</a></li>
                         @can('addPreference')
                         <li><a href="{{ url('/services/preferences/add') }}">Set Preferences</a></li>
