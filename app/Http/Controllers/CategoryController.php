@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\categoryRequest;
 use Illuminate\Http\Request;
 use App\Category;
 
@@ -11,6 +11,8 @@ class CategoryController extends Controller {
 
 	public function index()
 	{
+            $this->authorize('createCategory');
+            
             $categories = Category::all();
             
             $view = view('pages.lookup', ['param' => $categories, 'path' => 'categories']);
@@ -18,8 +20,9 @@ class CategoryController extends Controller {
             return $view;
 	}
 
-	public function store(Request $request)
+	public function store(categoryRequest $request)
 	{
+            $this->authorize('createCategory');
             $name = $request->input('name');
 
             $category = new Category;
@@ -39,7 +42,7 @@ class CategoryController extends Controller {
 	{
 		$category = Category::find($id);
                 $view = view('pages.editLookup', ['param' => $category, 'path' => 'categories']);
-
+                $this->authorize('edit',$category);
                 return $view;
 	}
 

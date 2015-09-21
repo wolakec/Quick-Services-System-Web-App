@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h4 style="text-align:center;"> Add Employee</h4><br/>
+            <h4 style="text-align:center;"> Edit Employee Information</h4><br/>
             <form class="form-horizontal" name="addEmployee" method="post" action="{{ url('/employees/add') }}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="employee_id" placeholder="Employee ID">

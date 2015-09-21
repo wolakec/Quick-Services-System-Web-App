@@ -19,7 +19,13 @@
                            @endif
                         </td>
                         <td>{{ $model->name }}</td>
-                        <td><a href="{{ url('/models/'.$model->id.'/edit') }}">Edit</a></td>
+                        <td>
+                            @can('editModel',$model)
+                            <a href="{{ url('/models/'.$model->id.'/edit') }}">Edit</a>
+                            @else
+                                No action
+                            @endcan
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

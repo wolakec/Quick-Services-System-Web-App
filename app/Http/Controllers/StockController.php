@@ -16,6 +16,7 @@ class StockController extends Controller {
     public function view($id)
     {
         $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
         
         return view('pages.viewStock',['station' => $station]);
     }
@@ -23,6 +24,7 @@ class StockController extends Controller {
     public function edit($id)
     {
         $station = Station::findOrFail($id);
+        $this->authorize('editStock',$station);
                 
         return view('pages.listStock',['station' => $station]);
     }
@@ -30,6 +32,8 @@ class StockController extends Controller {
     public function listStock($id)
     {
         $station = Station::findOrFail($id);
+        
+        $this->authorize('viewStock',$station);
         
         $packages = DB::table('packages')
                 ->join('products','packages.product_id','=','products.id')
@@ -49,10 +53,13 @@ class StockController extends Controller {
     public function update(Request $request,$id)
     {
         $station = Station::findOrFail($id);
+        
+        $this->authorize('updateStock',$station);
+        
         $input = $request->all();
         
         $user = $request->user();
-            
+        
         if(!$user->employee){
             return redirect('/');
         }
@@ -105,6 +112,7 @@ class StockController extends Controller {
     public function editWarnings($id)
     {
         $station = Station::findOrFail($id);
+        $this->authorize('viewStock',$station);
                 
         return view('pages.listStockWarnings',['station' => $station]);
     }
@@ -113,7 +121,7 @@ class StockController extends Controller {
     {
         $station = Station::findOrFail($id);
         $input = $request->all();
-        
+        $this->authorize('viewStock',$station);
         //return $input;
         
         foreach($request->package as $index => $package){

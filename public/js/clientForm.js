@@ -26,7 +26,16 @@
         $scope.packages = [{}];
         
         $scope.addPackage = function(){
-            $scope.packages.push({})
+            $scope.packages.push({});
+        }
+    }]);
+
+    app.controller('EditProductFormController',['$scope', function($scope){
+      
+        $scope.packages = [];
+        
+        $scope.addPackage = function(){
+            $scope.packages.push({});
         }
     }]);
 

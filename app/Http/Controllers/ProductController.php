@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\productRequest;
 use Illuminate\Http\Request;
 
 use App\Unit;
@@ -21,13 +21,17 @@ class ProductController extends Controller {
 
 	public function create()
 	{
+                $this->authorize('createproducts');
+                
                 $units = Unit::all();
                 $categories = Category::all();
 		return view('pages.addProduct',['units' => $units, 'categories' => $categories]);
 	}
 
-	public function store(Request $request)
+	public function store(productRequest $request)
 	{
+            //dd($request->all());
+            
             $input = $request->all();
             $product = Product::create($request->all());
             $prices = $input['packages'];
@@ -41,30 +45,48 @@ class ProductController extends Controller {
             return redirect('product');
 	}
         
-        /*
-         * Edit - work in progress
-         */
+        
 	public function edit($id)
 	{
-            $product = Product::find($id);
+            $product = Product::findOrFail($id);
             $product->load('packages');
             $units = Unit::all();
             $categories = Category::all();
             
+            $this->authorize('edit',$product);
+            
             return view('pages.editProduct',['product' => $product,'id' => $id,'units' => $units, 'categories' => $categories]);
 	}
 
-	public function update($id)
+	public function update(Request $request,$id)
 	{
-		//
+            $product = Product::findOrFail($id);
+            $product->update($request->all());
+            $input = $request->all();
+            
+            if(isset($input['new_packages'])){
+                $prices = $input['new_packages'];
+                $packages = array();
+                $has = false;
+                foreach($prices as $price){          
+                    $packages[] = new Package($price);
+                    $has = true;
+                }
+                if($has){
+                    $product->packages()->saveMany($packages);
+                }
+            }
+            
+            $prices = $input['packages'];
+           
+            foreach($prices as $price){          
+                $package = Package::find($price['id']);
+                $package->update($price);
+            }
+            
+            return redirect('product');
 	}
 
-	
-	public function destroy($id)
-	{
-		//
-	}
-        
         public function listPackages($id)
         {
             $product = Product::find($id);

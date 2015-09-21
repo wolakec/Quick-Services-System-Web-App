@@ -57,7 +57,8 @@ return [
     'not_in'               => 'The selected :attribute is invalid.',
     'numeric'              => 'The :attribute must be a number.',
     'regex'                => 'The :attribute format is invalid.',
-    'required'             => 'The :attribute field is required.',
+//    'required'             => 'The :attribute field is required.',
+    'required'             => 'This field is required.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_with'        => 'The :attribute field is required when :values is present.',
     'required_with_all'    => 'The :attribute field is required when :values is present.',
@@ -87,8 +88,15 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        
+        'service_type_id[]' => [
+            'required_with_all' => 'You should select at least one.',
+        ],
+        
+        'phone_1' => [
+            'numeric' => 'The phone must be a number.',
+            'digits' => 'The phone must be :digits digits.',
+            'regex' => 'The phone must start with 09 or 01.',
         ],
     ],
 

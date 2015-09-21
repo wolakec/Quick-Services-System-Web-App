@@ -9,18 +9,22 @@
             <div class="form-group">
 <!--            	<label for="ProductName" class="control-label">Product Name</label>-->            	
             		<input type="text" class="form-control" id="ProductName" name="name" placeholder="Product Name">
+                        <div class="text-danger">{{ $errors->first('name') }}</div>
             	</div>
             <div class="form-group">
 <!--            	<label for="Specification" class="control-label">Specification</label>-->
             		<input type="text" class="form-control" id="Specification" name="specification" placeholder="Specification">
+                        <div class="text-danger">{{ $errors->first('specification') }}</div>
             	</div>
             <div class="form-group">
 <!--            	<label for="ProductID" class="control-label">Product Code</label>-->          
             		<input type="text" class="form-control" id="inputEmail3" placeholder="Product Code" name="code">
+                        <div class="text-danger">{{ $errors->first('code') }}</div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </div>                
            <div class="form-group">            	    
             		<input type="text" class="form-control" id="inputEmail3" placeholder="Description" name="description">
+                        <div class="text-danger">{{ $errors->first('description') }}</div>
             	</div>
             <div class="form-group">
 <!--            	<label for="application" class="control-label">Application</label>-->
@@ -61,9 +65,11 @@
                             </td>
                             <td>
                                <input type="text" class="form-control" id="price" name="packages[@{{ $index }}][cost]" placeholder="Cost">
+                               <div class="text-danger">{{ $errors->first('packages[][cost]') }}</div>
                             </td>
                             <td>
                                <input type="text" class="form-control" id="price" name="packages[@{{ $index }}][base_price]" placeholder="Price">
+                               <div class="text-danger">{{ $errors->first('packages[][base_price]') }}</div>
                             </td>
                             
                         </tr>

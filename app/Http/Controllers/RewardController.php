@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\rewardsRequest;
 use Illuminate\Http\Request;
 use App\Reward;
 
@@ -17,11 +17,13 @@ class RewardController extends Controller {
     
     public function add()
     {
+        $this->authorize('addReward', []);
         return view('pages.addReward');
     }
     
-    public function store(Request $request)
+    public function store(rewardsRequest $request)
     {
+        $this->authorize('addReward', []);
         $reward = Reward::create($request->all());
         $reward->save();
         
@@ -30,7 +32,8 @@ class RewardController extends Controller {
     
     public function edit($id)
     {
-        $reward = Reward::find($id);
+        $reward = Reward::findOrFail($id);
+        $this->authorize('edit', $reward);
         
         return view('pages.editReward',['reward' => $reward, 'id' => (int) $id]);
     }
@@ -38,8 +41,11 @@ class RewardController extends Controller {
     public function update(Request $request,$id)
     {
         $reward = Reward::find($id);
+        
+        $this->authorize('edit', $reward);
+        
         $reward->update($request->all());
         
-         return redirect('rewards');
+        return redirect('rewards');
     }
 }

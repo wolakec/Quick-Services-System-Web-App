@@ -38,6 +38,9 @@ body {
 .navbar-default .navbar-nav > li > a:hover{
     color: #29ABA4;  
 }
+.navbar-default .navbar-nav > li > a:focus{
+    color: #E7E7E7 !important;  
+}
 .dropdown-menu {
     background-color: #29ABA4;
 }
@@ -174,6 +177,16 @@ h4{
 .charts {
     margin-top: 10%;
 }
+.font25{
+    font-size: 25px;
+}
+.chart-con-div{
+    min-height: 500px;
+}
+#chart-div {
+    width: 100% !important;
+    //height: 100% !important;
+}
 //////////////////////////////code for multi drop down
 
 
@@ -183,13 +196,15 @@ h4{
 }
 
 .dropdown-submenu>.dropdown-menu {
-    top: 50%;
-    left: 100%;
+    position:absolute;
+    top: -2%;
+    left: 99%;
     margin-top: -0px;
-    margin-left: -1px;
     -webkit-border-radius: 0 6px 6px 6px;
     -moz-border-radius: 0 6px 6px;
     border-radius: 0 6px 6px 6px;
+    z-index: 50;
+    height: 100%;
 }
 
 .dropdown-submenu:hover>.dropdown-menu {

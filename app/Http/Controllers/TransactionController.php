@@ -14,12 +14,25 @@ use App\Package;
 use App\Transaction;
 use App\TransactionDetail;
 use App\Stock;
+use Auth;
 
 class TransactionController extends Controller {
 
 	public function index()
 	{
-           
+                $user = Auth::user();
+                
+                if($user->isAdmin()){
+                    $transactions = Transaction::all();
+                }
+                
+                if($user->isEmployee()){
+                    $transactions = Transaction::where('station_id','=',$user->employee->station->id)->get();
+                }
+                
+                $transactions->load('employee','station');
+                
+                return view('pages.listTransactions',['transactions' => $transactions]);
 	}
 
 	public function add()
@@ -84,7 +97,25 @@ class TransactionController extends Controller {
                     $alert->save();
                 }
             }
+            
+            return redirect('/transactions/'.$transaction->id.'/invoice');
 	}
+        
+        public function view($id)
+        {
+            $transaction = Transaction::findOrFail($id);
+            
+            
+            $details = $transaction->details;
+            $details->load('transaction','package.product','package.unit','transaction.station','transaction.employee');
+        
+            $grandTotal = 0;
+            foreach($details as $detail){
+                $grandTotal += $detail->total_price;
+            }
+            
+            return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $transaction->station]);
+        }
      
 
 }

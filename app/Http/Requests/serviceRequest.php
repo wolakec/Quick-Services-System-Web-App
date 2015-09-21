@@ -25,9 +25,7 @@ class serviceRequest extends Request
     {
         return [
             //
-            'points' => 'required|integer',
-            'period' => 'required',
-            'name' => 'required'
+            'name' => 'required',
         ];
     }
 }

@@ -2,10 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\notificationRequest;
 use Illuminate\Http\Request;
 use App\Client;
 use App\Notification;
+use App\BroadcastHistory;
 
 
 
@@ -16,7 +17,7 @@ class BroadcastController extends Controller {
         return view('pages.addBroadcast');
     }
     
-    public function store(Request $request)
+    public function store(notificationRequest $request)
     {
        $clients = Client::all();
        
@@ -29,7 +30,11 @@ class BroadcastController extends Controller {
            $notification->save();
        }
        
-       return redirect('notifications/add');
+       $broadcastHistory = BroadcastHistory::create($request->all());
+       $broadcastHistory->user_id = $request->user()->id;
+       $broadcastHistory->save();
+       
+       return redirect('/notifications');
     }
    
 }

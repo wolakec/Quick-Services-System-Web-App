@@ -5,16 +5,17 @@ use App\Make;
 use App\VehicleModel;
 use App\Package;
 use App\Product;
-Route::get('/invoice','AppServicesController@invoice');
-Route::get('/contactForm','AppServicesController@contact');
+
+
+
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
-    Route::get('/emp','DashboardController@second');
 
     Route::get('/transactions','TransactionController@index');
     Route::get('/transactions/add', 'TransactionController@add');
     Route::post('/transactions/add', 'TransactionController@store');
+    Route::get('/transactions/{id}/invoice', 'TransactionController@view');
     
     Route::get('/stock/{id}','StockController@view');
     Route::get('/stock/{id}/update','StockController@edit');
@@ -24,14 +25,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stock/{id}/warnings/update','StockController@editWarnings');
     Route::post('/stock/{id}/warnings/update','StockController@updateWarnings');
     
-    Route::get('/locations',['middleware' => 'role:station_employee', 'uses' => 'LocationController@index']);
+    Route::get('/locations','LocationController@index');
     Route::post('/locations/add', 'LocationController@store');
     Route::get('/locations/{id})', 'LocationController@view');
     Route::get('/locations/{id}/edit', 'LocationController@edit');
     Route::post('/locations/{id}/edit', 'LocationController@update');
 
     Route::get('/services','ServiceController@index');
-
     Route::get('/services/types','ServiceTypesController@index');
     Route::post('/services/types/add', 'ServiceTypesController@store');
     Route::get('/services/types/{id})', 'ServiceTypesController@view');
@@ -41,10 +41,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/services/values','ServiceTypeValuesController@index');
     Route::get('/services/values/add', 'ServiceTypeValuesController@add');
     Route::post('/services/values/add', 'ServiceTypeValuesController@store');
-
+    Route::get('/services/values/{id}/edit', 'ServiceTypeValuesController@edit');
+    Route::post('/services/values/{id}/edit', 'ServiceTypeValuesController@update');
+    
     Route::get('/services/preferences','DefaultReminderPreferencesController@index');
     Route::get('/services/preferences/add', 'DefaultReminderPreferencesController@add');
     Route::post('/services/preferences/add', 'DefaultReminderPreferencesController@store');
+    Route::get('/services/preferences/{id}/edit', 'DefaultReminderPreferencesController@edit');
+    Route::post('/services/preferences/{id}/edit', 'DefaultReminderPreferencesController@update');
 
     Route::get('/rewards','RewardController@index');
     Route::get('/rewards/add', 'RewardController@add');
@@ -83,13 +87,16 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stations','StationController@index');
     Route::get('/stations/add', 'StationController@add');
     Route::post('/stations/add', 'StationController@store');
-    Route::get('/stations/{id})', 'StationController@view');
+    Route::get('/stations/{id}', 'StationController@view');
     Route::get('/stations/{id}/edit', 'StationController@edit');
     Route::post('/stations/{id}/edit', 'StationController@update');
     Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
     Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
     Route::get('/stations/{id}/invoices/daily', 'StationInvoiceController@viewDaily');
     Route::get('/stations/{id}/invoices/dailyIn', 'StationInvoiceController@viewDailyIn');
+    Route::get('/stations/{id}/status', 'StationStatusController@index');
+    Route::get('/stations/{id}/status/edit', 'StationStatusController@edit');
+    Route::post('/stations/{id}/status/edit', 'StationStatusController@update');
     
     Route::get('/stations/alerts', 'EmployeeAlertController@index');
     Route::get('/stations/alerts/pending', 'EmployeeAlertController@listPending');
@@ -110,7 +117,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/product/listAllJson',function(){
         return Product::all();
     });
-    Route::get('/product/edit/{id}','ProductController@edit');
+    Route::get('/product/{id}/edit','ProductController@edit');
+    Route::post('/product/{id}/edit','ProductController@update');
     Route::get('/product/{id}/packages','ProductController@listPackages');
 
     Route::get('/unit', 'UnitController@index');
@@ -129,10 +137,32 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/notifications/add', 'BroadcastController@add');
     Route::post('/notifications/add', 'BroadcastController@store');
+    Route::get('/notifications', 'BroadcastHistoryController@index');
     
     Route::get('/alerts', 'AdminAlertController@index');
     Route::get('/alerts/pending', 'AdminAlertController@listPending');
     Route::get('/alerts/{id}', 'AdminAlertController@view');
+    
+    Route::group(['prefix' => '/statistics'], function(){
+         Route::get('/makes','MakeStatisticsController@index');
+         Route::get('/models','ModelStatisticsController@index');
+         
+         Route::get('/services','ServiceStatisticsController@index');
+         
+         Route::get('/products','ProductStatisticsController@index');
+         
+         Route::get('/sales','SalesStatisticsController@index');
+         Route::get('/sales/purchases','SalesStatisticsController@withPurchases');
+         
+         Route::get('/purchases','PurchaseStatisticsController@index');
+         
+         Route::get('/stations/services','StationsStatisticsController@services');
+         Route::get('/stations/sales','StationsStatisticsController@sales');
+    });
+
+    Route::get('/contactForm','AppServicesController@contact');
+    Route::get('/changepassword','ChangePasswordController@index');
+    Route::post('/changepassword/update','ChangePasswordController@update');
 
 });
 

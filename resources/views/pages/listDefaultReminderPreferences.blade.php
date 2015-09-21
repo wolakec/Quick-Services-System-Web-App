@@ -19,7 +19,12 @@
                            @endif
                         </td>
                         <td>{{ $preference->period }}</td>
-                        <td><a href="{{ url('/services/preferences/'.$preference->id.'/edit') }}">Edit</a></td>
+                        <td>
+                        @can('edit',$preference)
+                            <a href="{{ url('/services/preferences/'.$preference->id.'/edit') }}">Edit</a></td>
+                        @else
+                            No Action
+                        @endcan
                     </tr>
                     @endforeach
                 </tbody>
