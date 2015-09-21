@@ -17,4 +17,8 @@ class ServiceType extends Model {
         return $this->hasOne('App\ServiceTypeValue');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category','service_type_categories');
+    }
 }

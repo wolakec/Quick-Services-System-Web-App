@@ -44,6 +44,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/services/values/{id}/edit', 'ServiceTypeValuesController@edit');
     Route::post('/services/values/{id}/edit', 'ServiceTypeValuesController@update');
     
+    Route::get('/services/categories','ServiceTypeCategoriesController@index');
+    Route::get('/services/categories/add', 'ServiceTypeCategoriesController@add');
+    Route::post('/services/categories/add', 'ServiceTypeCategoriesController@store');
+    Route::get('/services/categories/{id}/edit', 'ServiceTypeCategoriesController@edit');
+    Route::post('/services/categories/{id}/edit', 'ServiceTypeCategoriesController@update');
+    
     Route::get('/services/preferences','DefaultReminderPreferencesController@index');
     Route::get('/services/preferences/add', 'DefaultReminderPreferencesController@add');
     Route::post('/services/preferences/add', 'DefaultReminderPreferencesController@store');
