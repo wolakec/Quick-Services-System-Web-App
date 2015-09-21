@@ -177,6 +177,8 @@
                         <li><a href="/auth/logout">Logout</a></li>
                     </ul>
                 </li>
+                <li><a onclick='printDiv("print")' style="cursor: pointer;"><span class="glyphicon glyphicon-print"></span></a>
+</li>
                     </ul>
         </div>
     </div>

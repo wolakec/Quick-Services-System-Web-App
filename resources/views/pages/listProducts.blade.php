@@ -3,9 +3,10 @@
 @section('content')
 
 <!--{{ $products }}-->
-<h3 style="text-align: center;">List of Products</h3><br>
+
         <div class="container">
             <div class="row">
+                <h3 style="text-align: center;">List of Products</h3><br>
                 <div class="col-md-12">
                     <table class="table table-bordered" id="ProductsTable">
                         <thead>
