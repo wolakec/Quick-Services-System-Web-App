@@ -106,6 +106,79 @@ class AppClientController extends Controller {
         return $positions;
     }
     
+    public function viewStationPositionsQuery(Request $request)
+    {
+        
+        $positions = array();
+        $products = array();
+                
+        if($request->service_type_id){
+            $serviceType = ServiceType::findOrFail($request->service_type_id);
+            $stations = $serviceType->stations;
+
+            $stations->load('position','status');
+
+            foreach($stations as $station){
+                if($station->position){
+                    if($station->status->is_open == true){
+                        $station->position->name = $station->name;
+                        $positions[] = $station->position;
+                    }
+                }
+            }
+
+            $categories = $serviceType->categories;
+
+            foreach($categories as $category){
+                $category->load('products');
+                foreach($category->products as $cProduct){
+                    $cProduct->load('packages');
+                    $name = $cProduct->name;
+                    foreach($cProduct->packages as $package){
+                        $package->load('unit');
+                        $package->name = $name." ".$package->unit->name;
+                        $products[] = $package;
+                    }
+                }
+
+            }
+            
+            return array('positions' => $positions, 'products' => $products);
+        }
+        
+        if($request->product_id){
+            $packageId = (int)$request->product_id;
+            $positions = DB::table('stock')
+                    ->where('package_id','=',$packageId)
+                    ->where('quantity','>',0)
+                    ->join('stations','stock.station_id','=','stations.id')
+                    ->join('station_status','stations.station_status_id','=','station_status.id')
+                    ->where('station_status.is_open','=',true)
+                    ->join('positions','stations.id','=','positions.station_id')
+                    ->select('positions.longitude','positions.latitude','stations.name','stations.id')
+                    ->get();
+            return $positions;
+        }
+    }
+    
+    public function testProduct(Request $request,$id)
+    {
+        $stock = DB::table('stock')
+                ->where('package_id','=',$id)
+                ->where('quantity','>',0)
+                ->join('stations','stock.station_id','=','stations.id')
+                ->join('station_status','stations.station_status_id','=','station_status.id')
+                ->where('station_status.is_open','=',true)
+                ->join('positions','stations.id','=','positions.station_id')
+                ->select('positions.longitude','positions.latitude','stations.name','stations.id')
+                ->get();
+        
+        dd($stock);
+        $positions = array();
+        
+        
+    }
+    
     public function test($id)
     {
         $client = Client::find($id);

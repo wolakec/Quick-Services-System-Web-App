@@ -146,6 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
@@ -196,7 +198,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Qr' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
-
+        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
     ],
 
 ];
