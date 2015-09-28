@@ -13,7 +13,9 @@ class CodeController extends Controller {
     
     public function index()
     {
-        //Storage::put('qrCodes/test.png',Qr::format('png')->size(200)->generate('test'));
+        $codes = QrCode::all();
+        $path = storage_path();
+        return view('pages.QrCodes',['codes' => $codes ,'path' => $path]);
     }
    
     public function add()

@@ -54,20 +54,20 @@
                 <div class="pull-left">
                     <h3>Services Invoice</h3>
                     <p><strong>Station:</strong> {{ $station->name }}</p>
-                <p><strong>Location:</strong>{{ $station->address }}</p>
+                <p><strong>Location: </strong>{{ $station->address }}</p>
                 <p><strong>Station Contact Number:</strong> {{ $station->phone_1 }} </p>
-                <p><strong>Invoice No:</strong> 998</p>
+                <p><strong>Invoice No: </strong>{{ $transaction->transaction_id }} </p>
                 </div>
                 <div class="pull-right">
                     <span><img class="logo" style="max-height: 70px; margin-bottom: 10px;" src="{{ asset('Images/qsLogoWeb.png') }}"></span>    
-                <p><strong>Date:</strong> 19/8/2015</p>
-                <p><strong>Time:</strong> 1:20 PM</p>
+                <p><strong>Date: </strong>{{ $date->day}}/{{ $date->month}}/{{ $date->year}}</p>
+                <p><strong>Time: </strong>{{ $date->format('g:i A') }}</p>
                 </div>
             </table>
+            <strong>Company :</strong> {{ $company->name }} - <strong>Email:</strong> {{ $company->email }} - <strong>Phone number :</strong>{{ $company->telephone }} - <strong>Location:</strong> {{ $company->location }}
             
         </div>
     </div>
-    <button class="btn btn-info" onclick='printDiv("print")'>Print</button><small>&nbsp; Click to print invoice </small>
 </div>
 
 @stop

@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -104,7 +104,7 @@ class TransactionController extends Controller {
         public function view($id)
         {
             $transaction = Transaction::findOrFail($id);
-            
+            $companyinfo = \App\CompanyInfo::first();
             
             $details = $transaction->details;
             $details->load('transaction','package.product','package.unit','transaction.station','transaction.employee');
@@ -113,8 +113,9 @@ class TransactionController extends Controller {
             foreach($details as $detail){
                 $grandTotal += $detail->total_price;
             }
-            
-            return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $transaction->station]);
+             $date = Carbon::parse();  
+            return view('pages.viewInvoice',['date' =>$date,'transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $transaction->station, 'company' => $companyinfo]);
+          
         }
      
 

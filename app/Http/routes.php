@@ -11,7 +11,7 @@ use App\Product;
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
-
+    
     Route::get('/transactions','TransactionController@index');
     Route::get('/transactions/add', 'TransactionController@add');
     Route::post('/transactions/add', 'TransactionController@store');
