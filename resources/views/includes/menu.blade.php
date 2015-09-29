@@ -33,13 +33,19 @@
                         </li>
                          @can('listEmployees')
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Employees</a>
+                            <a tabindex="-1" href="#">Employees/Admins</a>
                             <ul class="dropdown-menu">
                                 @can('listEmployees')
                                 <li><a href="{{ url('/employees') }}">List of Employees</a></li>
                                 @endcan
                                 @can('addEmployee')
                                 <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
+                                @endcan
+                                @can('addEmployee')
+                                <li><a href="{{ url('/admin') }}">list Admins </a></li>
+                                @endcan
+                                @can('addEmployee')
+                                <li><a href="{{ url('/admin/add') }}">Add Admin </a></li>
                                 @endcan
                                 <li class="dropdown-submenu"><a href="#">more stuff</a>
                                     <ul class="dropdown-menu">
@@ -93,6 +99,7 @@
                             </li>
                         @endcan
                         </li>
+                        <li><a href="{{ url('/company') }}">Company info</a></li>
                         <li><a href="{{ url('/locations') }}"> Locations</a></li>
                         @can('addQr')
                             <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>

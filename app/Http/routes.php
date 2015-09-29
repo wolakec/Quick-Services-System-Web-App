@@ -75,7 +75,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/models/{id}/edit', 'ModelController@edit');
     Route::post('/models/{id}/edit', 'ModelController@update');
     
-    Route::get('/admin','AdminController@create');
+    Route::get('/admin','AdminController@index');
+    Route::get('/admin/add','AdminController@create');
     Route::post('/admin/add','AdminController@store');
     
     Route::get('/company','CompanyInfoController@index');

@@ -19,7 +19,7 @@ class CompanyInfoController extends Controller
     public function index()
     {
         //
-        $company = CompanyInfo::firstOrfail();
+        $company = CompanyInfo::first();
         return view('pages.CompanyInfo',['company' => $company]);
     }
 
@@ -52,6 +52,7 @@ class CompanyInfoController extends Controller
         
         $company = CompanyInfo::create($request->all());
         $company->save();
+        return redirect('company');
     }
 
     /**

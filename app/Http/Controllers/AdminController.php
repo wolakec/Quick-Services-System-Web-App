@@ -10,6 +10,7 @@ use App\Role;
 use App\User;
 use Hash;
 
+
 class AdminController extends Controller
 {
     /**
@@ -20,6 +21,9 @@ class AdminController extends Controller
     public function index()
     {
         //
+        $users = User::all();
+        
+        //return view('pages.listAdmin');
     }
 
     /**
