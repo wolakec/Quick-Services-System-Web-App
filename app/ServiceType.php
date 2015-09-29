@@ -12,6 +12,11 @@ class ServiceType extends Model {
         return $this->hasMany('App\Services');
     }
     
+    public function stations()
+    {
+        return $this->belongsToMany('App\Station','station_services');
+    }
+    
     public function value()
     {
         return $this->hasOne('App\ServiceTypeValue');
@@ -21,4 +26,9 @@ class ServiceType extends Model {
     {
         return $this->belongsToMany('App\Category','service_type_categories');
     }
+    
+//    public function products()
+//    {
+//        return $this->hasManyThrough('App\Product','App\Category','service_type_categories');
+//    }
 }

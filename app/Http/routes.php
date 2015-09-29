@@ -218,6 +218,8 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
             Route::get('/{id}/services','AppClientController@viewServices');
             Route::get('/stations/positions','AppClientController@viewStationPositions');
+            Route::post('/stations/positions','AppClientController@viewStationPositionsQuery');
+            Route::get('/stations/positions/{id}','AppClientController@testProduct');
             Route::get('/rewards','AppRewardsController@viewRewards');
             Route::get('{id}/points','AppPointsController@viewPoints');
             
