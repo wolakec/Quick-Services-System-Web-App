@@ -14,7 +14,7 @@ class CodeController extends Controller {
     public function index()
     {
         $codes = QrCode::all();
-        $path = storage_path();
+        $path = public_path();
         return view('pages.QrCodes',['codes' => $codes ,'path' => $path]);
     }
    
@@ -49,6 +49,7 @@ class CodeController extends Controller {
             $code->body = $random.$qrString;
             $code->save();
         }
+        return redirect('codes');
     }
    
 }
