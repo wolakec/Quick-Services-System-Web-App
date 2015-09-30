@@ -78,23 +78,33 @@ class TransactionController extends Controller {
                  * but now below the warning level. This is so that we do not continue to create notifications
                  * for stock that has already dropped below the warning level
                  */
-                $oldStock = $stock->quantity;
-                $stock->decrement('quantity',$detail->quantity);
-                if(($oldStock > $stock->warning_level) && ($stock->quantity <= $stock->warning_level)){
-                    
-                    
-                    $alert = new Alert;
-                    $alert->title = "Low Stock at ". $user->employee->station->name;
-                    $alert->message = "Product: ". $detail->package->product->name ." ". $detail->package->unit->name ." has triggered a warning level"
-                            . "at ". $user->employee->station->name;
-                    $alert->station_id = $user->employee->station_id;
-                    $alert->employee_id = $user->employee->id;
-                    $alert->package_id = $detail->package_id;
-                    
-                    $alert->type = "stock_warning";
-                    $alert->status = "pending";
-                    
-                    $alert->save();
+                
+                if($stock){
+                    if($stock->quantity > 0){
+                        $oldStock = $stock->quantity;
+                        if(($stock->quantity - $detail->quantity) < 0){
+                            $stock->quantity = 0;
+                            $stock->save();
+                        }else{
+                            $stock->decrement('quantity',$detail->quantity);
+                            if(($oldStock > $stock->warning_level) && ($stock->quantity <= $stock->warning_level)){
+
+
+                                $alert = new Alert;
+                                $alert->title = "Low Stock at ". $user->employee->station->name;
+                                $alert->message = "Product: ". $detail->package->product->name ." ". $detail->package->unit->name ." has triggered a warning level"
+                                        . "at ". $user->employee->station->name;
+                                $alert->station_id = $user->employee->station_id;
+                                $alert->employee_id = $user->employee->id;
+                                $alert->package_id = $detail->package_id;
+
+                                $alert->type = "stock_warning";
+                                $alert->status = "pending";
+
+                                $alert->save();
+                            }
+                        }
+                    }
                 }
             }
             

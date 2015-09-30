@@ -6,7 +6,10 @@ use App\VehicleModel;
 use App\Package;
 use App\Product;
 
-
+//Route::post('/oauth/access_token', function() {
+//    return Response::json(Authorizer::issueAccessToken());
+//});
+//Route::get('/testform','DashboardController@testForm');
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -104,7 +107,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/stations','StationController@index');
     Route::get('/stations/add', 'StationController@add');
     Route::post('/stations/add', 'StationController@store');
-    Route::get('/stations/{id}', 'StationController@view');
+    //Route::get('/stations/{id}/', 'StationController@view');
     Route::get('/stations/{id}/edit', 'StationController@edit');
     Route::post('/stations/{id}/edit', 'StationController@update');
     Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
@@ -122,7 +125,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/stations/alerts/add', 'EmployeeAlertController@store');
     Route::get('/stations/alerts/{id}', 'EmployeeAlertController@view');
 
-    Route::get('/stations/map', 'MapController@index');
+    Route::get('/stations/map/', 'MapController@index');
     Route::post('/stations/map/save', 'MapController@store');
     Route::get('/stations/map/noPosition', 'MapController@noPosition');
     Route::get('/stations/{id}/map', 'MapController@view');
