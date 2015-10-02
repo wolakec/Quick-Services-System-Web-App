@@ -5,6 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h4 style="text-align: center;">Add Company Information</h4><br/>
+            @if($company)
+            
             @if (session('info'))
                 <div class="alert alert-warning">
                     {{ session('info') }}
@@ -32,7 +34,13 @@
                                 </tr>
                             </tbody>
             </table>
-                                
+           @else 
+           <div class="text-center">
+           <h3>No Company info</h3><br>
+           <a class="btn btn-default" href="company/add"> add info</a>
+           @endif
+             </div>
+                         
         </div>
     </div>
 </div>

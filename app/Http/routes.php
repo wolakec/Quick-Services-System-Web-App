@@ -6,15 +6,15 @@ use App\VehicleModel;
 use App\Package;
 use App\Product;
 
-//Route::post('/oauth/access_token', function() {
-//    return Response::json(Authorizer::issueAccessToken());
-//});
-//Route::get('/testform','DashboardController@testForm');
+Route::post('/oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
+Route::get('/testform','DashboardController@testForm');
 
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
-
+    
     Route::get('/transactions','TransactionController@index');
     Route::get('/transactions/add', 'TransactionController@add');
     Route::post('/transactions/add', 'TransactionController@store');
@@ -78,7 +78,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/models/{id}/edit', 'ModelController@edit');
     Route::post('/models/{id}/edit', 'ModelController@update');
     
-    Route::get('/admin','AdminController@create');
+    Route::get('/admin','AdminController@index');
+    Route::get('/admin/add','AdminController@create');
     Route::post('/admin/add','AdminController@store');
     
     Route::get('/company','CompanyInfoController@index');
@@ -112,6 +113,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/stations/{id}/edit', 'StationController@update');
     Route::get('/stations/{id}/employees', 'StationController@viewEmployees');
     Route::get('/stations/{id}/services/types', 'StationController@viewServiceTypes');
+    
+    Route::get('/stations/{id}/services/types/availability/edit', 'ServiceTypeAvailabilityController@edit');
+    Route::post('/stations/{id}/services/types/availability/edit', 'ServiceTypeAvailabilityController@update');
+    
     Route::get('/stations/{id}/invoices/daily', 'StationInvoiceController@viewDaily');
     Route::get('/stations/{id}/invoices/dailyIn', 'StationInvoiceController@viewDailyIn');
     Route::get('/stations/{id}/status', 'StationStatusController@index');

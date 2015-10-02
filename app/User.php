@@ -69,4 +69,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasRole('station_employee');
     }
+     
 }

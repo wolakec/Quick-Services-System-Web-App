@@ -9,24 +9,23 @@
                 <img src="{{ asset('Images/qsLogoWeb.png') }}" height="75" alt="Petromin Logo" />
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
-                <strong>Support : </strong>info@petromin.com
+                <strong>Support : </strong>{{ $company->email }}
                 <br />
-                <strong>Tel :</strong>+249-183-560-592<br />
-                <strong>Fax :</strong>+249-183-560-550<br />
+                <strong>Tel :</strong>{{ $company->telephone }}<br />
+                <strong>Fax :</strong>{{ $company->fax }}<br />
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
-                PETROMIN CORPORATION – SUDAN BRANCH
-                Khartoum (3) – Street No. 39<br/>
-                P.O. Box 15064
+                <strong>{{ $company->name }}<br/></strong>
+                <strong>{{ $company->location }}<br/></strong>
+              
                 <br />
-                Khartoum-Sudan.<br />
             </div>
         </div>
         <br />
         <hr />
         <div class="row text-center">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                Account Created successfully , for any issues please contact &nbsp;<strong>info@petromin.com</strong>
+                Account Created successfully , for any issues please contact &nbsp;<strong>{{ $company->email }}</strong>
             </div>
         </div>
         <hr/>
