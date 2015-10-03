@@ -9,6 +9,16 @@ use App\Product;
 Route::post('/oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
+
+Route::group(['middleware' => 'oauth'],function(){
+    Route::get('/oauth/test', function() {
+        return 'moo';
+    });
+
+    Route::get('/oauth/{id}/view','AppClientController@testProduct');
+});
+
+
 Route::get('/testform','DashboardController@testForm');
 
 Route::group(['middleware' => 'auth'], function(){

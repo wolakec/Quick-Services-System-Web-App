@@ -160,29 +160,10 @@ class AppClientController extends Controller {
     
     public function testProduct(Request $request,$id)
     {
+        $client = Client::find($id);
         
-        $positions = DB::table('service_types')
-                ->where('service_types.id','=',$id)
-                ->join('station_services','service_types.id','=','station_services.service_type_id')
-                ->where('station_services.is_available','=',true)
-                ->join('stations','station_services.station_id','=','stations.id')
-                ->join('station_status','stations.station_status_id','=','station_status.id')
-                ->where('station_status.is_open','=',true)
-                ->join('positions','stations.id','=','positions.station_id')
-                ->select('positions.longitude','positions.latitude','stations.name','stations.id')
-                ->get();
-        
-        $products = DB::table('service_types')
-                ->where('service_types.id','=',$id)
-                ->join('service_type_categories','service_types.id','=','service_type_categories.service_type_id')
-                ->join('categories','service_type_categories.category_id','=','categories.id')
-                ->join('products','categories.id','=','products.category_id')
-                ->join('packages','products.id','=','packages.product_id')
-                ->join('units','packages.unit_id','=','units.id')
-                ->select(DB::RAW("packages.id,concat(products.name,' ',units.name) as name"))
-                ->get();
-        
-        dd($positions);
+        return \Authorizer::getResourceOwnerId();
+        return $client;
         
     }
     
