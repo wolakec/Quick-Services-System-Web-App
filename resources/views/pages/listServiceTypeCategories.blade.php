@@ -8,7 +8,7 @@
             <h4 style="text-align:center;">Service Type Categories</h4><br/>
             <form class="form-horizontal" name="addServiceTypeCategories" method="post" action="{{ url('/services/categories/add') }}">
                 <div class="form-group">
-                    <table>
+                    <table class="table table-bordered">
                         <thead>
                             <th>Name</th>
                             <th>Action</th>

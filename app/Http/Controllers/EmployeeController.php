@@ -67,8 +67,9 @@ class EmployeeController extends Controller {
         $this->authorize($employee);
         
         $employee->update($request->all());
+        $company = \App\CompanyInfo::firstOrfail();
      
-        return view('pages.summary', ['email' => $employee->user->email, 'password' => '--------','employee' => $employee]);
+        return view('pages.summary', ['email' => $employee->user->email, 'password' => '--------','employee' => $employee, 'company' => $company]);
     }
    
 }

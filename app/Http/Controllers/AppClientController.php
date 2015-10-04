@@ -116,6 +116,8 @@ class AppClientController extends Controller {
         
         $positions = array();
         $products = array();
+        
+        //sleep(2);
                 
         if($request->service_type_id){
             $id = $request->service_type_id;
