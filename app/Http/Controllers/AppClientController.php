@@ -111,6 +111,18 @@ class AppClientController extends Controller {
         return $positions;
     }
     
+    public function viewAllStationPositions()
+    {
+      
+        $positions = DB::table('positions')
+                ->join('stations','positions.station_id','=','stations.id')
+                ->join('station_status','stations.station_status_id','=','station_status.id')
+                ->select('positions.longitude','positions.latitude','stations.name','stations.id')
+                ->get();
+        
+        return $positions;
+    }
+    
     public function viewStationPositionsQuery(Request $request)
     {
         

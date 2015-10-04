@@ -10,7 +10,7 @@ Route::post('/oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
 
-Route::group(['middleware' => 'oauth'],function(){
+Route::group(['middleware' => 'oauth:client'],function(){
     Route::get('/oauth/test', function() {
         return 'moo';
     });
@@ -236,6 +236,7 @@ Route::group(['prefix' => '/api'], function(){
             Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
             Route::get('/{id}/services','AppClientController@viewServices');
             Route::get('/stations/positions','AppClientController@viewStationPositions');
+            Route::get('/stations/positions/all','AppClientController@viewAllStationPositions');
             Route::post('/stations/positions','AppClientController@viewStationPositionsQuery');
             Route::get('/stations/positions/{id}','AppClientController@testProduct');
             Route::get('/rewards','AppRewardsController@viewRewards');
