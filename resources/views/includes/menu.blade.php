@@ -102,7 +102,14 @@
                         <li><a href="{{ url('/company') }}">Company info</a></li>
                         <li><a href="{{ url('/locations') }}"> Locations</a></li>
                         @can('addQr')
-                            <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                            <li class="dropdown-submenu"><a tabindex="-1" href="#">
+                                     QR Codes </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/codes') }}" >View Codes</a></li>
+                                <li><a href="{{ url('/codes/add') }}" >Generate Codes</a></li>
+                            </ul>
+                            </li>
+                 
                         @endcan
                         
                     </ul>
