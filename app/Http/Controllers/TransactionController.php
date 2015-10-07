@@ -14,6 +14,7 @@ use App\Package;
 use App\Transaction;
 use App\TransactionDetail;
 use App\Stock;
+use App\Employee;
 use Auth;
 
 class TransactionController extends Controller {
@@ -34,6 +35,17 @@ class TransactionController extends Controller {
                 
                 return view('pages.listTransactions',['transactions' => $transactions]);
 	}
+        
+        public function listEmployeeTransactions($id)
+        {
+                $employee = Employee::findOrFail($id);
+                
+                $transactions = $employee->transactions;
+                
+                $transactions->load('employee','station');
+                
+                return view('pages.listTransactions',['transactions' => $transactions]);
+        }
 
 	public function add()
 	{

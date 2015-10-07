@@ -87,8 +87,15 @@
                                     </li>
                                     <li class="dropdown-submenu"><a tabindex="-1" href="#">Stations</a>
                                     <ul class="dropdown-menu">
-                                         <li><a href="{{ url('statistics/stations/services') }}">Service</a></li>
+                                         <li><a href="{{ url('statistics/stations/services') }}">Services</a></li>
                                          <li><a href="{{ url('statistics/stations/sales') }}">Sales</a></li>
+                                    </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a tabindex="-1" href="#">Employees</a>
+                                    <ul class="dropdown-menu">
+                                         <li><a href="{{ url('statistics/employees/services') }}">Services</a></li>
+                                         <li><a href="{{ url('statistics/employees/sales') }}">Sales</a></li>
+                                         <li><a href="{{ url('statistics/employees/sales/income') }}">Sales Income</a></li>
                                     </ul>
                                     </li>
                                     <li><a href="{{ url('statistics/products') }}">Products</a></li>

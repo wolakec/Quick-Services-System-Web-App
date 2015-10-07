@@ -15,7 +15,11 @@ Route::group(['middleware' => 'oauth:client'],function(){
         return 'moo';
     });
 
-    Route::get('/oauth/{id}/view','AppClientController@testProduct');
+    Route::group(['middleware' => 'owner'],function(){
+
+            Route::get('/oauth/{id}/view','AppClientController@testProduct');
+        });
+    //Route::get('/oauth/{id}/view','AppClientController@testProduct');
 });
 
 
@@ -106,7 +110,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/employees/{id})', 'EmployeeController@view');
     Route::get('/employees/{id}/edit', 'EmployeeController@edit');
     Route::post('/employees/{id}/edit', 'EmployeeController@update');
-
+    Route::get('/employees/{id}/transactions', 'TransactionController@listEmployeeTransactions');
+    
     Route::get('/codes','CodeController@index');
     Route::get('/codes/add', 'CodeController@add');
     Route::post('/codes/add', 'CodeController@store');
@@ -188,6 +193,12 @@ Route::group(['middleware' => 'auth'], function(){
          
          Route::get('/sales','SalesStatisticsController@index');
          Route::get('/sales/purchases','SalesStatisticsController@withPurchases');
+         
+         
+         //Route::get('/employees','EmployeeStatisticsController@index');
+         Route::get('/employees/services','EmployeeStatisticsController@services');
+         Route::get('/employees/sales','EmployeeStatisticsController@sales');
+         Route::get('/employees/sales/income','EmployeeStatisticsController@salesIncome');
          
          Route::get('/purchases','PurchaseStatisticsController@index');
          

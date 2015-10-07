@@ -17,7 +17,12 @@ class Employee extends Model {
         {
             return $this->belongsTo('App\Station');
         }
-
+        
+        public function transactions()
+        {
+            return $this->hasMany('App\Transaction');
+        }
+        
         public function user()
         {
             return $this->belongsTo('App\User');
