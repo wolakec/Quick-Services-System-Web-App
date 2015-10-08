@@ -13,7 +13,7 @@ class LocationController extends Controller {
 	{
             $locations = Location::all();
             
-            $view = view('pages.lookup', ['param' => $locations, 'path' => 'locations']);
+            $view = view('pages.lookup', ['param' => $locations, 'path' => 'locations', 'title' => 'Locations', 'input' => 'Add New Location']);
 
             return $view;
 	}
@@ -40,7 +40,7 @@ class LocationController extends Controller {
 	{
 		$location = Location::findOrFail($id);
                 $this->authorize($location);
-                $view = view('pages.editLookup', ['param' => $location, 'path' => 'locations']);
+                $view = view('pages.editLookup', ['param' => $location, 'path' => 'locations', 'title' => 'Edit Locations', 'input' => 'Edit Location']);
 
                 return $view;
 	}
