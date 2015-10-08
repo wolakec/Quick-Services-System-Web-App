@@ -98,6 +98,9 @@ return [
             'digits' => 'The phone must be :digits digits.',
             'regex' => 'The phone must start with 09 or 01.',
         ],
+        'email' => [
+            'email' => 'your email or password is incorrect.',
+        ],
     ],
 
     /*
