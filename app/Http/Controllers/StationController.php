@@ -51,7 +51,7 @@ class StationController extends Controller {
             
        $station->save();
        
-       return redirect('stations');
+       return redirect('stations/map');
     }
     
     public function edit($id)
