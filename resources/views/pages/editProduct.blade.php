@@ -4,7 +4,7 @@
         <div class="container" ng-app="myApp" ng-controller="EditProductFormController">
             <div class="row">
             <form class="form-horizontal" method='post' action='{{ url('/product/'.$product->id.'/edit') }}'>    
-                <h4> Add New Product </h4><br>
+                <h4> Edit Product </h4><br>
             <fieldset class="col-lg-4">
             <div class="form-group">
 <!--            	<label for="ProductName" class="control-label">Product Name</label>-->            	
@@ -44,7 +44,7 @@
             <div class="form-group">
 <!--            	<label for="inputEmail3" class="control-label"></label>-->
             	<div>
-            		<button type="submit" class="btn btn-info">Add Product</button>
+            		<button type="submit" class="btn btn-info">Edit Product</button>
             	</div>
             </div>
             </fieldset>

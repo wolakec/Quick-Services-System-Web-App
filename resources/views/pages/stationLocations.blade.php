@@ -80,13 +80,13 @@
             
         });
         
-        $http.get("{{ url('/api/v1/client/stations/positions') }}").success(function(response) {
+        $http.get("{{ url('/api/v1/client/stations/positions/all') }}").success(function(response) {
             //$scope.markers = response;
             angular.forEach(response, function(m,key){
                 $scope.markers.push({
-                    id: m.station_id,
+                    id: m.id,
                     options: {
-                        labelContent: m.station.name,
+                        labelContent: m.name,
                         draggable: true,
                     },
                     coords: {

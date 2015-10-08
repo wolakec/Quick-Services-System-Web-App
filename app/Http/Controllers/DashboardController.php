@@ -65,4 +65,9 @@ class DashboardController extends Controller {
         
         return view('pages.secondDashboard');
     }
+    
+    public function testForm()
+    {
+        return view('pages.testform');
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\stationRequest;
 use Illuminate\Http\Request;
 use Gate;
+use DB;
 
 use App\Location;
 use App\Station;
@@ -89,8 +90,13 @@ class StationController extends Controller {
    
     public function viewServiceTypes($id)
     {
-        $station = Station::find($id);
+        $station = Station::findOrFail($id);
         
-        return view('pages.listServiceTypes',['serviceTypes' => $station->serviceTypes, 'station' => $station]);
+        $services = DB::table('station_services')
+                ->where('station_id','=',$id)
+                ->join('service_types','station_services.service_type_id','=','service_types.id')
+                ->get();
+        
+        return view('pages.listServiceTypes',['serviceTypes' => $services, 'station' => $station]);
     }
 }
