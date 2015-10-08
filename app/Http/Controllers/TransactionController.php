@@ -14,6 +14,7 @@ use App\Package;
 use App\Transaction;
 use App\TransactionDetail;
 use App\Stock;
+use App\Employee;
 use Auth;
 
 class TransactionController extends Controller {
@@ -34,6 +35,17 @@ class TransactionController extends Controller {
                 
                 return view('pages.listTransactions',['transactions' => $transactions]);
 	}
+        
+        public function listEmployeeTransactions($id)
+        {
+                $employee = Employee::findOrFail($id);
+                
+                $transactions = $employee->transactions;
+                
+                $transactions->load('employee','station');
+                
+                return view('pages.listTransactions',['transactions' => $transactions]);
+        }
 
 	public function add()
 	{
@@ -79,18 +91,26 @@ class TransactionController extends Controller {
                  * for stock that has already dropped below the warning level
                  */
                 
+                $warning = false;
                 if($stock){
                     if($stock->quantity > 0){
                         $oldStock = $stock->quantity;
                         if(($stock->quantity - $detail->quantity) < 0){
                             $stock->quantity = 0;
                             $stock->save();
+                            $warning = true;
                         }else{
                             $stock->decrement('quantity',$detail->quantity);
                             if(($oldStock > $stock->warning_level) && ($stock->quantity <= $stock->warning_level)){
+                                $warning = true;
 
-
-                                $alert = new Alert;
+                               
+                            }
+                        }
+                    }
+                    
+                    if($warning){
+                         $alert = new Alert;
                                 $alert->title = "Low Stock at ". $user->employee->station->name;
                                 $alert->message = "Product: ". $detail->package->product->name ." ". $detail->package->unit->name ." has triggered a warning level"
                                         . "at ". $user->employee->station->name;
@@ -102,8 +122,6 @@ class TransactionController extends Controller {
                                 $alert->status = "pending";
 
                                 $alert->save();
-                            }
-                        }
                     }
                 }
             }
