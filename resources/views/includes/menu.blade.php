@@ -18,9 +18,12 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Settings<b class="caret"></b></a>
+                        
                     <ul class="dropdown-menu">
+                        @can('listStations')
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Stations</a>
+                            @endcan
                             <ul class="dropdown-menu">
                                 @can('listStations')
                                 <li><a href="{{ url('/stations') }}">List of Stations</a></li>
@@ -28,8 +31,11 @@
                                 @can('addStation')
                                     <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
                                 @endcan
+                                @can('addStation')
                                 <li><a href="{{ url('/stations/map') }}">View Map</a></li>
+                                @endcan
                             </ul>
+                            
                         </li>
                          @can('listEmployees')
                         <li class="dropdown-submenu">

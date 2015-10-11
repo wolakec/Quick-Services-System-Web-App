@@ -19,7 +19,6 @@
                         <td>{{ $transaction->station->name }}</td>
                         <td>{{ $transaction->created_at }}</td>
                         <td>-</td> 
-                       
                         <td><a href="{{ url('/transactions/'.$transaction->id.'/invoice') }}">View</a></td>
                     </tr>
                     @endforeach
