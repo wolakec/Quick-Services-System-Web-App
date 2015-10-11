@@ -7,14 +7,16 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "simplesoftwareio/simple-qrcode": "1.2.*"
+        "simplesoftwareio/simple-qrcode": "1.2.*",
+		"laravelcollective/html": "~5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
-        "khill/lavacharts" : "2.5.*"
+        "khill/lavacharts" : "2.5.*",
+        "lucadegasperi/oauth2-server-laravel": "5.0.*"
     },
     "autoload": {
         "classmap": [

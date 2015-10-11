@@ -3,17 +3,19 @@
 @section('content')
 
 <!--{{ $products }}-->
-<h3 style="text-align: center;">List of Products</h3><br>
+
         <div class="container">
             <div class="row">
+                <h3 style="text-align: center;">List of Products</h3><br>
                 <div class="col-md-12">
                     <table class="table table-bordered" id="ProductsTable">
                         <thead>
                             <tr>
-                                <th>Category</th>
+                                <th>Product Name</th>
                                 <th>No</th>
                                 <th>Code</th>
-                                <th>Name</th>
+                                <th>Category</th>
+                                
                                 <th>Specification</th>
                                 <th>Action</th>
                             </tr>
@@ -21,10 +23,11 @@
                         <tbody>
                             @foreach($products as $product)
                             <tr>
-                                <td>{{ $product->category->name}}</td>
+                                <td ><a href="#" data-toggle="modal" data-target="#{{ $product->id }}" >{{$product->name}}</a></td>
+                                
                                 <td>{{ $product->id }}</td>
                                 <td> {{$product->code}}</td>
-                                <td ><a href="#" data-toggle="modal" data-target="#{{ $product->id }}" >{{$product->name}}</a></td>
+                                <td>{{ $product->category->name}}</td>
                                 <td>{{$product->specification}}</td>
                                 
                                 <td>

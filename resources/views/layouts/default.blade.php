@@ -4,7 +4,7 @@
         @include('includes.head')
     </head>
         @include('includes.menu')
-    <body>
+        <body id="print">
         @yield('content')
     </body>
 </html>

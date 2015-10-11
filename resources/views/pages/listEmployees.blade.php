@@ -32,7 +32,16 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('/employees/'.$employee->id.'/edit') }}">Edit</a>
+                            <div class="dropdown">
+                                <button id="dLabel" type="button" class="btn btn-default no-border-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Options
+                                   <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdownFix" role="menu" aria-labelledby="dLabel">
+                                    <li><a href="{{ url('/employees/'.$employee->id.'/edit') }}">Edit</a></li>
+                                    <li><a href="{{ url('/employees/'.$employee->id.'/transactions') }}">View Transactions</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

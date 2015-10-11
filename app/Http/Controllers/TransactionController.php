@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +14,7 @@ use App\Package;
 use App\Transaction;
 use App\TransactionDetail;
 use App\Stock;
+use App\Employee;
 use Auth;
 
 class TransactionController extends Controller {
@@ -34,6 +35,17 @@ class TransactionController extends Controller {
                 
                 return view('pages.listTransactions',['transactions' => $transactions]);
 	}
+        
+        public function listEmployeeTransactions($id)
+        {
+                $employee = Employee::findOrFail($id);
+                
+                $transactions = $employee->transactions;
+                
+                $transactions->load('employee','station');
+                
+                return view('pages.listTransactions',['transactions' => $transactions]);
+        }
 
 	public function add()
 	{
@@ -78,23 +90,39 @@ class TransactionController extends Controller {
                  * but now below the warning level. This is so that we do not continue to create notifications
                  * for stock that has already dropped below the warning level
                  */
-                $oldStock = $stock->quantity;
-                $stock->decrement('quantity',$detail->quantity);
-                if(($oldStock > $stock->warning_level) && ($stock->quantity <= $stock->warning_level)){
+                
+                $warning = false;
+                if($stock){
+                    if($stock->quantity > 0){
+                        $oldStock = $stock->quantity;
+                        if(($stock->quantity - $detail->quantity) < 0){
+                            $stock->quantity = 0;
+                            $stock->save();
+                            $warning = true;
+                        }else{
+                            $stock->decrement('quantity',$detail->quantity);
+                            if(($oldStock > $stock->warning_level) && ($stock->quantity <= $stock->warning_level)){
+                                $warning = true;
+
+                               
+                            }
+                        }
+                    }
                     
-                    
-                    $alert = new Alert;
-                    $alert->title = "Low Stock at ". $user->employee->station->name;
-                    $alert->message = "Product: ". $detail->package->product->name ." ". $detail->package->unit->name ." has triggered a warning level"
-                            . "at ". $user->employee->station->name;
-                    $alert->station_id = $user->employee->station_id;
-                    $alert->employee_id = $user->employee->id;
-                    $alert->package_id = $detail->package_id;
-                    
-                    $alert->type = "stock_warning";
-                    $alert->status = "pending";
-                    
-                    $alert->save();
+                    if($warning){
+                         $alert = new Alert;
+                                $alert->title = "Low Stock at ". $user->employee->station->name;
+                                $alert->message = "Product: ". $detail->package->product->name ." ". $detail->package->unit->name ." has triggered a warning level"
+                                        . "at ". $user->employee->station->name;
+                                $alert->station_id = $user->employee->station_id;
+                                $alert->employee_id = $user->employee->id;
+                                $alert->package_id = $detail->package_id;
+
+                                $alert->type = "stock_warning";
+                                $alert->status = "pending";
+
+                                $alert->save();
+                    }
                 }
             }
             
@@ -104,7 +132,7 @@ class TransactionController extends Controller {
         public function view($id)
         {
             $transaction = Transaction::findOrFail($id);
-            
+            $companyinfo = \App\CompanyInfo::first();
             
             $details = $transaction->details;
             $details->load('transaction','package.product','package.unit','transaction.station','transaction.employee');
@@ -113,8 +141,9 @@ class TransactionController extends Controller {
             foreach($details as $detail){
                 $grandTotal += $detail->total_price;
             }
-            
-            return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $transaction->station]);
+             $date = Carbon::parse();  
+            return view('pages.viewInvoice',['date' =>$date,'transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $transaction->station, 'company' => $companyinfo]);
+          
         }
      
 

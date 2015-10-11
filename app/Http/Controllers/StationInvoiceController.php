@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 use App\Location;
 use App\Station;
 use App\Employee;
@@ -24,8 +26,11 @@ class StationInvoiceController extends Controller {
         foreach($details as $detail){
             $grandTotal += $detail->total_price;
         }
+        
+        $date = Carbon::parse();  
+        $companyinfo = \App\CompanyInfo::first();
 
-        return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $station]);
+        return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $station, 'date' => $date, 'company' => $companyinfo]);
     }
 
     public function viewDailyIn($id)
@@ -41,7 +46,10 @@ class StationInvoiceController extends Controller {
         foreach($details as $detail){
             $grandTotal += $detail->total_price;
         }
-
-        return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $station]);
+        
+        $date = Carbon::parse();  
+        $companyinfo = \App\CompanyInfo::first();
+        
+        return view('pages.viewInvoice',['transactions' => $details, 'grandTotal' => $grandTotal, 'station' => $station, 'date' => $date, 'company' => $companyinfo]);
     }
 }

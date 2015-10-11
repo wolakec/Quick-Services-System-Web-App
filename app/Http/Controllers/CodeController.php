@@ -13,7 +13,9 @@ class CodeController extends Controller {
     
     public function index()
     {
-        //Storage::put('qrCodes/test.png',Qr::format('png')->size(200)->generate('test'));
+        $codes = QrCode::all();
+        $path = public_path();
+        return view('pages.QrCodes',['codes' => $codes ,'path' => $path]);
     }
    
     public function add()
@@ -47,6 +49,7 @@ class CodeController extends Controller {
             $code->body = $random.$qrString;
             $code->save();
         }
+        return redirect('codes');
     }
    
 }

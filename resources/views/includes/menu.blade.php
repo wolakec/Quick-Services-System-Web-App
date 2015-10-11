@@ -15,12 +15,15 @@
 
                 
                 
-                <li class="dropdown" style="margin-left: 90px;">
+                <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Manage Settings<b class="caret"></b></a>
+                        Settings<b class="caret"></b></a>
+                        
                     <ul class="dropdown-menu">
+                        @can('listStations')
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Stations</a>
+                            @endcan
                             <ul class="dropdown-menu">
                                 @can('listStations')
                                 <li><a href="{{ url('/stations') }}">List of Stations</a></li>
@@ -28,12 +31,15 @@
                                 @can('addStation')
                                     <li><a href="{{ url('/stations/add') }}">Add Stations</a></li>
                                 @endcan
+                                @can('addStation')
                                 <li><a href="{{ url('/stations/map') }}">View Map</a></li>
+                                @endcan
                             </ul>
+                            
                         </li>
                          @can('listEmployees')
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Employees</a>
+                            <a tabindex="-1" href="#">Employees/Admins</a>
                             <ul class="dropdown-menu">
                                 @can('listEmployees')
                                 <li><a href="{{ url('/employees') }}">List of Employees</a></li>
@@ -41,12 +47,12 @@
                                 @can('addEmployee')
                                 <li><a href="{{ url('/employees/add') }}">Add Employee</a></li>
                                 @endcan
-                                <li class="dropdown-submenu"><a href="#">more stuff</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Second level</a></li>
-                                        <li><a href="#">Second level</a></li>
-                                    </ul>
-                                </li>
+                                @can('addEmployee')
+                                <li><a href="{{ url('/admin') }}">List of Admins </a></li>
+                                @endcan
+                                @can('addEmployee')
+                                <li><a href="{{ url('/admin/add') }}">Add Admin </a></li>
+                                @endcan
                             </ul>
                         </li>
                         @endcan
@@ -81,8 +87,15 @@
                                     </li>
                                     <li class="dropdown-submenu"><a tabindex="-1" href="#">Stations</a>
                                     <ul class="dropdown-menu">
-                                         <li><a href="{{ url('statistics/stations/services') }}">Service</a></li>
+                                         <li><a href="{{ url('statistics/stations/services') }}">Services</a></li>
                                          <li><a href="{{ url('statistics/stations/sales') }}">Sales</a></li>
+                                    </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a tabindex="-1" href="#">Employees</a>
+                                    <ul class="dropdown-menu">
+                                         <li><a href="{{ url('statistics/employees/services') }}">Services</a></li>
+                                         <li><a href="{{ url('statistics/employees/sales') }}">Sales</a></li>
+                                         <li><a href="{{ url('statistics/employees/sales/income') }}">Sales Income</a></li>
                                     </ul>
                                     </li>
                                     <li><a href="{{ url('statistics/products') }}">Products</a></li>
@@ -93,9 +106,17 @@
                             </li>
                         @endcan
                         </li>
+                        <li><a href="{{ url('/company') }}">Company info</a></li>
                         <li><a href="{{ url('/locations') }}"> Locations</a></li>
                         @can('addQr')
-                            <li><a href="{{ url('/codes/add') }}" >Generate QR Codes</a></li>
+                            <li class="dropdown-submenu"><a tabindex="-1" href="#">
+                                     QR Codes </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/codes') }}" >View Codes</a></li>
+                                <li><a href="{{ url('/codes/add') }}" >Generate Codes</a></li>
+                            </ul>
+                            </li>
+                 
                         @endcan
                         
                     </ul>
@@ -105,13 +126,14 @@
                         Services <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/services') }}" >View Services</a></li>
-                        <li><a href="{{ url('/services/values') }}">View Service Values</a></li>
+                        <li><a href="{{ url('/services/values') }}">Service Points</a></li>
                         @can('createServiceValue')
-                        <li><a href="{{ url('/services/values/add') }}">Set Service Values</a></li>
+                        <li><a href="{{ url('/services/values/add') }}">Set Service Points</a></li>
                         @endcan
-                        <li><a href="{{ url('/services/preferences') }}">View Service Preferences</a></li>
+                        <li><a href="{{ url('/services/categories') }}">Service Categories</a></li>
+                        <li><a href="{{ url('/services/preferences') }}">Service Preferences</a></li>
                         @can('addPreference')
-                        <li><a href="{{ url('/services/preferences/add') }}">Set Preferences</a></li>
+                        <li><a href="{{ url('/services/preferences/add') }}">Set Service Preferences</a></li>
                         @endcan
                         @can('createServiceTypes')
                         <li><a href="{{ url('/services/types') }}">Service Types</a></li>
@@ -123,33 +145,33 @@
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         Rewards <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/rewards') }}" >View Rewards</a></li>
+                        <li><a href="{{ url('/rewards') }}" >Rewards</a></li>
                         @can('addReward')
-                        <li><a href="{{ url('/rewards/add') }}" >Add Rewards</a></li>
+                        <li><a href="{{ url('/rewards/add') }}" >Add Reward</a></li>
                         @endcan
                     </ul>
                 </li>
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Manage Products <b class="caret"></b></a>
+                        Products <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/product') }}">List of products</a></li>
+                        <li><a href="{{ url('/product') }}">List of Products</a></li>
                      @can('createproducts')
                         <li><a href="{{ url('/product/add') }}">Add new product</a></li>
                         @endcan
                         @can('createUnit')
-                        <li><a href="{{ url('/unit') }}">Manage Units</a></li> 
+                        <li><a href="{{ url('/unit') }}">Units</a></li> 
                         @endcan
                         @can('createCategory')
-                        <li><a href="{{ url('/categories') }}">Manage Categories</a></li> 
+                        <li><a href="{{ url('/categories') }}">Categories</a></li> 
                         @endcan
                     </ul>
                 </li>
                 
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        Manage Transactions <b class="caret"></b></a>
+                        Transactions <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/transactions">List of Transactions</a></li>
                         <li><a href="/transactions/add">New Transaction</a></li>
@@ -177,14 +199,9 @@
                         <li><a href="/auth/logout">Logout</a></li>
                     </ul>
                 </li>
+                <li><a onclick='printDiv("print")' style="cursor: pointer;"><span class="glyphicon glyphicon-print"></span></a>
+</li>
                     </ul>
         </div>
     </div>
-</nav>
-<nav role="navigation" class="navbar navbar-default">
-    <form role="search" class="navbar-form navbar-right" style="margin-right: 2px;">
-     <div class="form-group">
-                    <input type="text" placeholder="Search Here" class="form-control">
-                </div>
-            </form>
 </nav>

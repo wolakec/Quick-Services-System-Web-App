@@ -14,6 +14,7 @@
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
+                            <th>Action</th>
                         </thead>
                         
                             <tbody>
@@ -38,6 +39,9 @@
                                  <td>
                                     @{{ "£"+package.price }}
                                 </td>
+                                <td>
+                                    <input type="button" class="btn btn-primary" ng-click="removePackage($index)" value="Remove"/>
+                                </td>
                             </tr>
                             <tr class="success">
                                 <td></td>
@@ -46,6 +50,7 @@
                                 <td class="per20">
                                     @{{ "£"+totalPrice }}
                                 </td>
+                                <td></td>
                             </tr>
                             <tbody>
                         
@@ -70,6 +75,16 @@
         $scope.totalPrice = 0;
         $scope.addPackage = function(){
             $scope.packages.push({})
+        }
+        
+        $scope.removePackage = function($index){
+            //console.log($index);
+            var length = $scope.packages.length;
+            if(length > 1){
+                $scope.packages.splice($index,1);
+            }else{
+                alert('There must be at least one product!');
+            }
         }
         
         $scope.calculateTotal = function(){

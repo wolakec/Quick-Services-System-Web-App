@@ -1,3 +1,4 @@
+@media print {  a[href]:after {    content: none !important;  }}
 .logo
 {
     max-height: 2.1em;
@@ -190,6 +191,14 @@ h4{
     width: 100% !important;
     //height: 100% !important;
 }
+
+ @media print {
+    .non-printable, .fancybox-outer { display: none; }
+    .printable, #printDiv { 
+        display: block; 
+        font-size: 26pt;
+    }
+  }
 //////////////////////////////code for multi drop down
 
 

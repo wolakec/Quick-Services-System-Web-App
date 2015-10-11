@@ -44,9 +44,9 @@ class EmployeeController extends Controller {
         $employee = Employee::create($request->all());
         $employee->user()->associate($user);
         $employee->save();
-        
+        $company = \App\CompanyInfo::firstOrfail();
      
-        return view('pages.summary', ['email' => $user->email, 'password' => $generated,'employee' => $employee]);
+        return view('pages.summary', ['email' => $user->email, 'password' => $generated,'employee' => $employee,'company' => $company]);
     }
     
     public function edit($id)
@@ -67,8 +67,9 @@ class EmployeeController extends Controller {
         $this->authorize($employee);
         
         $employee->update($request->all());
+        $company = \App\CompanyInfo::firstOrfail();
      
-        return view('pages.summary', ['email' => $employee->user->email, 'password' => '--------','employee' => $employee]);
+        return view('pages.summary', ['email' => $employee->user->email, 'password' => '--------','employee' => $employee, 'company' => $company]);
     }
    
 }
