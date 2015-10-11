@@ -8,19 +8,23 @@
             <h4 style="text-align:center;"> Edit Employee Information</h4><br/>
             <form class="form-horizontal" name="addEmployee" method="post" action="{{ url('/employees/add') }}">
                 <div class="form-group">
+                    <label>Employee ID</label>
                     <input type="text" class="form-control" name="employee_id" placeholder="Employee ID">
                     <div class="text-danger">{{ $errors->first('employee_id') }}</div>
                 </div>
                 <div class="form-group">
+                    <label>Name</label>
                     <input type="text" class="form-control"name="name" placeholder="Name">
                     <div class="text-danger">{{ $errors->first('name') }}</div>
                     
                 </div>
                 <div class="form-group">
+                    <label>Email</label>
                     <input type="email" class="form-control" name="email" placeholder="Email">
                     <div class="text-danger">{{ $errors->first('email') }}</div>
                 </div>
                 <div class="form-group">
+                    <label>Telephone No</label>
                     <input type="text" class="form-control" name="phone_1" placeholder="Telephone">
               <div class="text-danger">{{ $errors->first('phone_1') }}</div>
 

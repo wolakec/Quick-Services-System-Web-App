@@ -8,12 +8,15 @@
             <h4 style="text-align: center;">Create Administrator Account</h4><br/>
             <form class="form-horizontal" name="admin" method="post" action="{{ url('/admin/add') }}">
                 <div class="form-group">
+                    <label>Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Name">
                 </div>
                 <div class="form-group">
+                        <label>Email</label>
                     <input type="text" name="email" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group">
+                
                 <button type="submit" value="Submit" name="submit" class="btn btn-success">Submit</button>
                 </div>
     </form>

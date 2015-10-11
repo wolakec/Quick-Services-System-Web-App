@@ -18,6 +18,7 @@
                 </select>
                 </div>
                 <div class="form-group">
+                    <label>Number of days until reminder</label>
                    <input type="number" class="form-control" name="period" placeholder="Number of days until reminder">
                <div class="text-danger">{{ $errors->first('period') }}</div>
                 </div>
