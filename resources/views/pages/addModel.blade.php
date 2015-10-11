@@ -18,6 +18,7 @@
                     </select>
                 </div>
                 <div class="form-group">
+                        <label>Model Name</label>
                     <input type="text" class="form-control"name="name" placeholder="Model Name">
                     <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>               

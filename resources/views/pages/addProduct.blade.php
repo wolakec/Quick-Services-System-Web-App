@@ -7,27 +7,28 @@
                 <h4> Add New Product </h4><br>
             <fieldset class="col-lg-4">
             <div class="form-group">
-<!--            	<label for="ProductName" class="control-label">Product Name</label>-->            	
+       	<label>Product Name</label>           	
             		<input type="text" class="form-control" id="ProductName" name="name" placeholder="Product Name">
                         <div class="text-danger">{{ $errors->first('name') }}</div>
             	</div>
             <div class="form-group">
-<!--            	<label for="Specification" class="control-label">Specification</label>-->
+           	<label>Specification</label>
             		<input type="text" class="form-control" id="Specification" name="specification" placeholder="Specification">
                         <div class="text-danger">{{ $errors->first('specification') }}</div>
             	</div>
             <div class="form-group">
-<!--            	<label for="ProductID" class="control-label">Product Code</label>-->          
+           	<label>Product Code</label>       
             		<input type="text" class="form-control" id="inputEmail3" placeholder="Product Code" name="code">
                         <div class="text-danger">{{ $errors->first('code') }}</div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </div>                
-           <div class="form-group">            	    
+           <div class="form-group"> 
+               <label>Description</label>               
             		<input type="text" class="form-control" id="inputEmail3" placeholder="Description" name="description">
                         <div class="text-danger">{{ $errors->first('description') }}</div>
             	</div>
             <div class="form-group">
-<!--            	<label for="application" class="control-label">Application</label>-->
+          	<label>Application</label>
             
             		<select name="category_id" class="form-control">
             			@forelse($categories as $category)
