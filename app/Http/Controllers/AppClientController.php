@@ -181,6 +181,12 @@ class AppClientController extends Controller {
         
     }
     
+    public function getClientId()
+    {    
+        return response()->json(['clientId' => \Authorizer::getResourceOwnerId()]);     
+    }
+    
+    
     public function test($id)
     {
         $client = Client::find($id);
