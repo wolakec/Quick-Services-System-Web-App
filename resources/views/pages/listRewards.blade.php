@@ -29,6 +29,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $rewards->render() !!}
         </div>
     </div>
 </div>

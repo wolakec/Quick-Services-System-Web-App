@@ -31,6 +31,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $models->render() !!}
         </div>
     </div>
 </div>

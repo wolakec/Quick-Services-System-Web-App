@@ -18,7 +18,7 @@ class StationController extends Controller {
     public function index()
     {
         $this->authorize('listStations');
-        $stations = Station::all();
+        $stations = Station::simplePaginate(10);
         
         return view('pages.listStations',['stations' => $stations]);
     }

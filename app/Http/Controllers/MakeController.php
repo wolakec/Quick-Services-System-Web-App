@@ -11,7 +11,7 @@ class MakeController extends Controller {
 
 	public function index()
 	{
-            $makes = Make::all();
+            $makes = Make::simplePaginate(8);
             
             $view = view('pages.lookup', ['param' => $makes, 'path' => 'makes', 'title' => 'Cars Makes', 'input' => 'Add New Make']);
 

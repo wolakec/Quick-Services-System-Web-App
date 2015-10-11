@@ -11,7 +11,7 @@ class LocationController extends Controller {
 
 	public function index()
 	{
-            $locations = Location::all();
+            $locations = Location::simplePaginate(10);
             
             $view = view('pages.lookup', ['param' => $locations, 'path' => 'locations', 'title' => 'Locations', 'input' => 'Add New Location']);
 

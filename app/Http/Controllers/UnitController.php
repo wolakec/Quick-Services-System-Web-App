@@ -12,7 +12,7 @@ class UnitController extends Controller {
 	public function index()
 	{
             $this->authorize('createUnit');
-            $units = Unit::all();
+            $units = Unit::simplePaginate(10);
             
             $view = view('pages.lookup', ['param' => $units, 'path' => 'unit', 'title' => 'Units', 'input' => 'Add New Unit']);
 

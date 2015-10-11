@@ -12,7 +12,7 @@ class ServiceTypesController extends Controller {
 	public function index()
 	{
             $this->authorize('createServiceTypes');
-            $types = ServiceType::all();
+            $types = ServiceType::simplePaginate(10);
             
             $view = view('pages.lookup', ['param' => $types, 'path' => 'services/types', 'title' => 'Service Types', 'input'=>'Add New Service Type']);
 

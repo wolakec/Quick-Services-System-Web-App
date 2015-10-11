@@ -48,6 +48,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $employees->render() !!}
         </div>
     </div>
 </div>
