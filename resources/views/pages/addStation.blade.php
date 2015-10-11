@@ -8,14 +8,17 @@
             <h4 style="text-align:center;">Add Station</h4><br/>
             <form name="addStation" class="form-horizontal" method="post" action="{{ url('/stations/add') }}">
                 <div class="form-group">
+                    <label>Name</label>
                     <input type="text" class="form-control" name="name" placeholder="Name">
                 <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>
                 <div class="form-group">
+                    <label>Address</label>
                     <input type="text" class="form-control" name="address" placeholder="Address">
                     <div class="text-danger">{{ $errors->first('address') }}</div>
                 </div>
                 <div class="form-group">
+                    <label>Telephone No</label>
                     <input type="text"  class="form-control" name="phone_1" placeholder="Telephone">
                     <div class="text-danger">{{ $errors->first('phone_1') }}</div>
                 </div>

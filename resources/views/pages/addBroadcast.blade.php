@@ -8,6 +8,7 @@
             <h4 style="text-align: center;">Create Broadcast</h4><br/>
             <form class="form-horizontal" name="addBroadcast" method="post" action="{{ url('/notifications/add') }}">
                 <div class="form-group">
+                    <label>Title</label>
                     <input type="text" name="title" class="form-control" placeholder="Title">
                     <div class="text-danger">{{ $errors->first('title') }}</div>
                 </div>

@@ -4,7 +4,8 @@
     max-height: 2.1em;
     margin-top: 8px;
     transition: all .5s;
-     //-ms-transform: rotate(-10deg) translate(0px,0px);; /* IE 9 */
+    
+    //-ms-transform: rotate(-10deg) translate(0px,0px);; /* IE 9 */
     //-webkit-transform: rotate(-10deg) translate(0px,0px);; /* Chrome, Safari, Opera */
     //transform: rotate(-10deg) translate(25px,0px);;
 }
@@ -20,7 +21,7 @@
     padding-top: 0px;
 }
 .navbar{
- //   margin-bottom: 0px;
+    //   margin-bottom: 0px;
 }
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -37,6 +38,9 @@ body {
 }
 .navbar-default .navbar-nav > li > a:hover{
     color: #29ABA4;  
+}
+.navbar-default .navbar-nav > li > a:focus{
+    color: #E7E7E7 !important;  
 }
 .navbar-default .navbar-nav > li > a:focus{
     color: #E7E7E7 !important;  
@@ -97,14 +101,14 @@ h4{
     color: #29ABA4;
 }
 .outer-section {
-     border:1px solid #dedede;
-     background-color: #fff;
+    border:1px solid #dedede;
+    background-color: #fff;
 }
 .pad-top {
     padding-top:30px;
 }
 .pad-bottom {
-     padding-bottom:50px;
+    padding-bottom:50px;
 }
 .checkLable {
     margin-right: 10px;
@@ -250,4 +254,3 @@ h4{
     border-radius: 6px 0 6px 6px;
 }
 
-/////////////////////////////////////

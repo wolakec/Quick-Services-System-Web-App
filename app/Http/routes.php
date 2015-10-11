@@ -14,10 +14,11 @@ Route::group(['middleware' => 'oauth:client'],function(){
     Route::get('/oauth/test', function() {
         return 'moo';
     });
-
+Route::get('/oauth/getId','AppClientController@getClientId');
     Route::group(['middleware' => 'owner'],function(){
 
             Route::get('/oauth/{id}/view','AppClientController@testProduct');
+            
         });
     //Route::get('/oauth/{id}/view','AppClientController@testProduct');
 });
@@ -229,6 +230,11 @@ Route::group(['prefix' => '/api'], function(){
          * This route is used for all client actions
          */
         Route::group(['prefix' => '/client'], function(){
+            
+            Route::post('oauth/access_token', function() {
+                 return Response::json(Authorizer::issueAccessToken());
+            });
+            
             /*
              * Client Registration
              */
