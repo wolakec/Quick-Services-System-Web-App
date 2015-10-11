@@ -14,7 +14,7 @@ class BroadcastHistoryController extends Controller {
     
     public function index()
     {
-        $history = BroadcastHistory::all();
+        $history = BroadcastHistory::simplePaginate(10);
        
         
         return view('pages.listBroadcastHistory',['broadcasts' => $history]);

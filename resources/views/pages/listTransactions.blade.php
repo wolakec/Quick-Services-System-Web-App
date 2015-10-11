@@ -25,6 +25,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $transactions->render() !!}
         </div>
     </div>
 </div>

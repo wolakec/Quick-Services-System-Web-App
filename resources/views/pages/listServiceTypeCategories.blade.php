@@ -22,6 +22,7 @@
                             </tbody>
                         </thead>
                     </table>
+                    {!! $serviceTypes->render() !!}
                 </div>
         </div>
     </div>

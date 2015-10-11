@@ -42,6 +42,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    {!! $param->render() !!}
                 </div>
             </div>
         </div>

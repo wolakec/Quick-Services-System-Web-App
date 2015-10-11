@@ -29,6 +29,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $services->render() !!}
         </div>
     </div>
 </div>

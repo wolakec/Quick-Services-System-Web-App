@@ -10,7 +10,7 @@ class RewardController extends Controller {
     
     public function index()
     {
-        $rewards = Reward::all();
+        $rewards = Reward::simplePaginate(10);
         
         return view('pages.listRewards',['rewards' => $rewards]);
     }

@@ -51,6 +51,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $stations->render() !!}
         </div>
     </div>
 </div>

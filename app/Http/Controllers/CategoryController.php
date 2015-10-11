@@ -13,7 +13,7 @@ class CategoryController extends Controller {
 	{
             $this->authorize('createCategory');
             
-            $categories = Category::all();
+            $categories = Category::simplePaginate(10);
             
             $view = view('pages.lookup', ['param' => $categories, 'path' => 'categories', 'title' => 'Categories','input' =>'Add New Category']);
 
