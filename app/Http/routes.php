@@ -197,6 +197,7 @@ Route::group(['middleware' => 'auth'], function(){
          
          
          //Route::get('/employees','EmployeeStatisticsController@index');
+         Route::get('/employees','EmployeeStatisticsController@listSales');
          Route::get('/employees/services','EmployeeStatisticsController@services');
          Route::get('/employees/sales','EmployeeStatisticsController@sales');
          Route::get('/employees/sales/income','EmployeeStatisticsController@salesIncome');

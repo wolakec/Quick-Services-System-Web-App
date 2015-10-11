@@ -41,6 +41,23 @@ class EmployeeStatisticsController extends Controller {
         return view('pages.viewEmployeeSalesStatistics',['chart' => $chart]);
     }
     
+    public function listSales()
+    {
+            
+        $sales = DB::table('employees')
+                ->join('transactions','employees.id','=','transactions.employee_id')
+                ->join('transaction_details','transactions.id','=','transaction_details.transaction_id')
+                ->where('type','=','sale')
+                ->groupBy('transactions.employee_id')
+                ->select(DB::RAW('count(employees.name) as freq, employees.name'))
+                ->orderBy('freq','desc')
+                ->get();
+        
+        dd($sales);
+        
+        return view('pages.viewEmployeeSalesStatistics',['chart' => $chart]);
+    }
+    
      public function salesIncome()
     {
         $employeeTable = Lava::DataTable();
