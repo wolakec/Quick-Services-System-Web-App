@@ -45,17 +45,21 @@ class EmployeeStatisticsController extends Controller {
     {
             
         $sales = DB::table('employees')
-                ->join('transactions','employees.id','=','transactions.employee_id')
-                ->join('transaction_details','transactions.id','=','transaction_details.transaction_id')
-                ->where('type','=','sale')
-                ->groupBy('transactions.employee_id')
-                ->select(DB::RAW('count(employees.name) as freq, employees.name'))
-                ->orderBy('freq','desc')
-                ->get();
+                ->leftJoin('transactions','employees.id','=','transactions.employee_id')
+                ->leftJoin('transaction_details', function($join){
+                    $join->on('transactions.id','=','transaction_details.transaction_id')
+                            ->where('transaction_details.type','=','sale');
+                })
+                ->join('stations','employees.station_id','=','stations.id')
+                ->join('locations','employees.location_id','=','locations.id')
+                ->select(DB::RAW('sum(transaction_details.total_price) as total_sales_value, '
+                        . 'sum(transaction_details.quantity) as total_products_sold, employees.name,'
+                        . 'employees.id, stations.name as station_name, locations.name as location_name'))
+                ->groupBy('employees.id')
+                ->orderBy('total_products_sold','desc')
+                ->get();      
         
-        dd($sales);
-        
-        return view('pages.viewEmployeeSalesStatistics',['chart' => $chart]);
+        return view('pages.listEmployeeSalesStatistics',['employees' => $sales]);
     }
     
      public function salesIncome()
