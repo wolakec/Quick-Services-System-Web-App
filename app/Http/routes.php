@@ -176,6 +176,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/reminders/scan','GenerateReminderController@scan');
 
     Route::get('/notifications/add', 'BroadcastController@add');
+    Route::post('/notifications/confirm', 'BroadcastController@confirm');
     Route::post('/notifications/add', 'BroadcastController@store');
     Route::get('/notifications', 'BroadcastHistoryController@index');
     

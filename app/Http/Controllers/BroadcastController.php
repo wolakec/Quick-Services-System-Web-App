@@ -17,6 +17,12 @@ class BroadcastController extends Controller {
         return view('pages.addBroadcast');
     }
     
+    public function confirm(notificationRequest $request){
+        //dd($request);
+        return view('pages.confirmBrodcast')->with('request',$request);
+    }
+
+
     public function store(notificationRequest $request)
     {
        $clients = Client::all();

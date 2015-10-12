@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
@@ -43,7 +42,7 @@ class AdminController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
         //
         $this->authorize('addEmployee');
