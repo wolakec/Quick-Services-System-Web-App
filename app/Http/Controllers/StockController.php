@@ -29,6 +29,14 @@ class StockController extends Controller {
         return view('pages.listStock',['station' => $station]);
     }
     
+    public function viewSet($id)
+    {
+        $station = Station::findOrFail($id);
+        $this->authorize('editStock',$station);
+                
+        return view('pages.listSetStock',['station' => $station]);
+    }
+    
     public function listStock($id)
     {
         $station = Station::findOrFail($id);
@@ -48,6 +56,32 @@ class StockController extends Controller {
                 ->get();
                 
         return $packages;
+    }
+    
+    public function updateSet(Request $request,$id)
+    {
+        $station = Station::findOrFail($id);
+        
+        $this->authorize('updateStock',$station);
+        
+        $input = $request->all();
+        
+        foreach($request->package as $index => $package){
+            $stock = Stock::where('station_id',$id)->where('package_id',$index)->first();
+            if(!$stock){
+                $stock = new Stock;
+                $stock->package_id = $index;
+                $stock->station_id = $id;
+                $stock->warning_level = 0;
+                $stock->quantity = $package['quantity'] ? $package['quantity'] : 0;
+            }else{
+                $stock->quantity = $package['quantity'];
+            }
+            
+            $stock->save();
+        }
+        
+        return redirect('stock/'.$id);
     }
    
     public function update(Request $request,$id)
