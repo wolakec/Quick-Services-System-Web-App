@@ -33,6 +33,7 @@ return [
             'callback' => '\App\Verifier@verify',
             'access_token_ttl' => 3600
         ],
+        
     ],
 
     /*
@@ -127,7 +128,7 @@ return [
     |
     */
 
-    'limit_clients_to_scopes' => false,
+    'limit_clients_to_scopes' => true,
 
     /*
     |--------------------------------------------------------------------------

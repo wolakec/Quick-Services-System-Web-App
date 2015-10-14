@@ -6,25 +6,9 @@ use App\VehicleModel;
 use App\Package;
 use App\Product;
 
-Route::post('/oauth/access_token', function() {
-    return Response::json(Authorizer::issueAccessToken());
-});
-
-Route::group(['middleware' => 'oauth:client'],function(){
-    Route::get('/oauth/test', function() {
-        return 'moo';
-    });
-Route::get('/oauth/getId','AppClientController@getClientId');
-    Route::group(['middleware' => 'owner'],function(){
-
-            Route::get('/oauth/{id}/view','AppClientController@testProduct');
-            
-        });
-    //Route::get('/oauth/{id}/view','AppClientController@testProduct');
-});
-
-
 Route::get('/testform','DashboardController@testForm');
+Route::get('/clear','AmmariController@add');
+Route::post('/clear','AmmariController@store');
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -230,66 +214,83 @@ Route::group(['prefix' => '/api'], function(){
      */
     Route::group(['prefix' => '/v1'], function(){
         /*
-         * This route is used for all client actions
+         * This route is used for all app actions
          */
         Route::group(['prefix' => '/client'], function(){
-            
-            Route::post('oauth/access_token', function() {
-                 return Response::json(Authorizer::issueAccessToken());
-            });
+            /*
+            * Client Login
+            */
+            Route::post('oauth/access_token', 'OauthClientController@issueToken');
             
             /*
-             * Client Registration
-             */
+            * Client Registration
+            */
             Route::post('/register','AppClientController@store');
-            Route::post('/{id}/changepass','AppEmployeeController@changePass');
-            /*
-             * Client Login
-             */
-            Route::post('/login','AppClientController@login');
-            Route::get('/locations',function(){
-                return Location::all();
+            
+            Route::group(['middleware' => 'oauth:client'],function(){
+                
+               
+               
+                Route::get('/locations',function(){
+                    return Location::all();
+                });
+                Route::get('/stations/positions','AppClientController@viewStationPositions');
+                Route::get('/stations/positions/all','AppClientController@viewAllStationPositions');
+                Route::post('/stations/positions','AppClientController@viewStationPositionsQuery');
+                Route::get('/stations/positions/{id}','AppClientController@testProduct');
+                Route::get('/rewards','AppRewardsController@viewRewards');
+                
+                    /*
+                     * Here we ensure that the user is authorized to access the information
+                     * of this particular id
+                     */
+                    Route::group(['middleware' => 'owner'],function(){
+                        
+                        Route::post('/{id}/changepass','AppEmployeeController@changePass');
+                        Route::get('/{id}/vehicles','AppVehicleController@view');
+                        Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
+                        Route::get('/{id}/services','AppClientController@viewServices');
+                        Route::get('{id}/points','AppPointsController@viewPoints');
+
+                        Route::post('{id}/preferences/reminders','AppReminderPreferencesController@store');
+                        Route::get('{id}/preferences/reminders','AppReminderPreferencesController@listPreferences');
+
+                        Route::get('{id}/notifications','AppNotificationController@viewNotifications');
+                        Route::get('/{id}/test','AppClientController@test');
+                     });
             });
-           
-            
-            Route::get('/{id}/vehicles','AppVehicleController@view');
-            Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
-            Route::get('/{id}/services','AppClientController@viewServices');
-            Route::get('/stations/positions','AppClientController@viewStationPositions');
-            Route::get('/stations/positions/all','AppClientController@viewAllStationPositions');
-            Route::post('/stations/positions','AppClientController@viewStationPositionsQuery');
-            Route::get('/stations/positions/{id}','AppClientController@testProduct');
-            Route::get('/rewards','AppRewardsController@viewRewards');
-            Route::get('{id}/points','AppPointsController@viewPoints');
-            
-            Route::post('{id}/preferences/reminders','AppReminderPreferencesController@store');
-            Route::get('{id}/preferences/reminders','AppReminderPreferencesController@listPreferences');
-            
-            Route::get('{id}/notifications','AppNotificationController@viewNotifications');
-            Route::get('/{id}/test','AppClientController@test');
         });
         
         Route::group(['prefix' => '/employee'], function(){
+            
             /*
              * Employee Login
              */
-            Route::post('/login','AppEmployeeController@login');
-            Route::post('/{id}/changepass','AppEmployeeController@changePass');
-            /*
-             * Fetching vehicle lookup data
-             */
+            Route::post('oauth/access_token', 'OauthEmployeeController@issueToken');
             
-            Route::get('/makes',function(){
-                return Make::all();
-            });
-            Route::get('/models',function(){
-                return VehicleModel::all();
-            });
-            Route::get('/{id}/services/types','AppEmployeeController@viewServiceTypes');
-            Route::post('/{id}/services/add','AppServicesController@store');
+            Route::group(['middleware' => 'oauth:employee'],function(){
             
+                Route::group(['middleware' => 'owner'],function(){
+                    Route::get('/{id}/services/types','AppEmployeeController@viewServiceTypes');
+                    Route::post('/{id}/services/add','AppServicesController@store');
+                    Route::post('/{id}/vehicles/add','AppVehicleController@store');
+                    Route::post('/{id}/changepass','AppEmployeeController@changePass');   
+                });
+                     
+                
+                /*
+                 * Fetching vehicle lookup data
+                 */
 
-            Route::post('/{id}/vehicles/add','AppVehicleController@store');
+                Route::get('/makes',function(){
+                    return Make::all();
+                });
+                Route::get('/models',function(){
+                    return VehicleModel::all();
+                });
+                
+                
+            });
             
         });
                     

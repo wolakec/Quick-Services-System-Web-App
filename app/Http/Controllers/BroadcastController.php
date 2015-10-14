@@ -34,7 +34,7 @@ class BroadcastController extends Controller {
        $broadcastHistory->user_id = $request->user()->id;
        $broadcastHistory->save();
        
-       return redirect('/notifications')->withInput()->with('success', 'brodcast was published Successfully.');;
+       return redirect('/notifications')->withInput()->with('success', 'brodcast was published Successfully.');
     }
    
 }

@@ -18,6 +18,8 @@ class ResourceOwner
     {
         $id = (int)$request->route()->parameter('id');
         
+        //dd(\Authorizer::getResourceOwnerType());
+        
         $ownerId = \Authorizer::getResourceOwnerId();
         
         if($id != $ownerId){
