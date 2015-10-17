@@ -14,7 +14,7 @@ class ProductController extends Controller {
 
 	public function index()
 	{
-           $products = Product::with(['category', 'packages.unit'])->get();
+           $products = Product::with(['category', 'packages.unit'])->simplePaginate(10);
            
            return view('pages.listProducts',['products' => $products]);
 	}

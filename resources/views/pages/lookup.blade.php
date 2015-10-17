@@ -3,8 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <h1 class="text-center">{{ $title }}</h1><br>
+        <h4 class="text-center"> {{$input}}</h4>
         <div class="col-md-4 col-md-offset-4">
+            
             <form class="form-horizontal" method="post" action="{{ url($path).'/add'}} ">
+               
                 <div class="form-group">
                     <input type="text" class="form-control" id="Name" name="name" placeholder="Name">
                     
@@ -13,6 +17,8 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </div>
         
+                 
+               
                 <div class="form-group col-md-4">
                     <button type="submit" class="btn btn-success"name="submit" value="submit" >Submit</button>
                 </div>
@@ -36,6 +42,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    {!! $param->render() !!}
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ class ServiceTypeValuesController extends Controller {
     
     public function index()
     {
-        $values = ServiceTypeValue::all();
+        $values = ServiceTypeValue::simplePaginate(10);
         $values->load('type');
        
         return view('pages.listServiceTypeValues', ['values' => $values]);

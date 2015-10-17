@@ -12,9 +12,9 @@ class ServiceTypesController extends Controller {
 	public function index()
 	{
             $this->authorize('createServiceTypes');
-            $types = ServiceType::all();
+            $types = ServiceType::simplePaginate(10);
             
-            $view = view('pages.lookup', ['param' => $types, 'path' => 'services/types']);
+            $view = view('pages.lookup', ['param' => $types, 'path' => 'services/types', 'title' => 'Service Types', 'input'=>'Add New Service Type']);
 
             return $view;
 	}
@@ -41,7 +41,7 @@ class ServiceTypesController extends Controller {
                 $this->authorize('edit',$type);
                 
                 
-                $view = view('pages.editLookup', ['param' => $type, 'path' => 'services/types']);
+                $view = view('pages.editLookup', ['param' => $type, 'path' => 'services/types', 'title' => 'Edit Service Types', 'input'=>'Edit Service Type']);
                 
 
                 return $view;

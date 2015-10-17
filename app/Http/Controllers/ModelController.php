@@ -12,7 +12,7 @@ class ModelController extends Controller {
     
     public function index()
     {
-        $models = VehicleModel::all();
+        $models = VehicleModel::simplePaginate(8);
         
         return view('pages.listModels',['models' => $models]);
     }

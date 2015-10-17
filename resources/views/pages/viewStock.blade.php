@@ -5,9 +5,12 @@
         <div class="container" ng-app="MyApp" ng-controller="MyCtrl">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-offset-9">
+                    <div class="col-md-offset-8">
                         <div class="container">
                             <a href="{{ url('/stock/'.$station->id.'/warnings/update') }}"/><button type="button" class="btn btn-warning">Set Warning Levels</button></a>
+                            @can('setStock')
+                            <a href="{{ url('/stock/'.$station->id.'/set') }}"/><button type="button" class="btn btn-linkedin">Set Stock</button></a>
+                            @endcan
                             <a href="{{ url('/stock/'.$station->id.'/update') }}"/><button type="button" class="btn btn-success">Update</button></a></br></br>
                         </div>
                     </div>

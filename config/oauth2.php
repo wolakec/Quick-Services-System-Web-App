@@ -34,12 +34,6 @@ return [
             'access_token_ttl' => 3600
         ],
         
-        'refresh_token' => [
-            'class' => '\League\OAuth2\Server\Grant\RefreshTokenGrant',
-            'access_token_ttl' => 3600,
-            'refresh_token_ttl' => 36000
-        ]
-
     ],
 
     /*
@@ -134,7 +128,7 @@ return [
     |
     */
 
-    'limit_clients_to_scopes' => false,
+    'limit_clients_to_scopes' => true,
 
     /*
     |--------------------------------------------------------------------------

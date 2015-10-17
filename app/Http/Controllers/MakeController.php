@@ -11,9 +11,9 @@ class MakeController extends Controller {
 
 	public function index()
 	{
-            $makes = Make::all();
+            $makes = Make::simplePaginate(8);
             
-            $view = view('pages.lookup', ['param' => $makes, 'path' => 'makes']);
+            $view = view('pages.lookup', ['param' => $makes, 'path' => 'makes', 'title' => 'Cars Makes', 'input' => 'Add New Make']);
 
             return $view;
 	}
@@ -44,7 +44,7 @@ class MakeController extends Controller {
             $this->authorize('editMake',$make);
             
             
-            $view = view('pages.editLookup', ['param' => $make, 'path' => 'makes']);
+            $view = view('pages.editLookup', ['param' => $make, 'path' => 'makes', 'title' => 'Edit Cars Makes', 'input' => 'Edit Car Make']);
 
             return $view;
 	}

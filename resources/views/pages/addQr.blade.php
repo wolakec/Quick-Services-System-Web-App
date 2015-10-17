@@ -7,6 +7,7 @@
             <h4 style="text-align: center;">Generate QR Codes</h4><br/>
             <form class="form-horizontal" name="qrForm" action="{{ url('/codes/add') }}" method="post">
                 <div class="form-group">
+                    <label>Prefix</label>
                     <input type="text" name="prefix" class="form-control" placeholder=" Prefix">
                     <div class="text-danger">{{ $errors->first('prefix') }}</div>
                 </div>

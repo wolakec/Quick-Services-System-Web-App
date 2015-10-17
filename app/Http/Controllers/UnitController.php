@@ -12,9 +12,9 @@ class UnitController extends Controller {
 	public function index()
 	{
             $this->authorize('createUnit');
-            $units = Unit::all();
+            $units = Unit::simplePaginate(10);
             
-            $view = view('pages.lookup', ['param' => $units, 'path' => 'unit']);
+            $view = view('pages.lookup', ['param' => $units, 'path' => 'unit', 'title' => 'Units', 'input' => 'Add New Unit']);
 
             return $view;
 	}
@@ -40,7 +40,7 @@ class UnitController extends Controller {
 	{
                 
 		$unit = Unit::find($id);
-                $view = view('pages.editLookup', ['param' => $unit, 'path' => 'unit']);
+                $view = view('pages.editLookup', ['param' => $unit, 'path' => 'unit', 'title' => 'Edit Units', 'input' => 'Edit Unit']);
                 $this->authorize('edit',$unit);
                 return $view;
 	}

@@ -26,6 +26,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $values->render() !!}
         </div>
     </div>
 </div>

@@ -13,9 +13,9 @@ class CategoryController extends Controller {
 	{
             $this->authorize('createCategory');
             
-            $categories = Category::all();
+            $categories = Category::simplePaginate(10);
             
-            $view = view('pages.lookup', ['param' => $categories, 'path' => 'categories']);
+            $view = view('pages.lookup', ['param' => $categories, 'path' => 'categories', 'title' => 'Categories','input' =>'Add New Category']);
 
             return $view;
 	}
@@ -41,7 +41,7 @@ class CategoryController extends Controller {
 	public function edit($id)
 	{
 		$category = Category::find($id);
-                $view = view('pages.editLookup', ['param' => $category, 'path' => 'categories']);
+                $view = view('pages.editLookup', ['param' => $category, 'path' => 'categories', 'title' => 'Edit Categories', 'input' =>'Edit Category']);
                 $this->authorize('edit',$category);
                 return $view;
 	}

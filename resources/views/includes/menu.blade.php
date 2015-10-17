@@ -93,6 +93,7 @@
                                     </li>
                                     <li class="dropdown-submenu"><a tabindex="-1" href="#">Employees</a>
                                     <ul class="dropdown-menu">
+                                         <li><a href="{{ url('statistics/employees') }}">General Info</a></li>
                                          <li><a href="{{ url('statistics/employees/services') }}">Services</a></li>
                                          <li><a href="{{ url('statistics/employees/sales') }}">Sales</a></li>
                                          <li><a href="{{ url('statistics/employees/sales/income') }}">Sales Income</a></li>

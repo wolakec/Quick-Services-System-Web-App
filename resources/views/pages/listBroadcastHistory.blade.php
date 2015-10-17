@@ -29,6 +29,7 @@
                 </tbody>
                 </thead>
             </table>
+            {!! $broadcasts->render() !!}
         </div>
     </div>
 </div>

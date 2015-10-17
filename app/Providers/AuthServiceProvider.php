@@ -126,6 +126,9 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('listEmployees', function($user){
             return $user->isAdmin();
         });
+        $gate->define('setStock', function($user){
+            return $user->isAdmin();
+        });
         $gate->define('addEmployee', function($user){
             return $user->isAdmin();
         });

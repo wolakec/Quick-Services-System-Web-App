@@ -24,7 +24,7 @@ class TransactionController extends Controller {
                 $user = Auth::user();
                 
                 if($user->isAdmin()){
-                    $transactions = Transaction::all();
+                    $transactions = Transaction::simplePaginate(10);
                 }
                 
                 if($user->isEmployee()){
