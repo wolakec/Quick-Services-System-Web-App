@@ -106,6 +106,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/codes/test/{id}', 'CodeController@test');
     Route::get('/codes/{id}/edit', 'CodeController@edit');
     Route::post('/codes/{id}/edit', 'CodeController@update');
+    
+    Route::get('/codes/print/all', 'CodeController@printAll');
+    Route::get('/codes/print/all/go', 'CodeController@printAllGo');
+    Route::post('/codes/print/one', 'CodeController@printOne');
 
     Route::get('/stations','StationController@index');
     Route::get('/stations/add', 'StationController@add');
@@ -163,6 +167,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/reminders/scan','GenerateReminderController@scan');
 
     Route::get('/notifications/add', 'BroadcastController@add');
+    Route::post('/notifications/confirm', 'BroadcastController@confirm');
     Route::post('/notifications/add', 'BroadcastController@store');
     Route::get('/notifications', 'BroadcastHistoryController@index');
     

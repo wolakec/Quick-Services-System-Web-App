@@ -10,10 +10,12 @@
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Name">
+                    <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>
                 <div class="form-group">
                         <label>Email</label>
                     <input type="text" name="email" class="form-control" placeholder="Email">
+                    <div class="text-danger">{{ $errors->first('email') }}</div>
                 </div>
                 <div class="form-group">
                 

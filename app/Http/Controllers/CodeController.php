@@ -13,7 +13,7 @@ class CodeController extends Controller {
     
     public function index()
     {
-        $codes = QrCode::all();
+        $codes = QrCode::where('printed', 0)->get();
         $path = public_path();
         return view('pages.QrCodes',['codes' => $codes ,'path' => $path]);
     }
@@ -51,5 +51,26 @@ class CodeController extends Controller {
         }
         return redirect('codes');
     }
-   
+    public function printOne(codeRequest $request){
+        dd($request);
+        $id = $request->input('id');
+        $code = QrCode::first($id);
+        $code->printed = '1';
+        $code->save();
+        return redirect('/codes');
+    }
+    
+    public function printAll(){
+        $codes = QrCode::where('printed', 0)->get();
+        $path = public_path();
+        return view('pages.PrintAllQrCodes',['codes' => $codes ,'path' => $path]);
+    }
+    
+    public function printAllGo(){
+        $codes = QrCode::where('printed', 0)->update(['printed' => 1]);
+        
+        return redirect('/codes');
+    }
+    
+    
 }
