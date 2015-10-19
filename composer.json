@@ -16,7 +16,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "khill/lavacharts" : "2.5.*",
-        "lucadegasperi/oauth2-server-laravel": "5.0.*"
+        "lucadegasperi/oauth2-server-laravel": "5.0.*",
+        "davibennun/laravel-push-notification": "dev-laravel5"
     },
     "autoload": {
         "classmap": [

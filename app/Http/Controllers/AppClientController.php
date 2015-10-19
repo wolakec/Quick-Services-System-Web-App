@@ -89,9 +89,11 @@ class AppClientController extends Controller {
         foreach($vehicles as $index => $vehicle){
             
             $unique = $vehicle->latestServices->unique('service_type_id');
+            
             unset($vehicle['services'],$vehicle['latestServices'],$vehicle['fuel'],$vehicle['client_id'],$vehicle['created_at'],$vehicle['updated_at'],
                     $vehicle['qr_code_id'],$vehicle['model_id'],$vehicle['year']);
-            
+            echo $unique;
+            die();
             $vehicle->services = $unique;
         }
         

@@ -30,7 +30,7 @@ class OauthEmployeeController extends Controller {
                 ->select('oauth_sessions.owner_id')
                 ->first();
         
-        $value['client_id'] = (int)$clientId->owner_id;
+        $value['employee_id'] = (int)$clientId->owner_id;
         
         return $value;
     }

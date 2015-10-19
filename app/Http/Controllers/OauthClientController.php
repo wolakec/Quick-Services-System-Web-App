@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Client;
 use App\ServiceType;
 use App\Position;
+use App\OauthTemp;
 use Hash; 
 
 use DB;
