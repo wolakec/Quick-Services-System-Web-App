@@ -148,6 +148,7 @@ return [
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+        Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
 //        Collective\Html\HtmlServiceProvider::class,
     ],
@@ -200,6 +201,7 @@ return [
         'Qr' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+        'PushNotification' => Davibennun\LaravelPushNotification\Facades\PushNotification::class,
     ],
 
 ];

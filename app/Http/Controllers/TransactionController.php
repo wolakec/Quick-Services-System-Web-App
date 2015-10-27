@@ -113,7 +113,7 @@ class TransactionController extends Controller {
                          $alert = new Alert;
                                 $alert->title = "Low Stock at ". $user->employee->station->name;
                                 $alert->message = "Product: ". $detail->package->product->name ." ". $detail->package->unit->name ." has triggered a warning level"
-                                        . "at ". $user->employee->station->name;
+                                        ." at ". $user->employee->station->name;
                                 $alert->station_id = $user->employee->station_id;
                                 $alert->employee_id = $user->employee->id;
                                 $alert->package_id = $detail->package_id;

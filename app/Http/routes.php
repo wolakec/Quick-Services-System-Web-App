@@ -251,7 +251,8 @@ Route::group(['prefix' => '/api'], function(){
                      */
                     Route::group(['middleware' => 'owner'],function(){
                         
-                        Route::post('/{id}/changepass','AppEmployeeController@changePass');
+                        Route::post('/{id}/changepass','AppClientController@changePass');
+                        Route::post('/{id}/notifications/register','AppNotificationController@registerToken');
                         Route::get('/{id}/vehicles','AppVehicleController@view');
                         Route::get('/{id}/services/types','AppClientController@viewServiceTypes');
                         Route::get('/{id}/services','AppClientController@viewServices');

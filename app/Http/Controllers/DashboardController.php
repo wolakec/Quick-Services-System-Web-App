@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Lava;
+use PushNotification;
 
 use App\TransactionDetail;
 use App\Client;
@@ -68,6 +69,19 @@ class DashboardController extends Controller {
     
     public function testForm()
     {
-        return view('pages.testform');
+        $token = "fgD2bZD93ms:APA91bGLZy7djyGZ-XPkPEJWbup8P_RpGJMTXFcDVVUppF_YSeNWsOyr6A4-IerXhXn5j1WkDJkXzDH3nz6O_FvcONYRh_XSr_749zqI77qtfj1D41qmTqlxaIPRvtjfZgF5F1mzywX7";
+        dd(strlen($token));
+        
+        $push = PushNotification::app('qssClient')
+                ->to($token)
+                ->send('Insert rude message here');
+        
+        
+        $response = $push->adapter->getResponse();
+        dd($response);
+        
+        //echo $response;
+        //echo "moo";
+        //return view('pages.testform');
     }
 }
