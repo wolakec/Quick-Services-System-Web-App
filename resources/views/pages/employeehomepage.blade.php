@@ -32,7 +32,7 @@
                       {{ $salesVal }}
                       
                       <sup style="font-size: 20px">SDG</sup></h3>
-                  <p>Products</p>
+                  <p>Sales Income</p>
                 </div>
                 <a href="{{ url('/stock/'.$station->id) }}" class="small-box-footer font25">View Stock <i class="glyphicon glyphicon-plus"></i></a>
               </div>
@@ -41,7 +41,7 @@
         <div class="col-md-3">
         <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>111</h3>
+                  <h3>{{ $alerts }}</h3>
                   <p>Alerts</p>
                 </div>
                 <a href="{{ url('/alerts/pending') }}" class="small-box-footer font25">Pending Alerts<i class="glyphicon glyphicon-plus"></i></a>

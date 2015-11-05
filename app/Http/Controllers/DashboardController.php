@@ -55,9 +55,9 @@ class DashboardController extends Controller {
                 ->where('transaction_details.created_at', '>=', new \DateTime('today'))
                 ->count();
             
-            $alerts = Alert::where('status','=','pending')->count();
+            $alerts = Alert::where('status','=','pending')->where('station_id','=',$station->id)->count();
             
-            return view('pages.employeehomepage',['station' => $station, 'salesVal' => $salesVal, 'noSales' => $noSales]);
+            return view('pages.employeehomepage',['station' => $station, 'salesVal' => $salesVal, 'alerts' => $alerts, 'noSales' => $noSales]);
         }
     }
    public function second()
@@ -69,15 +69,21 @@ class DashboardController extends Controller {
     
     public function testForm()
     {
-        $token = "fgD2bZD93ms:APA91bGLZy7djyGZ-XPkPEJWbup8P_RpGJMTXFcDVVUppF_YSeNWsOyr6A4-IerXhXn5j1WkDJkXzDH3nz6O_FvcONYRh_XSr_749zqI77qtfj1D41qmTqlxaIPRvtjfZgF5F1mzywX7";
-        dd(strlen($token));
+        $token = "doctWuqtouQ:APA91bHzld5NmFpyP1g4vZRTea2hlS7rJhsDczEc66fcZPGqqX2_oxnqwoT6j49pt-J6CQdNgKWY1uDhfCw6LXTX71P0pjxe23YwgwLcFNZU7AkMEXrufmmfk_3ucUWncmzoTx4zXfob";
         
-        $push = PushNotification::app('qssClient')
-                ->to($token)
-                ->send('Insert rude message here');
+        $message = PushNotification::Message("dsad",
+                    array('title' => "sddad",
+                        'type' => 'service',
+                        )
+                    );
+                
+                $push = PushNotification::app('qssClient')
+                        ->to($token)
+                        ->send($message);
         
         
         $response = $push->adapter->getResponse();
+        dd($push);
         dd($response);
         
         //echo $response;

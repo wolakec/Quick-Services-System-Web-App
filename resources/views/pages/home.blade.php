@@ -27,7 +27,7 @@
         <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3>{{ $salesVal }}<sup style="font-size: 20px">SDG</sup></h3>
-                  <p>Sales Value</p>
+                  <p>Sales Income</p>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>

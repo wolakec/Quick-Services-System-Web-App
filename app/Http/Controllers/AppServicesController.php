@@ -12,6 +12,7 @@ use App\DefaultReminderPreference;
 use App\ClientReminderPreference;
 use App\Reminder;
 use App\Notification;
+use PushNotification;
 use Log;
 
 
@@ -27,7 +28,6 @@ class AppServicesController extends Controller {
     public function store(Request $request,$id)
     {
         $input = $request->all();
-        
         
         $employee = Employee::find($id);
         if(!$employee){
@@ -67,11 +67,13 @@ class AppServicesController extends Controller {
             /*
              * Add points to client account for service
              */
-            $value = $newService->type->value->points;
-            if(!$client->points){
-                $client->points = $value;
-            }else{
-                $client->points = $client->points + $value;
+            if($newService->type->value){
+                $value = $newService->type->value->points;
+                if(!$client->points){
+                    $client->points = $value;
+                }else{
+                    $client->points = $client->points + $value;
+                }
             }
             
             $client->save();
@@ -86,34 +88,54 @@ class AppServicesController extends Controller {
             if(!$preference){
                 $preference = DefaultReminderPreference::where('service_type_id','=',$newService->service_type_id)->first();
             }
-            $date = date('Y-m-d', strtotime($date) );
-            $date = new \DateTime($date);
-            /*
-             * Add number of days to our service created date
-             */
-            $date->add(new \DateInterval('P'.$preference->period.'D'));
             
-            $reminder = new Reminder;
-            $reminder->service_type_id = $newService->service_type_id;
-            $reminder->service_id = $newService->id;
-            $reminder->vehicle_id = $newService->vehicle_id;
-            $reminder->triggered = false;
-            $reminder->trigger_date = $date->format('Y-m-d');
-            
-            $reminder->save();
+            if($preference){
+                $date = date('Y-m-d', strtotime($date) );
+                $date = new \DateTime($date);
+                /*
+                 * Add number of days to our service created date
+                 */
+                $date->add(new \DateInterval('P'.$preference->period.'D'));
+
+                $reminder = new Reminder;
+                $reminder->service_type_id = $newService->service_type_id;
+                $reminder->service_id = $newService->id;
+                $reminder->vehicle_id = $newService->vehicle_id;
+                $reminder->triggered = false;
+                $reminder->trigger_date = $date->format('Y-m-d');
+
+                $reminder->save();
+            }
             
             $title = $newService->type->name;
             $message = "You just performed a ". strtolower($newService->type->name)." on your ".$newService->vehicle->model->name.".";
-
-            $notification = new Notification;
-            $notification->title = $title;
-            $notification->message = $message;
-            $notification->client_id = $client->id;
-            $notification->vehicle_id = $newService->vehicle_id;
-            $notification->service_type_id = $newService->service_type_id;
-            $notification->status = "pending";
-            $notification->type = "service";
-            $notification->save();
+            
+            $token = $client->gcm_token;
+            
+            if($token){
+                $message = PushNotification::Message($message,
+                    array('title' => $title,
+                        'client_id' => $client->id,
+                        'vehicle_id' => $newService->vehicle_id,
+                        'service_type_id' => $newService->service_type_id,
+                        'type' => 'service',
+                        )
+                    );
+                
+                $push = PushNotification::app('qssClient')
+                        ->to($token)
+                        ->send($message);
+                
+            }
+//            $notification = new Notification;
+//            $notification->title = $title;
+//            $notification->message = $message;
+//            $notification->client_id = $client->id;
+//            $notification->vehicle_id = $newService->vehicle_id;
+//            $notification->service_type_id = $newService->service_type_id;
+//            $notification->status = "pending";
+//            $notification->type = "service";
+//            $notification->save();
         }
         
          return response()->json(['status' => 'true']);

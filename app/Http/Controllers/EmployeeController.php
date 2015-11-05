@@ -17,7 +17,7 @@ class EmployeeController extends Controller {
     public function index()
     {
         $this->authorize(new Employee);
-        $employees = Employee::simplePaginate(8);
+        $employees = Employee::paginate(8);
         
         return view('pages.listEmployees',['employees' => $employees]);
     }

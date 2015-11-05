@@ -4,7 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
+use PushNotification;
+use Log;
 use App\Client;
 use App\Employee;
 use App\Vehicle;
@@ -33,6 +34,8 @@ class AppVehicleController extends Controller {
     }
     public function store(Request $request,$id)
     {
+        //Log::info($request->all());
+        
         $employee = Employee::find($id);
         if(!$employee){
             return response()->json(['status' => 'false']);
@@ -63,14 +66,28 @@ class AppVehicleController extends Controller {
         $title = "New vehicle added";
         $message = "". $vehicle->model->name." has been added to your garage.";
 
-        $notification = new Notification;
-        $notification->title = $title;
-        $notification->message = $message;
-        $notification->client_id = $client->id;
-        $notification->vehicle_id = $vehicle->id;
-        $notification->status = "pending";
-        $notification->type = "newVehicle";
-        $notification->save();
+        $token = $client->gcm_token;
+        
+        if($token){
+            $message = PushNotification::Message($message,
+                array('title' => $title,
+                    'client_id' => $client->id,
+                    'vehicle_id' => $vehicle->id,
+                    'type' => 'newVehicle',
+                    )
+                );
+            $push = PushNotification::app('qssClient')
+                    ->to($token)
+                    ->send($message);
+        }
+//        $notification = new Notification;
+//        $notification->title = $title;
+//        $notification->message = $message;
+//        $notification->client_id = $client->id;
+//        $notification->vehicle_id = $vehicle->id;
+//        $notification->status = "pending";
+//        $notification->type = "newVehicle";
+//        $notification->save();
             
         return response()->json(['status' => 'true']);
     }

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h4 style="text-align:center;">Edit Service Availability</h4><br/>
+            <h4 style="text-align:center;">Edit Service Availability for {{ $station->name }}</h4><br/>
             <form name="editServiceAvailability" class="form-horizontal" method="post" action="{{ url('/stations/'.$station->id.'/services/types/availability/edit') }}">
                 <table class="table table-bordered"/>
                 
@@ -13,13 +13,13 @@
                     <tr>
                         <td>{{ $type->name }}</td>
                         <td>
-                        Open
+                        Available
                         <input type="radio" name="serviceTypes[{{ $type->service_type_id }}]is_available" value="1"
                                   @if($type->is_available)
                                     checked
                                   @endif  
                                   />
-                        Closed
+                        Unavailable
                         <input type="radio" name="serviceTypes[{{ $type->service_type_id }}]is_available" value="0"
                                   @if(!$type->is_available)
                                     checked

@@ -28,7 +28,7 @@ class TransactionController extends Controller {
                 }
                 
                 if($user->isEmployee()){
-                    $transactions = Transaction::where('station_id','=',$user->employee->station->id)->get();
+                    $transactions = Transaction::where('station_id','=',$user->employee->station->id)->simplePaginate(10);
                 }
                 
                 $transactions->load('employee','station');
@@ -40,7 +40,7 @@ class TransactionController extends Controller {
         {
                 $employee = Employee::findOrFail($id);
                 
-                $transactions = $employee->transactions;
+                $transactions = $employee->transactions()->simplePaginate(10);
                 
                 $transactions->load('employee','station');
                 

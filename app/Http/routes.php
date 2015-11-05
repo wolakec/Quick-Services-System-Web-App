@@ -7,8 +7,6 @@ use App\Package;
 use App\Product;
 
 Route::get('/testform','DashboardController@testForm');
-Route::get('/clear','AmmariController@add');
-Route::post('/clear','AmmariController@store');
 
 Route::group(['middleware' => 'auth'], function(){
 

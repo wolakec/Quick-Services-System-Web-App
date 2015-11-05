@@ -10,7 +10,7 @@ class ServiceController extends Controller {
     
     public function index()
     {
-        $services = Service::simplePaginate(10);
+        $services = Service::paginate(10);
         $services->load('employee','type','vehicle.client','vehicle.model');
         //return $services;
        

@@ -18,7 +18,7 @@ class StationController extends Controller {
     public function index()
     {
         $this->authorize('listStations');
-        $stations = Station::simplePaginate(10);
+        $stations = Station::paginate(10);
         
         return view('pages.listStations',['stations' => $stations]);
     }
@@ -83,7 +83,7 @@ class StationController extends Controller {
     {
         $station = Station::find($id);
         
-        $employees = $station->employees;
+        $employees = $station->employees()->paginate(5);
         
         return view('pages.listEmployees',['employees' => $employees]);
     }
