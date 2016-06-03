@@ -7,10 +7,13 @@ use App\Package;
 use App\Product;
 
 Route::get('/testform','DashboardController@testForm');
+Route::get('/gen','DashboardController@generate');
 
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/','DashboardController@index');
+    
+    Route::get('/stations/positions/all','AppClientController@viewAllStationPositions');
     
     Route::get('/transactions','TransactionController@index');
     Route::get('/transactions/add', 'TransactionController@add');

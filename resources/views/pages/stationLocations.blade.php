@@ -80,7 +80,7 @@
             
         });
         
-        $http.get("{{ url('/api/v1/client/stations/positions/all') }}").success(function(response) {
+        $http.get("{{ url('/stations/positions/all') }}").success(function(response) {
             //$scope.markers = response;
             angular.forEach(response, function(m,key){
                 $scope.markers.push({

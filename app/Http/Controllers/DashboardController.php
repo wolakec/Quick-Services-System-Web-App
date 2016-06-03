@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Lava;
 use PushNotification;
 
+use Qr;
+use Storage;
+
 use App\TransactionDetail;
 use App\Client;
 use App\Alert;
@@ -89,5 +92,13 @@ class DashboardController extends Controller {
         //echo $response;
         //echo "moo";
         //return view('pages.testform');
+    }
+    
+    public function generate()
+    {
+        $appname = "testapp.png";
+        $url = "http://192.168.1.131/images/app.apk";
+        Storage::put('images/'.$appname,Qr::format('png')->size(200)->generate($url));
+        
     }
 }

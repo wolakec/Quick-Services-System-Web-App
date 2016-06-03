@@ -84,17 +84,12 @@ class AppClientController extends Controller {
             return response()->json(['status' => 'false']);
         }
         
-        $vehicles = $client->vehicles;
-        
-        foreach($vehicles as $index => $vehicle){
-            
-            $unique = $vehicle->latestServices->unique('service_type_id');
-            
-            unset($vehicle['services'],$vehicle['latestServices'],$vehicle['fuel'],$vehicle['client_id'],$vehicle['created_at'],$vehicle['updated_at'],
-                    $vehicle['qr_code_id'],$vehicle['model_id'],$vehicle['year']);
-            
-            $vehicle->services = $unique;
-        }
+        $vehicles = DB::table('clients')
+                ->where('clients.id','=',$id)
+                ->leftJoin('vehicles','clients.id','=','vehicles.client_id')
+                ->join('services','vehicles.id','=','services.vehicle_id')
+                ->select("services.id", "services.vehicle_id", "services.created_at", "services.service_type_id")
+                ->get();
         
         return $vehicles;
     }
